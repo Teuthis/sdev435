@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Xml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\gamestork-lib\gamestork-lib.vcxproj">

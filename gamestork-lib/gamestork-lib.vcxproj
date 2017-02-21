@@ -115,12 +115,14 @@
     <ClInclude Include="NSidedDie.h" />
     <ClInclude Include="XmlDocument.h" />
     <ClInclude Include="XmlNode.h" />
+    <ClInclude Include="XmlWriter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiceRoller.cpp" />
     <ClCompile Include="NSidedDie.cpp" />
     <ClCompile Include="XmlDocument.cpp" />
     <ClCompile Include="XmlNode.cpp" />
+    <ClCompile Include="XmlWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

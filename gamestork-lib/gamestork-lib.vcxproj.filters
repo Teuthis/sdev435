@@ -27,6 +27,9 @@
     <ClInclude Include="XmlDocument.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XmlWriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiceRoller.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="XmlDocument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlWriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

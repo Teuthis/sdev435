@@ -1,6 +1,9 @@
 #include <UnitTest++.h>
 #include "XmlNode.h"
 #include "XmlDocument.h"
+#include "XmlWriter.h"
+#include <fstream>
+#include <cstdio>
 
 SUITE(XmlTests) {
 
@@ -41,5 +44,28 @@ SUITE(XmlTests) {
 		root->addChild("firstChild");
 		std::string xml = doc.toXmlString();
 		CHECK(xml == "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ROOT>\n  <FIRSTCHILD></FIRSTCHILD>\n</ROOT>\n");
+	}
+
+	TEST(XmlWriting) {
+		XmlDocument doc("root");
+		auto root = doc.getRoot();
+		root->addChild("firstChild");
+		XmlWriter writer(doc);
+		std::string fn = "./gamestorkunittest.xml";
+		bool writeSuccess = writer.write(fn);
+		std::ifstream testreader;
+		testreader.open(fn, std::ios::in);
+		bool reopenSuccess = testreader.is_open();
+		std::string xml;
+		if (reopenSuccess) {
+			std::string tmp;
+			while (std::getline(testreader, tmp)) {
+				xml += tmp;
+				xml += '\n';
+			}
+			testreader.close();
+			remove(fn.c_str());
+		}
+		CHECK(writeSuccess && reopenSuccess && xml == doc.toXmlString());
 	}
 }

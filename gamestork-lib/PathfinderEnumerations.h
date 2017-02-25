@@ -28,15 +28,15 @@ enum ALIGNMENT
 /// Possible sizes of characters and monsters
 enum CREATURE_SIZE
 {
-	COLOSSAL,
-	GARGANTUAN,
-	HUGE,
-	LARGE,
-	MEDIUM,
-	SMALL,
-	TINY,
-	DIMUNITIVE,
-	FINE
+	SIZE_COLOSSAL,
+	SIZE_GARGANTUAN,
+	SIZE_HUGE,
+	SIZE_LARGE,
+	SIZE_MEDIUM,
+	SIZE_SMALL,
+	SIZE_TINY,
+	SIZE_DIMUNITIVE,
+	SIZE_FINE
 };
 
 /// Character ability score (attribute) types
@@ -75,7 +75,16 @@ enum PROFICIENCY
 enum ARMOR_WEIGHTCLASS
 {
 	NONE,
-	LIGHT,
-	MEDIUM,
-	HEAVY
+	LIGHT_WEIGHT,
+	MEDIUM_WEIGHT,
+	HEAVY_WEIGHT
+};
+
+/// Character classes
+enum CHARACTER_CLASS
+{
+	FIGHTER = 1,
+	ROGUE = 2,
+	CLERIC = 4,
+	WIZARD = 8
 };

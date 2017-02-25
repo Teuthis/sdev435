@@ -40,7 +40,7 @@ void PathfinderSkill::addRanks(const int amount)
 /// @return The miscellaneous modifier total
 void PathfinderSkill::toggleClassSkill()
 {
-	classSkill = !isClassSkill;
+	classSkill = !classSkill;
 }
 
 /// Increases or decreases the miscellaneous modifiers by the given amount

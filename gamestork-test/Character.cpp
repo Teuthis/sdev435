@@ -1,8 +1,12 @@
 #include <UnitTest++.h>
 #include <PathfinderFeat.h>
 #include <PathfinderSkill.h>
+#include <PathfinderDwarf.h>
+#include <PathfinderElf.h>
+#include <PathfinderHuman.h>
 
-SUITE(CharacterTests) {
+
+SUITE(FeatAndSkillTests) {
 
 	TEST(FeatAbilityPrereqs) {
 		PathfinderFeat feat("Test Feat", INTELLIGENCE, 15);
@@ -59,4 +63,24 @@ SUITE(CharacterTests) {
 		CHECK(featA != featB);
 	}
 
+}
+
+SUITE(RaceTests) {
+	TEST(RaceString) {
+		PathfinderDwarf dwarf;
+		PathfinderRace *race = &dwarf;
+		CHECK_EQUAL("Dwarf", race->toString());
+	}
+
+	TEST(HumanBonus) {
+		PathfinderHuman human(STRENGTH);
+		PathfinderRace *race = &human;
+		CHECK_EQUAL(2, race->abilityBonus(STRENGTH));
+	}
+
+	TEST(HumanNotBonus) {
+		PathfinderHuman human(STRENGTH);
+		PathfinderRace *race = &human;
+		CHECK_EQUAL(0, race->abilityBonus(DEXTERITY));
+	}
 }

@@ -115,8 +115,12 @@
     <ClInclude Include="InventoryItem.h" />
     <ClInclude Include="NSidedDie.h" />
     <ClInclude Include="PathfinderArmor.h" />
+    <ClInclude Include="PathfinderDwarf.h" />
+    <ClInclude Include="PathfinderElf.h" />
     <ClInclude Include="PathfinderEnumerations.h" />
     <ClInclude Include="PathfinderFeat.h" />
+    <ClInclude Include="PathfinderHuman.h" />
+    <ClInclude Include="PathfinderRace.h" />
     <ClInclude Include="PathfinderSkill.h" />
     <ClInclude Include="PathfinderWeapon.h" />
     <ClInclude Include="XmlDocument.h" />
@@ -128,7 +132,10 @@
     <ClCompile Include="InventoryItem.cpp" />
     <ClCompile Include="NSidedDie.cpp" />
     <ClCompile Include="PathfinderArmor.cpp" />
+    <ClCompile Include="PathfinderDwarf.cpp" />
+    <ClCompile Include="PathfinderElf.cpp" />
     <ClCompile Include="PathfinderFeat.cpp" />
+    <ClCompile Include="PathfinderHuman.cpp" />
     <ClCompile Include="PathfinderSkill.cpp" />
     <ClCompile Include="PathfinderWeapon.cpp" />
     <ClCompile Include="XmlDocument.cpp" />

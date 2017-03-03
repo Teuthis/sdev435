@@ -69,6 +69,19 @@ public:
 	/// @return The ability score type
 	CHARACTER_ABILITY getAbility() const { return linkedAbility; }
 
+	/// Compares two PathfinderSkill objects for equality
+	/// @param other The PathfinderSkill being compared to this one
+	/// @return true if the operands are equal, false otherwise
+	inline bool operator==(const PathfinderSkill &other) {
+		return this->name == other.name;
+	}
+
+	/// Compares two PathfinderSkill objects for inequality
+	/// @param other The PathfinderSkill being compared to this one
+	/// @return true if the operands are equal, false otherwise
+	inline bool operator!=(const PathfinderSkill &other) {
+		return !(operator==(other));
+	}
 
 private:
 	/// Skill name

@@ -1,5 +1,6 @@
 #include <UnitTest++.h>
 #include <PathfinderFeat.h>
+#include <PathfinderSkill.h>
 
 SUITE(CharacterTests) {
 
@@ -33,4 +34,29 @@ SUITE(CharacterTests) {
 		int prof = HEAVY_ARMOR;
 		CHECK(!feat.meetsProficiencyPrerequisite(prof));
 	}
+
+	TEST(SkillEquality) {
+		PathfinderSkill skillA("Pickpocketing", DEXTERITY, false);
+		PathfinderSkill skillB("Pickpocketing", DEXTERITY, true);
+		CHECK(skillA == skillB);
+	}
+
+	TEST(SkillInequality) {
+		PathfinderSkill skillA("Pickpocketing", DEXTERITY, false);
+		PathfinderSkill skillB("Pickpocket", DEXTERITY, false);
+		CHECK(skillA != skillB);
+	}
+
+	TEST(FeatEquality) {
+		PathfinderFeat featA("Test Feat");
+		PathfinderFeat featB("Test Feat", CHARISMA, 14);
+		CHECK(featA == featB);
+	}
+	
+	TEST(FeatInequality) {
+		PathfinderFeat featA("Charge");
+		PathfinderFeat featB("Charm", CHARISMA, 14);
+		CHECK(featA != featB);
+	}
+
 }

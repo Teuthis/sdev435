@@ -70,6 +70,22 @@ public:
 	/// @return The name of the prerequisite feat or an empty string
 	std::string getFeatPrerequisite() const { return featPrereq; }
 
+	/// Compares two PathfinderFeat objects for equality
+	/// @param other The PathfinderFeat being compared to this one
+	/// @return true if the operands are equal, false otherwise
+	inline bool operator==(const PathfinderFeat &other) {
+		return this->name == other.name;
+	}
+
+	/// Compares two PathfinderFeat objects for inequality
+	/// @param other The PathfinderFeat being compared to this one
+	/// @return true if the operands are equal, false otherwise
+	inline bool operator!=(const PathfinderFeat &other) {
+		return !(operator==(other));
+	}
+
+
+
 private:
 	/// Feat name
 	std::string name;

@@ -63,6 +63,7 @@ std::vector<std::string> PathfinderWizard::getMagic() const
 			result.push_back(spellNames[i]);
 		}
 	}
+	return result;
 }
 
 void PathfinderWizard::learnSpell(const WIZARD_SPELLS spell)

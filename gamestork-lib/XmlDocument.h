@@ -3,7 +3,7 @@
 File: XmlDocument.h
 System: Gamestork RPG Character Generator
 License: LGPL
-(c) Chris Aiken, Jason Roberge 2017
+(c) Chris Aiken 2017
 
 Description: Header file for an XML document
 */
@@ -54,9 +54,11 @@ public:
 
 	/// Gets a collection of pointers to all nodes of the specified element type
 	/// @param searchElement The element string to search for
+	/// @param caseInsensitive Permits matches regardless of case. Defaults to false
 	/// @return A vector of shared_ptrs to all matching nodes
 	std::vector<std::shared_ptr<XmlNode>>
-		getNodesByElement(std::string searchElement) const;
+		getNodesByElement(std::string searchElement, 
+			const bool caseInsensitive = false) const;
 
 
 private:
@@ -74,9 +76,11 @@ private:
 	/// Recursively adds nodes that match the desired element type to the
 	/// result collection
 	/// @param searchElement The element string to search for
+	/// @param caseInsensitive Indicates whether to ignore case
 	/// @param currentNode The node currently being examined
 	/// @param results A reference to the result vector
 	void getNodesByElement(std::string searchElement, 
+		bool caseInsensitive,
 		std::shared_ptr<XmlNode> currentNode,
 		std::vector<std::shared_ptr<XmlNode>>& results) const;
 };

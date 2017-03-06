@@ -22,11 +22,6 @@ XmlNode::XmlNode()
 XmlNode::XmlNode(std::string element)
 	: element(element), attributes(), innerValue(""), children()
 {
-	std::transform(
-		this->element.begin(), 
-		this->element.end(), 
-		this->element.begin(), 
-		toupper);
 }
 
 /// Destroys the current XmlNode and all its children
@@ -102,8 +97,6 @@ std::string XmlNode::getAttribute(std::string key) const
 /// @param newElement The new element type string
 void XmlNode::setElement(std::string newElement)
 {
-	std::transform(newElement.begin(), newElement.end(), 
-		newElement.begin(), toupper);
 	this->element = newElement;
 }
 

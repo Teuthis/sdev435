@@ -14,7 +14,7 @@ Description: Implementation file for an XML document
 /// Default constructs a new XmlDocument. The root element is initialized
 /// to "XMLROOT" and encoding defaults to UTF-8
 XmlDocument::XmlDocument()
-	: encoding("UTF-8"), root(std::make_shared<XmlNode>(XmlNode("XMLROOT")))
+	: encoding("UTF-8"), root(std::make_shared<XmlNode>(XmlNode("documentRoot")))
 {
 }
 
@@ -72,12 +72,15 @@ std::string XmlDocument::toXmlString() const
 /// @param searchElement The element string to search for
 /// @return A vector of shared_ptrs to all matching nodes
 std::vector<std::shared_ptr<XmlNode>> 
-	XmlDocument::getNodesByElement(std::string searchElement) const
+	XmlDocument::getNodesByElement(std::string searchElement,
+		const bool caseInsensitive) const
 {
-	std::transform(searchElement.begin(), searchElement.end(), 
-		searchElement.begin(), toupper);
+	if (caseInsensitive) {
+		std::transform(searchElement.begin(), searchElement.end(),
+			searchElement.begin(), toupper);
+	}	
 	std::vector<std::shared_ptr<XmlNode>> results;
-	getNodesByElement(searchElement, root, results);
+	getNodesByElement(searchElement, caseInsensitive, root, results);
 	return results;
 }
 
@@ -93,14 +96,21 @@ std::string XmlDocument::getProlog() const
 /// @param searchElement The element string to search for
 /// @param currentNode The node currently being examined
 /// @param results A reference to the result vector
-void XmlDocument::getNodesByElement(std::string searchElement, 
+void XmlDocument::getNodesByElement(std::string searchElement,
+	bool caseInsensitive,
 	std::shared_ptr<XmlNode> currentNode,
 	std::vector<std::shared_ptr<XmlNode>>& results) const
 {
-	if (currentNode->getElement() == searchElement) {
+	std::string currentElement = currentNode->getElement();
+	if (caseInsensitive) {
+		std::transform(currentElement.begin(), currentElement.end(),
+			currentElement.begin(), toupper);
+	}
+	if (currentElement == searchElement) {
 		results.push_back(currentNode);
 	}
 	for (int i = 0; i < currentNode->getChildCount(); i++) {
-		getNodesByElement(searchElement, (*currentNode)[i], results);
+		getNodesByElement(searchElement, caseInsensitive, 
+			(*currentNode)[i], results);
 	}
 }

@@ -130,6 +130,7 @@
     <ClInclude Include="PathfinderWizard.h" />
     <ClInclude Include="XmlDocument.h" />
     <ClInclude Include="XmlNode.h" />
+    <ClInclude Include="XmlReader.h" />
     <ClInclude Include="XmlWriter.h" />
   </ItemGroup>
   <ItemGroup>
@@ -150,6 +151,7 @@
     <ClCompile Include="PathfinderWizard.cpp" />
     <ClCompile Include="XmlDocument.cpp" />
     <ClCompile Include="XmlNode.cpp" />
+    <ClCompile Include="XmlReader.cpp" />
     <ClCompile Include="XmlWriter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

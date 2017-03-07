@@ -267,7 +267,13 @@ XML_READER_STATE XmlReader::elementBody()
 
 		// If we get a <, this has children. Otherwise, it's an innervalue
 		if (next == '<') {
-			return XMLSTATE_ELEMENT_OPEN;
+			stream.get(next);
+			if (next == '/') {
+				return XMLSTATE_ELEMENT_CLOSE;
+			} else {
+				stream.unget();
+				return XMLSTATE_ELEMENT_OPEN;
+			}
 		} else {
 			stream.unget();
 			return XMLSTATE_ELEMENT_INNERVALUE;

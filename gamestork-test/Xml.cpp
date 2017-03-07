@@ -104,10 +104,10 @@ SUITE(XmlTests) {
 		CHECK_EQUAL(6, numAbility);
 	}
 
-	/*TEST(XmlReaderGoodFileNewline) {
+	TEST(XmlReaderGoodFileNewline) {
 		XmlReader reader("C:\\xmlTestDocs\\validNewLineInAttribVal.xml");
 		CHECK(reader.isXmlReady());
-	}*/
+	}
 
 	TEST(XmlReaderBadElementClose) {
 		XmlReader reader("C:\\xmlTestDocs\\badElementClose.xml");
@@ -124,7 +124,7 @@ SUITE(XmlTests) {
 		CHECK(!reader.isXmlReady());
 	}
 
-	/*TEST(XmlReadOwnWriting) {
+	TEST(XmlReadOwnWriting) {
 		XmlDocument doc("root");
 		auto root = doc.getRoot();
 		root->addChild("firstChild");
@@ -134,5 +134,5 @@ SUITE(XmlTests) {
 		XmlReader reader(fn);
 		remove(fn.c_str());
 		CHECK(reader.isXmlReady());
-	}*/
+	}
 }

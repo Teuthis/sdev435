@@ -124,7 +124,7 @@ XML_READER_STATE XmlReader::prologOpening()
 			return XMLSTATE_INVALID;
 		}
 		stream.get(next);
-		if (isalpha(next) || next == '_') {
+		if (isalpha(next) || next == '_' || next == ':') {
 			// alpha character indicates the beginning of a key/value pair
 			// That character will be needed, so stick it back in the stream
 			stream.unget(); 
@@ -155,7 +155,7 @@ XML_READER_STATE XmlReader::prologKeyValPair()
 
 	char next = 0;
 	stream.get(next); // the next char in the stream
-	if (!isalpha(next) && next != '_') {
+	if (!isalpha(next) && next != '_' && next != ':') {
 		// attributes must start w/ a letter or underscore
 		// additional chars are allowed in the name, provided they aren't
 		// at the beginning. The while test is broader because of this,
@@ -164,7 +164,8 @@ XML_READER_STATE XmlReader::prologKeyValPair()
 	}
 	
 	std::string attribName; // attribute name being read
-	while (isalnum(next) || next == '_' || next == '-' || next == '.') {
+	while (isalnum(next) || next == '_' || next == '-' || next == '.' 
+		|| next == ':') {
 		attribName += next;
 		stream.get(next);
 		if (!stream.good()) return XMLSTATE_INVALID;
@@ -201,7 +202,7 @@ XML_READER_STATE XmlReader::prologKeyValPair()
 	do {
 		stream.get(next);
 	} while (isspace(next));
-	if (isalpha(next) || next == '_') {
+	if (isalpha(next) || next == '_' || next == ':') {
 		stream.unget();
 		return XMLSTATE_PROLOG_KEYVAL;
 	} else if (next == '?') {
@@ -228,11 +229,12 @@ XML_READER_STATE XmlReader::elementOpening()
 	if (!stream.is_open()) return XMLSTATE_INVALID;
 	char next = 0;
 	stream.get(next);
-	if (!isalpha(next) && next != '_') return XMLSTATE_INVALID;
+	if (!isalpha(next) && next != '_' && next != ':') return XMLSTATE_INVALID;
 	std::string elementName;
 	
 	// read the name in until an invalid name character is found
-	while (isalnum(next) || next == '_' || next == '-' || next == '.') {
+	while (isalnum(next) || next == '_' || next == '-' || next == '.' 
+		|| next == ':') {
 		elementName += next;
 		stream.get(next);
 		if (!stream.good()) return XMLSTATE_INVALID;
@@ -278,7 +280,7 @@ XML_READER_STATE XmlReader::elementBody()
 			stream.unget();
 			return XMLSTATE_ELEMENT_INNERVALUE;
 		}
-	} else if (isalpha(next) || next == '_') {
+	} else if (isalpha(next) || next == '_' || next == ':') {
 		// looks like an attribute
 		stream.unget();
 		return XMLSTATE_ELEMENT_KEYVAL;
@@ -294,7 +296,7 @@ XML_READER_STATE XmlReader::elementKeyValPair()
 
 	char next = 0;
 	stream.get(next); // the next char in the stream
-	if (!isalpha(next) && next != '_') {
+	if (!isalpha(next) && next != '_' && next != ':') {
 		// attributes must start w/ a letter or underscore
 		// additional chars are allowed in the name, provided they aren't
 		// at the beginning. The while test is broader because of this,
@@ -303,7 +305,8 @@ XML_READER_STATE XmlReader::elementKeyValPair()
 	}
 
 	std::string attribName; // attribute name being read
-	while (isalnum(next) || next == '_' || next == '-' || next == '.') {
+	while (isalnum(next) || next == '_' || next == '-' || next == '.'
+		|| next == ':') {
 		attribName += next;
 		stream.get(next);
 		if (!stream.good()) return XMLSTATE_INVALID;
@@ -362,9 +365,10 @@ XML_READER_STATE XmlReader::elementClosing(bool selfClose)
 	char next = 0;
 	stream.get(next);
 	if (!selfClose) {
-		if (!isalpha(next) && next != '_') return XMLSTATE_INVALID;
+		if (!isalpha(next) && next != '_' && next != ':') return XMLSTATE_INVALID;
 		std::string elementName;
-		while (isalnum(next) || next == '_' || next == '-' || next == '.') {
+		while (isalnum(next) || next == '_' || next == '-' || next == '.'
+			|| next == ':') {
 			elementName += next;
 			stream.get(next);
 			if (!stream.good()) return XMLSTATE_INVALID;
@@ -406,7 +410,7 @@ XML_READER_STATE XmlReader::elementClosing(bool selfClose)
 		stream.get(next);
 		if (next == '/') {
 			return XMLSTATE_ELEMENT_CLOSE;
-		} else if (isalpha(next) || next == '_') {
+		} else if (isalpha(next) || next == '_' || next == ':') {
 			stream.unget();
 			return XMLSTATE_ELEMENT_OPEN;
 		} else {

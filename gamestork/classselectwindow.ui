@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ClassSelectWindow</class>
+ <widget class="QWindow" name="ClassSelectWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>592</width>
+    <height>224</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Select Character Class</string>
+  </property>
+  <widget class="QPushButton" name="fighterButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>48</y>
+     <width>128</width>
+     <height>128</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Fighter</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="clericButton">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>48</y>
+     <width>128</width>
+     <height>128</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cleric</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="rogueButton">
+   <property name="geometry">
+    <rect>
+     <x>304</x>
+     <y>48</y>
+     <width>128</width>
+     <height>128</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rogue</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="wizardButton">
+   <property name="geometry">
+    <rect>
+     <x>448</x>
+     <y>48</y>
+     <width>128</width>
+     <height>128</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wizard</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="clericLabel">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>184</y>
+     <width>128</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cleric</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="fighterLabel">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>184</y>
+     <width>128</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Fighter</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="rogueLabel">
+   <property name="geometry">
+    <rect>
+     <x>304</x>
+     <y>184</y>
+     <width>128</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rogue</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="wizardLabel">
+   <property name="geometry">
+    <rect>
+     <x>448</x>
+     <y>184</y>
+     <width>128</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Wizard</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="headingLabel">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>12</y>
+     <width>560</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Choose Character Class</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWindow</class>
+   <extends>QWidget</extends>
+   <header>qwindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

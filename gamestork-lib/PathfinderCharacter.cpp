@@ -100,12 +100,15 @@ void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 	}
 }
 
-int PathfinderCharacter::getAbilityScore(CHARACTER_ABILITY ability)
+int PathfinderCharacter::getAbilityScore(CHARACTER_ABILITY ability) const
 {
-	return abilityScores[ability];
+	int result = abilityScores.at(ability);
+	if (race != NULL) 
+		result += race->abilityBonus(ability);
+	return result;
 }
 
-int PathfinderCharacter::getAbilityBonusMod(CHARACTER_ABILITY ability)
+int PathfinderCharacter::getAbilityBonusMod(CHARACTER_ABILITY ability) const
 {
 	switch (getAbilityScore(ability)) {
 	case 1:
@@ -142,4 +145,9 @@ int PathfinderCharacter::getAbilityBonusMod(CHARACTER_ABILITY ability)
 	default:
 		return 0;
 	}
+}
+
+void PathfinderCharacter::setAbility(CHARACTER_ABILITY ability, const int value)
+{
+	abilityScores[ability] = value;
 }

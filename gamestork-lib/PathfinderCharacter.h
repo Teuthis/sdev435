@@ -76,12 +76,17 @@ public:
 	/// Gets the requested ability score
 	/// @param ability The requested ability
 	/// @return The ability score
-	int getAbilityScore(CHARACTER_ABILITY ability);
+	int getAbilityScore(CHARACTER_ABILITY ability) const;
 
 	/// Gets the bonus modifier for the requested ability
 	/// @param ability The requested ability
 	/// @return The ability bonus modifier
-	int getAbilityBonusMod(CHARACTER_ABILITY ability);
+	int getAbilityBonusMod(CHARACTER_ABILITY ability) const;
+
+	/// Sets the specified ability score
+	/// @param ability The ability to change
+	/// @param value The new ability score value
+	void setAbility(CHARACTER_ABILITY ability, const int value);
 
 private:
 	std::string name;

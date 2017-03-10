@@ -4,7 +4,7 @@
 #include <PathfinderDwarf.h>
 #include <PathfinderElf.h>
 #include <PathfinderHuman.h>
-
+#include <PathfinderCharacter.h>
 
 SUITE(FeatAndSkillTests) {
 
@@ -83,4 +83,25 @@ SUITE(RaceTests) {
 		PathfinderRace *race = &human;
 		CHECK_EQUAL(0, race->abilityBonus(DEXTERITY));
 	}
+}
+
+SUITE(CompleteCharacterTests) {
+	TEST(DefaultAbilityNoRace) {
+		PathfinderCharacter character(FIGHTER);
+		CHECK_EQUAL(3, character.getAbilityScore(STRENGTH));
+	}
+
+	TEST(DefaultAbilityDwarf) {
+		PathfinderCharacter character(FIGHTER);
+		character.setRace(DWARF);
+		CHECK_EQUAL(5, character.getAbilityScore(CONSTITUTION));
+	}
+
+	TEST(DefaultAbilityBonusDwarf) {
+		PathfinderCharacter character(FIGHTER);
+		character.setRace(DWARF);
+		CHECK_EQUAL(-3, character.getAbilityBonusMod(CONSTITUTION));
+	}
+
+
 }

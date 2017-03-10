@@ -73,6 +73,16 @@ public:
 	/// @param newRace The new race value
 	void setRace(CHARACTER_RACE newRace);
 
+	/// Gets the requested ability score
+	/// @param ability The requested ability
+	/// @return The ability score
+	int getAbilityScore(CHARACTER_ABILITY ability);
+
+	/// Gets the bonus modifier for the requested ability
+	/// @param ability The requested ability
+	/// @return The ability bonus modifier
+	int getAbilityBonusMod(CHARACTER_ABILITY ability);
+
 private:
 	std::string name;
 

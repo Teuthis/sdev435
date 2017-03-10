@@ -82,8 +82,7 @@ protected:
 	/// Constructs a new PathfinderClass object
 	PathfinderClass(const int fortitude = 0, const int reflex = 0, 
 		const int will = 0, const int attack = 0, const int hitpoints = 0, 
-		const int baseRanks = 0, const int proficiencies = 0, 
-		const int startingMoney = 0);
+		const int baseRanks = 0, const int proficiencies = 0);
 	
 	/// List of skills
 	std::vector<PathfinderSkill> skills;

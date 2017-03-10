@@ -158,7 +158,7 @@ int PathfinderCharacter::getRemainingFeatCount() const
 	if (race != NULL) {
 		total += race->getBonusFeats();
 	}
-	return total - feats.size();
+	return total - static_cast<int>(feats.size());
 }
 
 int PathfinderCharacter::getRemainingSkillRanks() const

@@ -2,11 +2,24 @@
 
 
 
-PathfinderCharacter::PathfinderCharacter(PathfinderClass& characterClass)
-	: name(""), alignment(), race(), 
-	charClass(std::make_unique<PathfinderClass>(characterClass)),
+PathfinderCharacter::PathfinderCharacter(CHARACTER_CLASS chosenClass)
+	: name(""), alignment(), race(), charClass(),
 	abilityScores(), feats(), inventory(), money(0)
 {
+	switch (chosenClass) {
+	case FIGHTER:
+		charClass = std::make_unique<PathfinderFighter>(PathfinderFighter());
+		break;
+	case CLERIC:
+		charClass = std::make_unique<PathfinderCleric>(PathfinderCleric ());
+		break;
+	case ROGUE:
+		charClass = std::make_unique<PathfinderRogue>(PathfinderRogue());
+		break;
+	case WIZARD:
+		charClass = std::make_unique<PathfinderWizard>(PathfinderWizard());
+		break;
+	}
 	abilityScores.insert(std::pair<CHARACTER_ABILITY, int>(STRENGTH, 3));
 	abilityScores.insert(std::pair<CHARACTER_ABILITY, int>(DEXTERITY, 3));
 	abilityScores.insert(std::pair<CHARACTER_ABILITY, int>(CONSTITUTION, 3));
@@ -72,7 +85,17 @@ std::string PathfinderCharacter::getRace() const
 	return race->toString();
 }
 
-void PathfinderCharacter::setRace(PathfinderRace & newRace)
+void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 {
-	race = std::make_unique<PathfinderRace>(newRace);
+	switch (newRace) {
+	case HUMAN:
+		race = std::make_unique<PathfinderHuman>(PathfinderHuman());
+		break;
+	case ELF:
+		race = std::make_unique<PathfinderElf>(PathfinderElf());
+		break;
+	case DWARF:
+		race = std::make_unique<PathfinderDwarf>(PathfinderDwarf());
+		break;
+	}
 }

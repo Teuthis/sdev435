@@ -25,7 +25,7 @@ public:
 
 	/// Constructs a new PathfinderCharacter object
 	/// @param characterClass The class of the character being created
-	PathfinderCharacter(PathfinderClass& characterClass);
+	PathfinderCharacter(CHARACTER_CLASS chosenClass);
 
 	/// Destroys the PathfinderCharacter object
 	~PathfinderCharacter();
@@ -71,7 +71,7 @@ public:
 
 	/// Sets the character's race/species
 	/// @param newRace The new race value
-	void setRace(PathfinderRace& newRace);
+	void setRace(CHARACTER_RACE newRace);
 
 private:
 	std::string name;

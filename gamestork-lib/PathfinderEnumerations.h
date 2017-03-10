@@ -89,6 +89,14 @@ enum CHARACTER_CLASS
 	WIZARD = 8
 };
 
+/// Character races
+enum CHARACTER_RACE
+{
+	HUMAN = 1,
+	ELF = 2,
+	DWARF = 4
+};
+
 /// Skills
 enum CHARACTER_SKILLS
 {

@@ -340,7 +340,7 @@
       <string>0 skill ranks remaining.</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="skillsAdd_2">
+    <widget class="QPushButton" name="skillsRemove">
      <property name="enabled">
       <bool>false</bool>
      </property>
@@ -1110,7 +1110,7 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_As"/>
     <addaction name="separator"/>
-    <addaction name="actionExport_Character_Shhet"/>
+    <addaction name="actionExport_Character_Sheet"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -1145,7 +1145,7 @@
     <string>Save As...</string>
    </property>
   </action>
-  <action name="actionExport_Character_Shhet">
+  <action name="actionExport_Character_Sheet">
    <property name="text">
     <string>Export Character Sheet</string>
    </property>
@@ -1158,5 +1158,25 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionNew_Character</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>newCharacter()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>newCharacter()</slot>
+ </slots>
 </ui>

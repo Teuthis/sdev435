@@ -13,37 +13,45 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
-#include "qwindow.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_ClassSelectWindow
 {
 public:
-    QPushButton *fighterButton;
+    QLabel *headingLabel;
     QPushButton *clericButton;
+    QPushButton *fighterButton;
     QPushButton *rogueButton;
     QPushButton *wizardButton;
     QLabel *clericLabel;
     QLabel *fighterLabel;
     QLabel *rogueLabel;
     QLabel *wizardLabel;
-    QLabel *headingLabel;
 
-    void setupUi(QWindow *ClassSelectWindow)
+    void setupUi(QDialog *ClassSelectWindow)
     {
         if (ClassSelectWindow->objectName().isEmpty())
             ClassSelectWindow->setObjectName(QStringLiteral("ClassSelectWindow"));
+        ClassSelectWindow->setWindowModality(Qt::ApplicationModal);
         ClassSelectWindow->resize(592, 224);
-        fighterButton = new QPushButton(ClassSelectWindow);
-        fighterButton->setObjectName(QStringLiteral("fighterButton"));
-        fighterButton->setGeometry(QRect(160, 48, 128, 128));
+        headingLabel = new QLabel(ClassSelectWindow);
+        headingLabel->setObjectName(QStringLiteral("headingLabel"));
+        headingLabel->setGeometry(QRect(16, 12, 560, 24));
+        QFont font;
+        font.setPointSize(16);
+        headingLabel->setFont(font);
+        headingLabel->setAlignment(Qt::AlignCenter);
         clericButton = new QPushButton(ClassSelectWindow);
         clericButton->setObjectName(QStringLiteral("clericButton"));
         clericButton->setGeometry(QRect(16, 48, 128, 128));
+        fighterButton = new QPushButton(ClassSelectWindow);
+        fighterButton->setObjectName(QStringLiteral("fighterButton"));
+        fighterButton->setGeometry(QRect(160, 48, 128, 128));
         rogueButton = new QPushButton(ClassSelectWindow);
         rogueButton->setObjectName(QStringLiteral("rogueButton"));
         rogueButton->setGeometry(QRect(304, 48, 128, 128));
@@ -66,31 +74,28 @@ public:
         wizardLabel->setObjectName(QStringLiteral("wizardLabel"));
         wizardLabel->setGeometry(QRect(448, 184, 128, 16));
         wizardLabel->setAlignment(Qt::AlignCenter);
-        headingLabel = new QLabel(ClassSelectWindow);
-        headingLabel->setObjectName(QStringLiteral("headingLabel"));
-        headingLabel->setGeometry(QRect(16, 12, 560, 24));
-        QFont font;
-        font.setPointSize(16);
-        headingLabel->setFont(font);
-        headingLabel->setAlignment(Qt::AlignCenter);
 
         retranslateUi(ClassSelectWindow);
+        QObject::connect(clericButton, SIGNAL(clicked()), ClassSelectWindow, SLOT(clericClicked()));
+        QObject::connect(fighterButton, SIGNAL(clicked()), ClassSelectWindow, SLOT(fighterClicked()));
+        QObject::connect(rogueButton, SIGNAL(clicked()), ClassSelectWindow, SLOT(rogueClicked()));
+        QObject::connect(wizardButton, SIGNAL(clicked()), ClassSelectWindow, SLOT(wizardClicked()));
 
         QMetaObject::connectSlotsByName(ClassSelectWindow);
     } // setupUi
 
-    void retranslateUi(QWindow *ClassSelectWindow)
+    void retranslateUi(QDialog *ClassSelectWindow)
     {
-        ClassSelectWindow->setWindowTitle(QApplication::translate("ClassSelectWindow", "Select Character Class", Q_NULLPTR));
-        fighterButton->setText(QApplication::translate("ClassSelectWindow", "Fighter", Q_NULLPTR));
+        ClassSelectWindow->setWindowTitle(QApplication::translate("ClassSelectWindow", "Select character class", Q_NULLPTR));
+        headingLabel->setText(QApplication::translate("ClassSelectWindow", "Choose Character Class", Q_NULLPTR));
         clericButton->setText(QApplication::translate("ClassSelectWindow", "Cleric", Q_NULLPTR));
+        fighterButton->setText(QApplication::translate("ClassSelectWindow", "Fighter", Q_NULLPTR));
         rogueButton->setText(QApplication::translate("ClassSelectWindow", "Rogue", Q_NULLPTR));
         wizardButton->setText(QApplication::translate("ClassSelectWindow", "Wizard", Q_NULLPTR));
         clericLabel->setText(QApplication::translate("ClassSelectWindow", "Cleric", Q_NULLPTR));
         fighterLabel->setText(QApplication::translate("ClassSelectWindow", "Fighter", Q_NULLPTR));
         rogueLabel->setText(QApplication::translate("ClassSelectWindow", "Rogue", Q_NULLPTR));
         wizardLabel->setText(QApplication::translate("ClassSelectWindow", "Wizard", Q_NULLPTR));
-        headingLabel->setText(QApplication::translate("ClassSelectWindow", "Choose Character Class", Q_NULLPTR));
     } // retranslateUi
 
 };

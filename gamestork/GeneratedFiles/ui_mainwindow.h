@@ -37,7 +37,7 @@ public:
     QAction *actionOpen_Character;
     QAction *actionSave;
     QAction *actionSave_As;
-    QAction *actionExport_Character_Shhet;
+    QAction *actionExport_Character_Sheet;
     QAction *actionExit;
     QWidget *centralWidget;
     QGroupBox *abilityGroup;
@@ -117,8 +117,8 @@ public:
         actionSave->setObjectName(QStringLiteral("actionSave"));
         actionSave_As = new QAction(MainWindow);
         actionSave_As->setObjectName(QStringLiteral("actionSave_As"));
-        actionExport_Character_Shhet = new QAction(MainWindow);
-        actionExport_Character_Shhet->setObjectName(QStringLiteral("actionExport_Character_Shhet"));
+        actionExport_Character_Sheet = new QAction(MainWindow);
+        actionExport_Character_Sheet->setObjectName(QStringLiteral("actionExport_Character_Sheet"));
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QStringLiteral("actionExit"));
         centralWidget = new QWidget(MainWindow);
@@ -415,11 +415,12 @@ public:
         menuFile->addAction(actionSave);
         menuFile->addAction(actionSave_As);
         menuFile->addSeparator();
-        menuFile->addAction(actionExport_Character_Shhet);
+        menuFile->addAction(actionExport_Character_Sheet);
         menuFile->addSeparator();
         menuFile->addAction(actionExit);
 
         retranslateUi(MainWindow);
+        QObject::connect(actionNew_Character, SIGNAL(triggered()), MainWindow, SLOT(newCharacter()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);
@@ -438,7 +439,7 @@ public:
         actionOpen_Character->setText(QApplication::translate("MainWindow", "Open Character...", Q_NULLPTR));
         actionSave->setText(QApplication::translate("MainWindow", "Save", Q_NULLPTR));
         actionSave_As->setText(QApplication::translate("MainWindow", "Save As...", Q_NULLPTR));
-        actionExport_Character_Shhet->setText(QApplication::translate("MainWindow", "Export Character Sheet", Q_NULLPTR));
+        actionExport_Character_Sheet->setText(QApplication::translate("MainWindow", "Export Character Sheet", Q_NULLPTR));
         actionExit->setText(QApplication::translate("MainWindow", "Exit", Q_NULLPTR));
         abilityGroup->setTitle(QApplication::translate("MainWindow", "Ability Scores", Q_NULLPTR));
         strLabel->setText(QApplication::translate("MainWindow", "Strength", Q_NULLPTR));

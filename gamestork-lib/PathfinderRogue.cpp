@@ -38,3 +38,8 @@ std::vector<std::string> PathfinderRogue::getMagic() const
 	result.push_back("Rogues cannot cast spells.");
 	return result;
 }
+
+int PathfinderRogue::getStartingMoney() const
+{
+	return 14000;
+}

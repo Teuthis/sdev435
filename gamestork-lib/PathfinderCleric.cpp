@@ -49,3 +49,8 @@ std::vector<std::string> PathfinderCleric::getMagic() const
 	result.push_back("Prepare two 1st-level cleric spells");
 	return result;
 }
+
+int PathfinderCleric::getStartingMoney() const
+{
+	return 14000;
+}

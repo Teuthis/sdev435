@@ -27,7 +27,7 @@ PathfinderCharacter::PathfinderCharacter(CHARACTER_CLASS chosenClass)
 	abilityScores.insert(std::pair<CHARACTER_ABILITY, int>(WISDOM, 3));
 	abilityScores.insert(std::pair<CHARACTER_ABILITY, int>(CHARISMA, 3));
 
-
+	money = charClass->getStartingMoney();
 }
 
 

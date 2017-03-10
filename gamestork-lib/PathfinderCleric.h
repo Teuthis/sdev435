@@ -19,6 +19,10 @@ public:
 	/// @return A vector of strings to populate the Magic box
 	std::vector<std::string> getMagic() const;
 
+	/// Returns the default starting currency for the class
+	/// @return The amount of money a character of this class begins with
+	int getStartingMoney() const;
+
 private:
 	/// The character's patron god
 	std::string chosenDeity;

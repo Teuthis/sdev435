@@ -91,3 +91,8 @@ bool PathfinderWizard::isSpellKnown(const WIZARD_SPELLS spell) const
 {
 	return spellbook[spell];
 }
+
+int PathfinderWizard::getStartingMoney() const
+{
+	return 7000;
+}

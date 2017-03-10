@@ -36,6 +36,10 @@ public:
 	/// @return true if the spell is known, false otherwise
 	bool isSpellKnown(const WIZARD_SPELLS spell) const;
 
+	/// Returns the default starting currency for the class
+	/// @return The amount of money a character of this class begins with
+	int getStartingMoney() const;
+
 private:
 	/// Magical specialty
 	std::string school;

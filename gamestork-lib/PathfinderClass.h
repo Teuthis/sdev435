@@ -74,11 +74,16 @@ public:
 	/// @return A vector of strings to populate the Magic box
 	virtual std::vector<std::string> getMagic() const = 0;
 
+	/// Returns the default starting currency for the class
+	/// @return The amount of money a character of this class begins with
+	virtual int getStartingMoney() const = 0;
+
 protected:
 	/// Constructs a new PathfinderClass object
 	PathfinderClass(const int fortitude = 0, const int reflex = 0, 
 		const int will = 0, const int attack = 0, const int hitpoints = 0, 
-		const int baseRanks = 0, const int proficiencies = 0);
+		const int baseRanks = 0, const int proficiencies = 0, 
+		const int startingMoney = 0);
 	
 	/// List of skills
 	std::vector<PathfinderSkill> skills;
@@ -104,5 +109,6 @@ private:
 
 	/// Standard weapon proficiencies
 	int weaponArmorProficiencies;
+
 };
 

@@ -151,3 +151,21 @@ void PathfinderCharacter::setAbility(CHARACTER_ABILITY ability, const int value)
 {
 	abilityScores[ability] = value;
 }
+
+int PathfinderCharacter::getRemainingFeatCount() const
+{
+	int total = 1;
+	if (race != NULL) {
+		total += race->getBonusFeats();
+	}
+	return total - feats.size();
+}
+
+int PathfinderCharacter::getRemainingSkillRanks() const
+{
+	int total = charClass->getUnspentSkillRanks(getAbilityBonusMod(INTELLIGENCE));
+	if (race != NULL) {
+		total += race->getBonusSkillRanks();
+	}
+	return total;
+}

@@ -54,3 +54,13 @@ CREATURE_SIZE PathfinderHuman::getSize() const
 {
 	return SIZE_MEDIUM;
 }
+
+int PathfinderHuman::getBonusFeats() const
+{
+	return 1;
+}
+
+int PathfinderHuman::getBonusSkillRanks() const
+{
+	return 1;
+}

@@ -88,6 +88,14 @@ public:
 	/// @param value The new ability score value
 	void setAbility(CHARACTER_ABILITY ability, const int value);
 
+	/// Returns the remaining number of feats the character may have
+	/// @return The maximum feats less the number taken
+	int getRemainingFeatCount() const;
+
+	/// Returns the remaining number of skill ranks the character may have
+	/// @return The number of unspent skill ranks
+	int getRemainingSkillRanks() const;
+
 private:
 	std::string name;
 

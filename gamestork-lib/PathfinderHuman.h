@@ -47,6 +47,14 @@ public:
 	/// @return The size as CREATURE_SIZE
 	CREATURE_SIZE getSize() const;
 
+	/// Returns the number of bonus feats for this race
+	/// @return The number of additional feats at level 1
+	int getBonusFeats() const;
+
+	/// Returns the number of bonus skill ranks for this race
+	/// @return The number of additional skill ranks at level 1
+	int getBonusSkillRanks() const;
+
 private:
 	/// Humans get a bonus to one chosen ability score
 	/// This is the chosen ability

@@ -55,3 +55,13 @@ CREATURE_SIZE PathfinderDwarf::getSize() const
 {
 	return SIZE_MEDIUM;
 }
+
+int PathfinderDwarf::getBonusFeats() const
+{
+	return 0;
+}
+
+int PathfinderDwarf::getBonusSkillRanks() const
+{
+	return 0;
+}

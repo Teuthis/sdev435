@@ -51,6 +51,14 @@ public:
 		return traits;
 	}
 
+	/// Returns the number of bonus feats for this race
+	/// @return The number of additional feats at level 1
+	virtual int getBonusFeats() const = 0;
+
+	/// Returns the number of bonus skill ranks for this race
+	/// @return The number of additional skill ranks at level 1
+	virtual int getBonusSkillRanks() const = 0;
+
 protected:
 	/// Constructs a new PathfinderRace object
 	PathfinderRace() : traits() {}

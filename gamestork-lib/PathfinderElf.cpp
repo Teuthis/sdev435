@@ -61,3 +61,13 @@ CREATURE_SIZE PathfinderElf::getSize() const
 {
 	return SIZE_MEDIUM;
 }
+
+int PathfinderElf::getBonusFeats() const
+{
+	return 0;
+}
+
+int PathfinderElf::getBonusSkillRanks() const
+{
+	return 0;
+}

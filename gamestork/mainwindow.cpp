@@ -29,6 +29,16 @@ void MainWindow::classSelected(CHARACTER_CLASS chosenClass)
 	character = new PathfinderCharacter(chosenClass);
 	changeClassOptionsDisplay(chosenClass);
 	unsavedChanges = true;
+	characterLoaded();
+}
+
+void MainWindow::editAlignment(int selectedAlignment)
+{
+	if (character == NULL) return;
+	if (selectedAlignment != character->getAlignment()) {
+		character->setAlignment(
+			static_cast<ALIGNMENT>(selectedAlignment));
+	}
 }
 
 void MainWindow::characterLoaded()
@@ -42,6 +52,16 @@ void MainWindow::characterLoaded()
 
 	ui->alignSelect->setCurrentIndex(character->getAlignment());
 	ui->alignSelect->setEnabled(true);
+
+	ui->strVal->setText(QString::number(character->getAbilityScore(STRENGTH)));
+	ui->dexVal->setText(QString::number(character->getAbilityScore(DEXTERITY)));
+	ui->conVal->setText(QString::number(character->getAbilityScore(CONSTITUTION)));
+	ui->intVal->setText(QString::number(character->getAbilityScore(INTELLIGENCE)));
+	ui->wisVal->setText(QString::number(character->getAbilityScore(WISDOM)));
+	ui->chaVal->setText(QString::number(character->getAbilityScore(CHARISMA)));
+	ui->abilityEdit->setEnabled(true);
+
+
 }
 
 void MainWindow::changeClassOptionsDisplay(int classToShow)

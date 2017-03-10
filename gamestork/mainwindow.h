@@ -36,7 +36,9 @@ public slots:
 
 	void classSelected(CHARACTER_CLASS);
 
-	void characterLoaded();
+	void editAlignment(int);
+
+	
 
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
@@ -44,6 +46,8 @@ private:
 	bool promptToSaveChanges();
 
 	void makeEditable(bool enabled = true);
+
+	void characterLoaded();
 };
 
 #endif // MAINWINDOW_H

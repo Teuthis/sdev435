@@ -1175,8 +1175,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>alignSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editAlignment(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>365</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
+  <slot>editAlignment(int)</slot>
  </slots>
 </ui>

@@ -421,6 +421,7 @@ public:
 
         retranslateUi(MainWindow);
         QObject::connect(actionNew_Character, SIGNAL(triggered()), MainWindow, SLOT(newCharacter()));
+        QObject::connect(alignSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(editAlignment(int)));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

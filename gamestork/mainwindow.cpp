@@ -84,6 +84,7 @@ bool MainWindow::promptToSaveChanges()
 	case QMessageBox::Cancel:
 		return false;
 	}
+	return false;
 }
 
 void MainWindow::makeEditable(bool enabled)

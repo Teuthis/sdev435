@@ -58,7 +58,7 @@ public:
     QListWidget *skillsList;
     QPushButton *skillsAdd;
     QLabel *unspentSkillsLabel;
-    QPushButton *skillsAdd_2;
+    QPushButton *skillsRemove;
     QGroupBox *featsGroup;
     QListWidget *featsList;
     QPushButton *featsAdd;
@@ -203,10 +203,10 @@ public:
         unspentSkillsLabel = new QLabel(skillsGroup);
         unspentSkillsLabel->setObjectName(QStringLiteral("unspentSkillsLabel"));
         unspentSkillsLabel->setGeometry(QRect(12, 144, 121, 16));
-        skillsAdd_2 = new QPushButton(skillsGroup);
-        skillsAdd_2->setObjectName(QStringLiteral("skillsAdd_2"));
-        skillsAdd_2->setEnabled(false);
-        skillsAdd_2->setGeometry(QRect(186, 40, 32, 24));
+        skillsRemove = new QPushButton(skillsGroup);
+        skillsRemove->setObjectName(QStringLiteral("skillsRemove"));
+        skillsRemove->setEnabled(false);
+        skillsRemove->setGeometry(QRect(186, 40, 32, 24));
         featsGroup = new QGroupBox(centralWidget);
         featsGroup->setObjectName(QStringLiteral("featsGroup"));
         featsGroup->setGeometry(QRect(422, 72, 230, 82));
@@ -458,7 +458,7 @@ public:
         skillsGroup->setTitle(QApplication::translate("MainWindow", "Trained Skills", Q_NULLPTR));
         skillsAdd->setText(QApplication::translate("MainWindow", "+", Q_NULLPTR));
         unspentSkillsLabel->setText(QApplication::translate("MainWindow", "0 skill ranks remaining.", Q_NULLPTR));
-        skillsAdd_2->setText(QApplication::translate("MainWindow", "-", Q_NULLPTR));
+        skillsRemove->setText(QApplication::translate("MainWindow", "-", Q_NULLPTR));
         featsGroup->setTitle(QApplication::translate("MainWindow", "Feats", Q_NULLPTR));
         featsAdd->setText(QApplication::translate("MainWindow", "+", Q_NULLPTR));
         unspentFeatsLabel->setText(QApplication::translate("MainWindow", "0 skill ranks remaining.", Q_NULLPTR));

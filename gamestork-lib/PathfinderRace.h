@@ -26,6 +26,10 @@ public:
 	/// @return The race as a string
 	virtual std::string toString() const = 0;
 
+	/// Returns an integer identifier of the PathfinderRace object
+	/// @return The CHARACTER_RACE enum value of the race
+	virtual CHARACTER_RACE toInt() const = 0;
+
 	/// Returns the bonus for the given ability
 	/// @param ability The requested ability score 
 	/// @return An integer representing the bonus for the requested ability

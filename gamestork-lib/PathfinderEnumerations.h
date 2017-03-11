@@ -92,9 +92,9 @@ enum CHARACTER_CLASS
 /// Character races
 enum CHARACTER_RACE
 {
-	HUMAN = 1,
-	ELF = 2,
-	DWARF = 4
+	HUMAN = 0,
+	ELF = 1,
+	DWARF = 2
 };
 
 /// Skills

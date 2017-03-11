@@ -85,6 +85,14 @@ std::string PathfinderCharacter::getRace() const
 	return race->toString();
 }
 
+int PathfinderCharacter::getRaceId() const
+{
+	if (race == NULL) {
+		return -1;
+	} 
+	return race->toInt();
+}
+
 void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 {
 	switch (newRace) {

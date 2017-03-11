@@ -25,6 +25,10 @@ public:
 	/// @return Always returns "Elf"
 	std::string toString() const { return "Elf"; }
 
+	/// Returns an integer identifier of the PathfinderRace object
+	/// @return The CHARACTER_RACE enum value of the race
+	CHARACTER_RACE toInt() const { return ELF; }
+
 	/// Returns the bonus for the given ability
 	/// @param ability The requested ability score 
 	/// @return An integer representing the bonus for the requested ability

@@ -69,6 +69,10 @@ public:
 	/// @return The race as string
 	std::string getRace() const;
 
+	/// Gets the character's race/species
+	/// @return The race as int
+	int getRaceId() const;
+
 	/// Sets the character's race/species
 	/// @param newRace The new race value
 	void setRace(CHARACTER_RACE newRace);

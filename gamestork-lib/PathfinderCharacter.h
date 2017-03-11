@@ -82,6 +82,12 @@ public:
 	/// @return The ability score
 	int getAbilityScore(CHARACTER_ABILITY ability) const;
 
+	/// Gets the requested ability score without racial or other bonuses
+	/// (Effectively, the original rolled value)
+	/// @param ability The requested ability
+	/// @return The ability score bereft of bonuses
+	int getRawAbilityScore(CHARACTER_ABILITY ability) const;
+
 	/// Gets the bonus modifier for the requested ability
 	/// @param ability The requested ability
 	/// @return The ability bonus modifier

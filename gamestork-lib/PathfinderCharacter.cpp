@@ -116,6 +116,11 @@ int PathfinderCharacter::getAbilityScore(CHARACTER_ABILITY ability) const
 	return result;
 }
 
+int PathfinderCharacter::getRawAbilityScore(CHARACTER_ABILITY ability) const
+{
+	return abilityScores.at(ability);
+}
+
 int PathfinderCharacter::getAbilityBonusMod(CHARACTER_ABILITY ability) const
 {
 	switch (getAbilityScore(ability)) {

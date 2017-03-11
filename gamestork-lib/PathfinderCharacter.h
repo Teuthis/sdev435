@@ -106,6 +106,11 @@ public:
 	/// @return The number of unspent skill ranks
 	int getRemainingSkillRanks() const;
 
+	/// Changes the human racial bonus ability
+	/// @param ability The new ability to get the bonus
+	/// @throws std::logic_error if this function is called when race isn't human
+	void changeHumanBonus(CHARACTER_ABILITY ability);
+
 private:
 	std::string name;
 

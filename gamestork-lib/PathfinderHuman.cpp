@@ -64,3 +64,4 @@ int PathfinderHuman::getBonusSkillRanks() const
 {
 	return 1;
 }
+

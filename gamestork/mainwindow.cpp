@@ -65,8 +65,16 @@ void MainWindow::editRace(int raceIndex)
 	if (character == NULL) return;
 	if (raceIndex != -1 && raceIndex != character->getRaceId()) {
 		character->setRace(static_cast<CHARACTER_RACE>(raceIndex));
+		if (raceIndex == HUMAN) {
+			character->changeHumanBonus(
+				static_cast<CHARACTER_ABILITY>(setHumanBonusAbility()));
+		}
 		unsavedChanges = true;
 		updateAbilityDisplay();
+		ui->unspentFeatsCountLabel->setText(QString::number(
+			character->getRemainingFeatCount()));
+		ui->unspentSkillsCountLabel->setText(QString::number(
+			character->getRemainingSkillRanks()));
 	}
 }
 
@@ -81,6 +89,10 @@ void MainWindow::editAbilities(int str, int dex, int con,
 	character->setAbility(WISDOM, wis);
 	character->setAbility(CHARISMA, cha);
 	updateAbilityDisplay();
+	ui->unspentFeatsCountLabel->setText(QString::number(
+		character->getRemainingFeatCount()));
+	ui->unspentSkillsCountLabel->setText(QString::number(
+		character->getRemainingSkillRanks()));
 }
 
 void MainWindow::openAbilityEditor()
@@ -113,6 +125,11 @@ void MainWindow::characterLoaded()
 	updateAbilityDisplay();
 	ui->abilityEdit->setEnabled(true);
 
+	ui->unspentFeatsCountLabel->setText(QString::number(
+		character->getRemainingFeatCount()));
+	ui->unspentSkillsCountLabel->setText(QString::number(
+		character->getRemainingSkillRanks()));
+
 	ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 	ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 	ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
@@ -132,6 +149,25 @@ void MainWindow::updateAbilityDisplay()
 		character->getAbilityScore(WISDOM)));
 	ui->chaVal->setText(QString::number(
 		character->getAbilityScore(CHARISMA)));
+}
+
+int MainWindow::setHumanBonusAbility()
+{
+	QStringList abilities;
+	abilities << tr("Strength") << tr("Dexterity") << tr("Constitution")
+		<< tr("Intelligence") << tr("Wisdom") << tr("Charisma");
+	bool ok;
+	QString choice = QInputDialog::getItem(this, 
+		tr("Select human ability bonus"), tr("Ability:"), abilities, 
+		0, false, &ok);
+
+	if (choice == tr("Strength")) return STRENGTH;
+	if (choice == tr("Dexterity")) return DEXTERITY;
+	if (choice == tr("Constitution")) return CONSTITUTION;
+	if (choice == tr("Intelligence")) return INTELLIGENCE;
+	if (choice == tr("Wisdom")) return WISDOM;
+	if (choice == tr("Charisma")) return CHARISMA;
+	return INTELLIGENCE;
 }
 
 void MainWindow::changeClassOptionsDisplay(int classToShow)

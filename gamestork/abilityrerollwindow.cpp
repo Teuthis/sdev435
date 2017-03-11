@@ -20,6 +20,7 @@ void AbilityRerollWindow::setInitialValues(int initStr, int initDex, int initCon
 	rollTotals.push_back(initInt);
 	rollTotals.push_back(initWis);
 	rollTotals.push_back(initCha);
+	resetSelections();
 	updateAbilityDisplay();
 }
 
@@ -180,6 +181,16 @@ void AbilityRerollWindow::updateAbilityDisplay()
 	roll4Label->setText(QString::number(rollTotals[3]));
 	roll5Label->setText(QString::number(rollTotals[4]));
 	roll6Label->setText(QString::number(rollTotals[5]));
+}
+
+void AbilityRerollWindow::resetSelections()
+{
+	roll1Str->setChecked(true);
+	roll2Dex->setChecked(true);
+	roll3Con->setChecked(true);
+	roll4Int->setChecked(true);
+	roll5Wis->setChecked(true);
+	roll6Cha->setChecked(true);
 }
 
 void AbilityRerollWindow::updateAbilityTooltips(int sequence, int a, int b, int c, int d, int low)

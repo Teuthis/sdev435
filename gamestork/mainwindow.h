@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QInputDialog>
 #include "classselectwindow.h"
 #include "abilityrerollwindow.h"
 #include "addskillwindow.h"
@@ -59,6 +60,8 @@ private:
 	void characterLoaded();
 
 	void updateAbilityDisplay();
+
+	int setHumanBonusAbility();
 };
 
 #endif // MAINWINDOW_H

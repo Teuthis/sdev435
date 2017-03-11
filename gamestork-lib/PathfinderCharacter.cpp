@@ -182,3 +182,11 @@ int PathfinderCharacter::getRemainingSkillRanks() const
 	}
 	return total;
 }
+
+void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)
+{
+	if (race == NULL || race->toInt() != HUMAN) {
+		throw std::logic_error("Cannot call changeHumanBonus() on nonhumans");
+	}
+	race = std::make_unique<PathfinderHuman>(PathfinderHuman(ability));
+}

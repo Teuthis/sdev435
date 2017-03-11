@@ -41,5 +41,6 @@ private:
 	int getChaIndex();
 
 	void updateAbilityDisplay();
+	void resetSelections();
 	void updateAbilityTooltips(int sequence, int a, int b, int c, int d, int low);
 };

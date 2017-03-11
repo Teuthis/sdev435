@@ -380,6 +380,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="featsAdd">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>186</x>
@@ -406,6 +409,9 @@
      </property>
     </widget>
     <widget class="QPushButton" name="featsRemove">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>186</x>
@@ -456,6 +462,9 @@
       </item>
       <item>
        <widget class="QLineEdit" name="nameEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
          <string/>
         </property>

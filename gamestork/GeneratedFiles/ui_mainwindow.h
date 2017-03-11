@@ -215,12 +215,14 @@ public:
         featsList->setGeometry(QRect(12, 16, 171, 41));
         featsAdd = new QPushButton(featsGroup);
         featsAdd->setObjectName(QStringLiteral("featsAdd"));
+        featsAdd->setEnabled(false);
         featsAdd->setGeometry(QRect(186, 12, 32, 24));
         unspentFeatsLabel = new QLabel(featsGroup);
         unspentFeatsLabel->setObjectName(QStringLiteral("unspentFeatsLabel"));
         unspentFeatsLabel->setGeometry(QRect(12, 61, 121, 16));
         featsRemove = new QPushButton(featsGroup);
         featsRemove->setObjectName(QStringLiteral("featsRemove"));
+        featsRemove->setEnabled(false);
         featsRemove->setGeometry(QRect(186, 40, 32, 24));
         generalGroup = new QGroupBox(centralWidget);
         generalGroup->setObjectName(QStringLiteral("generalGroup"));
@@ -241,6 +243,7 @@ public:
 
         nameEdit = new QLineEdit(horizontalLayoutWidget);
         nameEdit->setObjectName(QStringLiteral("nameEdit"));
+        nameEdit->setEnabled(false);
 
         horizontalLayout->addWidget(nameEdit);
 

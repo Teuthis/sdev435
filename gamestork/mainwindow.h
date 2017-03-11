@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include "classselectwindow.h"
+#include "abilityrerollwindow.h"
 #include "addskillwindow.h"
 #include <PathfinderEnumerations.h>
 #include <PathfinderCharacter.h>
@@ -25,6 +26,8 @@ private:
 
 	ClassSelectWindow *newCharWindow;
 
+	AbilityRerollWindow *abilityEditor;
+
 	PathfinderCharacter *character;
 	
 	bool unsavedChanges;
@@ -38,7 +41,13 @@ public slots:
 
 	void editAlignment(int);
 
-	
+	void editName(QString);
+
+	void editRace(int);
+
+	void editAbilities(int, int, int, int, int, int);
+
+	void openAbilityEditor();
 
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
@@ -48,6 +57,8 @@ private:
 	void makeEditable(bool enabled = true);
 
 	void characterLoaded();
+
+	void updateAbilityDisplay();
 };
 
 #endif // MAINWINDOW_H

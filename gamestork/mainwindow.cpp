@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
 	newCharWindow(new ClassSelectWindow(this)),
+	abilityEditor(new AbilityRerollWindow(this)),
 	character(NULL),
 	unsavedChanges(false)
 {
@@ -14,11 +15,18 @@ MainWindow::MainWindow(QWidget *parent) :
 		newCharWindow, SIGNAL(classChosen(CHARACTER_CLASS)),
 		this, SLOT(classSelected(CHARACTER_CLASS)));
 
+	QObject::connect(
+		abilityEditor , SIGNAL(abilitiesChanged(int, int, int, int, int, int)),
+		this, SLOT(editAbilities(int, int, int, int, int, int)));
+
 	changeClassOptionsDisplay();
 }
 
 MainWindow::~MainWindow()
 {
+	if (character != NULL) delete character;
+	delete newCharWindow;
+	delete abilityEditor;
     delete ui;
 }
 
@@ -28,7 +36,7 @@ void MainWindow::classSelected(CHARACTER_CLASS chosenClass)
 	newCharWindow = NULL;*/
 	character = new PathfinderCharacter(chosenClass);
 	changeClassOptionsDisplay(chosenClass);
-	unsavedChanges = true;
+	//unsavedChanges = true;
 	characterLoaded();
 }
 
@@ -38,7 +46,53 @@ void MainWindow::editAlignment(int selectedAlignment)
 	if (selectedAlignment != character->getAlignment()) {
 		character->setAlignment(
 			static_cast<ALIGNMENT>(selectedAlignment));
+		unsavedChanges = true;
 	}
+}
+
+void MainWindow::editName(QString newName)
+{
+	if (character == NULL) return;
+	std::string namestr = newName.toStdString();
+	if (namestr != character->getName()) {
+		character->setName(namestr);
+		unsavedChanges = true;
+	}
+}
+
+void MainWindow::editRace(int raceIndex)
+{
+	if (character == NULL) return;
+	if (raceIndex != -1 && raceIndex != character->getRaceId()) {
+		character->setRace(static_cast<CHARACTER_RACE>(raceIndex));
+		unsavedChanges = true;
+		updateAbilityDisplay();
+	}
+}
+
+void MainWindow::editAbilities(int str, int dex, int con, 
+	int intel, int wis, int cha)
+{
+	if (character == NULL) return;
+	character->setAbility(STRENGTH, str);
+	character->setAbility(DEXTERITY, dex);
+	character->setAbility(CONSTITUTION, con);
+	character->setAbility(INTELLIGENCE, intel);
+	character->setAbility(WISDOM, wis);
+	character->setAbility(CHARISMA, cha);
+	updateAbilityDisplay();
+}
+
+void MainWindow::openAbilityEditor()
+{
+	abilityEditor->setInitialValues(
+		character->getRawAbilityScore(STRENGTH),
+		character->getRawAbilityScore(DEXTERITY),
+		character->getRawAbilityScore(CONSTITUTION),
+		character->getRawAbilityScore(INTELLIGENCE),
+		character->getRawAbilityScore(WISDOM),
+		character->getRawAbilityScore(CHARISMA));
+	abilityEditor->show();
 }
 
 void MainWindow::characterLoaded()
@@ -53,15 +107,31 @@ void MainWindow::characterLoaded()
 	ui->alignSelect->setCurrentIndex(character->getAlignment());
 	ui->alignSelect->setEnabled(true);
 
-	ui->strVal->setText(QString::number(character->getAbilityScore(STRENGTH)));
-	ui->dexVal->setText(QString::number(character->getAbilityScore(DEXTERITY)));
-	ui->conVal->setText(QString::number(character->getAbilityScore(CONSTITUTION)));
-	ui->intVal->setText(QString::number(character->getAbilityScore(INTELLIGENCE)));
-	ui->wisVal->setText(QString::number(character->getAbilityScore(WISDOM)));
-	ui->chaVal->setText(QString::number(character->getAbilityScore(CHARISMA)));
+	ui->raceSelect->setCurrentIndex(character->getRaceId());
+	ui->raceSelect->setEnabled(true);
+
+	updateAbilityDisplay();
 	ui->abilityEdit->setEnabled(true);
 
+	ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
+	ui->spValLabel->setText(QString::number(character->getSilverPieces()));
+	ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+}
 
+void MainWindow::updateAbilityDisplay()
+{
+	ui->strVal->setText(QString::number(
+		character->getAbilityScore(STRENGTH)));
+	ui->dexVal->setText(QString::number(
+		character->getAbilityScore(DEXTERITY)));
+	ui->conVal->setText(QString::number(
+		character->getAbilityScore(CONSTITUTION)));
+	ui->intVal->setText(QString::number(
+		character->getAbilityScore(INTELLIGENCE)));
+	ui->wisVal->setText(QString::number(
+		character->getAbilityScore(WISDOM)));
+	ui->chaVal->setText(QString::number(
+		character->getAbilityScore(CHARISMA)));
 }
 
 void MainWindow::changeClassOptionsDisplay(int classToShow)

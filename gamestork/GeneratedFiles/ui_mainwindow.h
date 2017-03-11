@@ -422,6 +422,9 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(actionNew_Character, SIGNAL(triggered()), MainWindow, SLOT(newCharacter()));
         QObject::connect(alignSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(editAlignment(int)));
+        QObject::connect(nameEdit, SIGNAL(textEdited(QString)), MainWindow, SLOT(editName(QString)));
+        QObject::connect(raceSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(editRace(int)));
+        QObject::connect(abilityEdit, SIGNAL(clicked()), MainWindow, SLOT(openAbilityEditor()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

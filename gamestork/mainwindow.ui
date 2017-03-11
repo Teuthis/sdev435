@@ -1191,9 +1191,61 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>nameEdit</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editName(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>178</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>raceSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>editRace(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>493</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>abilityEdit</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openAbilityEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
   <slot>editAlignment(int)</slot>
+  <slot>editName(QString)</slot>
+  <slot>editRace(int)</slot>
+  <slot>editAbilities(int,int,int,int,int,int)</slot>
+  <slot>openAbilityEditor()</slot>
  </slots>
 </ui>

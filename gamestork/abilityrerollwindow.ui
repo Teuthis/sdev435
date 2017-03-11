@@ -1,0 +1,1539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AbilityRerollWindow</class>
+ <widget class="QDialog" name="AbilityRerollWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>388</width>
+    <height>324</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AbilityRerollWindow</string>
+  </property>
+  <widget class="QGroupBox" name="roll1Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>36</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll1Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll1Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll1Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll1Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll1Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll1Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll1Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="roll2Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>76</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll2Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll2Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll2Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll2Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll2Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll2Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll2Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="roll3Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>116</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll3Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll3Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll3Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll3Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll3Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll3Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll3Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="rollHeadingLabel">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>12</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Roll Result</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="abilityHeadingLabel">
+   <property name="geometry">
+    <rect>
+     <x>164</x>
+     <y>12</y>
+     <width>96</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Assigned Ability</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="roll4Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>156</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll4Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll4Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll4Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll4Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll4Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll4Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll4Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="roll6Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>236</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll6Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll6Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll6Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll6Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll6Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll6Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll6Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="roll5Group">
+   <property name="geometry">
+    <rect>
+     <x>24</x>
+     <y>196</y>
+     <width>340</width>
+     <height>36</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QRadioButton" name="roll5Str">
+    <property name="geometry">
+     <rect>
+      <x>48</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Strength</string>
+    </property>
+    <property name="text">
+     <string>STR</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll5Dex">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Dexterity</string>
+    </property>
+    <property name="text">
+     <string>DEX</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="roll5Label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string>Current ability value</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll5Con">
+    <property name="geometry">
+     <rect>
+      <x>144</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Constitution</string>
+    </property>
+    <property name="text">
+     <string>CON</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll5Int">
+    <property name="geometry">
+     <rect>
+      <x>192</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Intelligence</string>
+    </property>
+    <property name="text">
+     <string>INT</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll5Wis">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Wisdom</string>
+    </property>
+    <property name="text">
+     <string>WIS</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="roll5Cha">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>10</y>
+      <width>42</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Charisma</string>
+    </property>
+    <property name="text">
+     <string>CHA</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="rerollButton">
+   <property name="geometry">
+    <rect>
+     <x>297</x>
+     <y>8</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reroll</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>297</x>
+     <y>290</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okButton">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>290</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>rerollButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>rerollScores()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>334</x>
+     <y>19</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>334</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>changesAccepted()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>257</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll1Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>53</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll2Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll3Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>133</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll4Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>173</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll5Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>213</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Con</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>188</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Dex</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Int</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Str</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Wis</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>284</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roll6Cha</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>AbilityRerollWindow</receiver>
+   <slot>testValidity()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>332</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>161</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>abilitiesChanged(int,int,int,int,int,int)</signal>
+  <slot>rerollScores()</slot>
+  <slot>changesAccepted()</slot>
+  <slot>testValidity()</slot>
+ </slots>
+</ui>

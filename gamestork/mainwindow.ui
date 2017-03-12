@@ -1098,7 +1098,7 @@
       <string>-</string>
      </property>
     </widget>
-    <widget class="QListWidget" name="listWidget">
+    <widget class="QListWidget" name="equipList">
      <property name="geometry">
       <rect>
        <x>144</x>
@@ -1274,6 +1274,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>skillsList</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>skillIndexChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>skillsAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openSkillChooser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>skillsRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeSkill()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1282,5 +1330,9 @@
   <slot>editRace(int)</slot>
   <slot>editAbilities(int,int,int,int,int,int)</slot>
   <slot>openAbilityEditor()</slot>
+  <slot>addSkill(QListWidgetItem)</slot>
+  <slot>removeSkill()</slot>
+  <slot>skillIndexChanged(int)</slot>
+  <slot>openSkillChooser()</slot>
  </slots>
 </ui>

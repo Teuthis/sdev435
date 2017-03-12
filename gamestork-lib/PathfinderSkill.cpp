@@ -15,9 +15,10 @@ Description: Implementation file for Pathfinder skill data model
 /// @param skillName The name of the skill
 /// @param skillAbility The ability score used by the skill
 /// @param requiresTraining Indicates if skill can be used at rank 0
-PathfinderSkill::PathfinderSkill(std::string skillName, 
+PathfinderSkill::PathfinderSkill(
+	CHARACTER_SKILLS skillID, std::string skillName, 
 	CHARACTER_ABILITY skillAbility, bool requiresTraining)
-	: name(skillName), ranks(0), linkedAbility(skillAbility),
+	: id(skillID), name(skillName), ranks(0), linkedAbility(skillAbility),
 	trainedOnly(requiresTraining), classSkill(false), miscModifiers(0)
 {
 }
@@ -66,4 +67,9 @@ int PathfinderSkill::getRankModifier() const
 std::string PathfinderSkill::toString() const
 {
 	return name;
+}
+
+CHARACTER_SKILLS PathfinderSkill::toSkillID() const
+{
+	return id;
 }

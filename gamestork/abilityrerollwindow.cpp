@@ -220,3 +220,4 @@ void AbilityRerollWindow::updateAbilityTooltips(int sequence, int a, int b, int 
 		break;
 	}
 }
+

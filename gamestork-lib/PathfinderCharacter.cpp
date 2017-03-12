@@ -183,6 +183,27 @@ int PathfinderCharacter::getRemainingSkillRanks() const
 	return total;
 }
 
+const std::vector<PathfinderSkill> PathfinderCharacter::getUntrainedSkills() const
+{
+	std::vector<PathfinderSkill> untrained;
+	for (auto skill : charClass->getSkills()) {
+		if (skill.getRanks() == 0) {
+			untrained.push_back(skill);
+		}
+	}
+	return untrained;
+}
+
+void PathfinderCharacter::trainSkill(const CHARACTER_SKILLS skill)
+{
+	charClass->addSkillRank(skill);
+}
+
+void PathfinderCharacter::untrainSkill(const CHARACTER_SKILLS skill)
+{
+	charClass->removeSkillRank(skill);
+}
+
 void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)
 {
 	if (race == NULL || race->toInt() != HUMAN) {

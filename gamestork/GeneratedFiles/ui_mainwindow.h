@@ -99,7 +99,7 @@ public:
     QLabel *spLabel;
     QLabel *cpLabel;
     QPushButton *equipRemove;
-    QListWidget *listWidget;
+    QListWidget *equipList;
     QPushButton *equipAdd;
     QMenuBar *menuBar;
     QMenu *menuFile;
@@ -398,9 +398,9 @@ public:
         equipRemove->setObjectName(QStringLiteral("equipRemove"));
         equipRemove->setEnabled(false);
         equipRemove->setGeometry(QRect(362, 40, 32, 24));
-        listWidget = new QListWidget(equipmentGroup);
-        listWidget->setObjectName(QStringLiteral("listWidget"));
-        listWidget->setGeometry(QRect(144, 12, 211, 91));
+        equipList = new QListWidget(equipmentGroup);
+        equipList->setObjectName(QStringLiteral("equipList"));
+        equipList->setGeometry(QRect(144, 12, 211, 91));
         equipAdd = new QPushButton(equipmentGroup);
         equipAdd->setObjectName(QStringLiteral("equipAdd"));
         equipAdd->setEnabled(false);
@@ -436,6 +436,9 @@ public:
         QObject::connect(nameEdit, SIGNAL(textEdited(QString)), MainWindow, SLOT(editName(QString)));
         QObject::connect(raceSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(editRace(int)));
         QObject::connect(abilityEdit, SIGNAL(clicked()), MainWindow, SLOT(openAbilityEditor()));
+        QObject::connect(skillsList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(skillIndexChanged(int)));
+        QObject::connect(skillsAdd, SIGNAL(clicked()), MainWindow, SLOT(openSkillChooser()));
+        QObject::connect(skillsRemove, SIGNAL(clicked()), MainWindow, SLOT(removeSkill()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

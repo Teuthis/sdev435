@@ -77,25 +77,34 @@ PathfinderClass::PathfinderClass(const int fortitude, const int reflex,
 	attackBonus(attack), hp(hitpoints), baseSkillRanks(baseRanks), 
 	weaponArmorProficiencies(proficiencies)
 {
-	skills.push_back(PathfinderSkill("Acrobatics", DEXTERITY)); 
-	skills.push_back(PathfinderSkill("Bluff", CHARISMA));		
-	skills.push_back(PathfinderSkill("Climb", STRENGTH));		
-	skills.push_back(PathfinderSkill("Diplomacy", CHARISMA));	
-	skills.push_back(PathfinderSkill("Disable Device", DEXTERITY, true));
-	skills.push_back(PathfinderSkill("Heal", WISDOM));
-	skills.push_back(PathfinderSkill("Knowledge Arcana", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge Dungeoneering", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge Geography", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge History", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge Local", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge Nature", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Knowledge Religion", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Perception", WISDOM));
-	skills.push_back(PathfinderSkill("Ride", DEXTERITY));
-	skills.push_back(PathfinderSkill("Sense Motive", WISDOM));
-	skills.push_back(PathfinderSkill("Spellcraft", INTELLIGENCE, true));
-	skills.push_back(PathfinderSkill("Stealth", DEXTERITY));
-	skills.push_back(PathfinderSkill("Swim", STRENGTH));
+	skills.push_back(PathfinderSkill(ACROBATICS, "Acrobatics", DEXTERITY)); 
+	skills.push_back(PathfinderSkill(BLUFF, "Bluff", CHARISMA));		
+	skills.push_back(PathfinderSkill(CLIMB, "Climb", STRENGTH));		
+	skills.push_back(PathfinderSkill(DIPLOMACY, "Diplomacy", CHARISMA));	
+	skills.push_back(PathfinderSkill(
+		DISABLE_DEVICE, "Disable Device", DEXTERITY, true));
+	skills.push_back(PathfinderSkill(HEAL, "Heal", WISDOM));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_ARCANA, "Knowledge Arcana", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_DUNGEONEERING, "Knowledge Dungeoneering", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_GEOGRAPHY, "Knowledge Geography", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_HISTORY, "Knowledge History", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_LOCAL, "Knowledge Local", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_NATURE, "Knowledge Nature", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(
+		KNOWLEDGE_RELIGION, "Knowledge Religion", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(PERCEPTION, "Perception", WISDOM));
+	skills.push_back(PathfinderSkill(RIDE, "Ride", DEXTERITY));
+	skills.push_back(PathfinderSkill(SENSE_MOTIVE, "Sense Motive", WISDOM));
+	skills.push_back(PathfinderSkill(
+		SPELLCRAFT, "Spellcraft", INTELLIGENCE, true));
+	skills.push_back(PathfinderSkill(STEALTH, "Stealth", DEXTERITY));
+	skills.push_back(PathfinderSkill(SWIM, "Swim", STRENGTH));
 }
 
 

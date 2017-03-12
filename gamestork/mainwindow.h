@@ -29,6 +29,8 @@ private:
 
 	AbilityRerollWindow *abilityEditor;
 
+	AddSkillWindow *addSkillWindow;
+
 	PathfinderCharacter *character;
 	
 	bool unsavedChanges;
@@ -50,6 +52,14 @@ public slots:
 
 	void openAbilityEditor();
 
+	void openSkillChooser();
+
+	void addSkill(QListWidgetItem);
+
+	void removeSkill();
+
+	void skillIndexChanged(int);
+
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
 
@@ -62,6 +72,10 @@ private:
 	void updateAbilityDisplay();
 
 	int setHumanBonusAbility();
+
+	void updateFeatsDisplay();
+
+	void updateSkillsDisplay();
 };
 
 #endif // MAINWINDOW_H

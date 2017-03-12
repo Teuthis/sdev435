@@ -106,6 +106,18 @@ public:
 	/// @return The number of unspent skill ranks
 	int getRemainingSkillRanks() const;
 
+	/// Retrieves a list of untrained skills
+	/// @return A vector containing the skills the character has 0 ranks in
+	const std::vector<PathfinderSkill> getUntrainedSkills() const;
+
+	/// Trains a character in the specified skill
+	/// @param skill The identifier of the skill to rank up
+	void trainSkill(const CHARACTER_SKILLS skill);
+
+	/// Removes a skill from the character's trained skills
+	/// @param skill The identifier of the skill to rank down
+	void untrainSkill(const CHARACTER_SKILLS skill);
+
 	/// Changes the human racial bonus ability
 	/// @param ability The new ability to get the bonus
 	/// @throws std::logic_error if this function is called when race isn't human

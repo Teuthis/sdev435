@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
 	newCharWindow(new ClassSelectWindow(this)),
 	abilityEditor(new AbilityRerollWindow(this)),
+	addSkillWindow(new AddSkillWindow(this)),
 	character(NULL),
 	unsavedChanges(false)
 {
@@ -19,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 		abilityEditor , SIGNAL(abilitiesChanged(int, int, int, int, int, int)),
 		this, SLOT(editAbilities(int, int, int, int, int, int)));
 
+	QObject::connect(
+		addSkillWindow, SIGNAL(skillAdded(QListWidgetItem)),
+		this, SLOT(addSkill(QListWidgetItem)));
+
 	changeClassOptionsDisplay();
 }
 
@@ -27,6 +32,7 @@ MainWindow::~MainWindow()
 	if (character != NULL) delete character;
 	delete newCharWindow;
 	delete abilityEditor;
+	delete addSkillWindow;
     delete ui;
 }
 
@@ -71,10 +77,8 @@ void MainWindow::editRace(int raceIndex)
 		}
 		unsavedChanges = true;
 		updateAbilityDisplay();
-		ui->unspentFeatsCountLabel->setText(QString::number(
-			character->getRemainingFeatCount()));
-		ui->unspentSkillsCountLabel->setText(QString::number(
-			character->getRemainingSkillRanks()));
+		updateFeatsDisplay();
+		updateSkillsDisplay();
 	}
 }
 
@@ -89,10 +93,7 @@ void MainWindow::editAbilities(int str, int dex, int con,
 	character->setAbility(WISDOM, wis);
 	character->setAbility(CHARISMA, cha);
 	updateAbilityDisplay();
-	ui->unspentFeatsCountLabel->setText(QString::number(
-		character->getRemainingFeatCount()));
-	ui->unspentSkillsCountLabel->setText(QString::number(
-		character->getRemainingSkillRanks()));
+	updateSkillsDisplay();
 }
 
 void MainWindow::openAbilityEditor()
@@ -105,6 +106,46 @@ void MainWindow::openAbilityEditor()
 		character->getRawAbilityScore(WISDOM),
 		character->getRawAbilityScore(CHARISMA));
 	abilityEditor->show();
+}
+
+void MainWindow::openSkillChooser()
+{
+	auto untrained = character->getUntrainedSkills();
+	for (auto skill : untrained) {
+		addSkillWindow->addSkillOption(QString::fromStdString(skill.toString()),
+			skill.toSkillID());
+	}
+	addSkillWindow->open();
+}
+
+void MainWindow::addSkill(QListWidgetItem skill)
+{
+	CHARACTER_SKILLS id = static_cast<CHARACTER_SKILLS>(
+		skill.data(Qt::UserRole).toInt());
+	character->trainSkill(id);
+	ui->skillsList->addItem(new QListWidgetItem(skill));
+	updateSkillsDisplay();
+}
+
+void MainWindow::removeSkill()
+{
+	if (ui->skillsList->currentRow() == -1) return;
+
+	auto skill = ui->skillsList->takeItem(ui->skillsList->currentRow());
+
+	CHARACTER_SKILLS id = static_cast<CHARACTER_SKILLS>(
+		skill->data(Qt::UserRole).toInt());
+	character->untrainSkill(id);
+	updateSkillsDisplay();
+}
+
+void MainWindow::skillIndexChanged(int)
+{
+	if (ui->skillsList->currentRow() >= 0) {
+		ui->skillsRemove->setEnabled(true);
+	} else {
+		ui->skillsRemove->setEnabled(false);
+	}
 }
 
 void MainWindow::characterLoaded()
@@ -125,14 +166,13 @@ void MainWindow::characterLoaded()
 	updateAbilityDisplay();
 	ui->abilityEdit->setEnabled(true);
 
-	ui->unspentFeatsCountLabel->setText(QString::number(
-		character->getRemainingFeatCount()));
-	ui->unspentSkillsCountLabel->setText(QString::number(
-		character->getRemainingSkillRanks()));
+	updateFeatsDisplay();
+	updateSkillsDisplay();
 
 	ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 	ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 	ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+	ui->equipAdd->setEnabled(true);
 }
 
 void MainWindow::updateAbilityDisplay()
@@ -168,6 +208,28 @@ int MainWindow::setHumanBonusAbility()
 	if (choice == tr("Wisdom")) return WISDOM;
 	if (choice == tr("Charisma")) return CHARISMA;
 	return INTELLIGENCE;
+}
+
+void MainWindow::updateFeatsDisplay()
+{
+	ui->unspentFeatsCountLabel->setText(QString::number(
+		character->getRemainingFeatCount()));
+	if (character->getRemainingFeatCount() > 0) {
+		ui->featsAdd->setEnabled(true);
+	} else {
+		ui->featsAdd->setEnabled(false);
+	}
+}
+
+void MainWindow::updateSkillsDisplay()
+{
+	ui->unspentSkillsCountLabel->setText(QString::number(
+		character->getRemainingSkillRanks()));
+	if (character->getRemainingSkillRanks() > 0) {
+		ui->skillsAdd->setEnabled(true);
+	} else {
+		ui->skillsAdd->setEnabled(false);
+	}
 }
 
 void MainWindow::changeClassOptionsDisplay(int classToShow)

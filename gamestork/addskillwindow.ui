@@ -2,45 +2,48 @@
 <ui version="4.0">
  <class>AddSkillWindow</class>
  <widget class="QDialog" name="AddSkillWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>196</width>
+    <height>210</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>AddSkillWindow</string>
+   <string>Add Skill</string>
   </property>
   <widget class="QListWidget" name="skillsList">
    <property name="geometry">
     <rect>
-     <x>50</x>
-     <y>40</y>
-     <width>256</width>
-     <height>192</height>
+     <x>12</x>
+     <y>32</y>
+     <width>172</width>
+     <height>144</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="okButton">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>260</y>
+     <x>30</x>
+     <y>180</y>
      <width>75</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>OK</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>260</y>
+     <x>109</x>
+     <y>180</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -52,18 +55,55 @@
   <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>10</y>
-     <width>47</width>
+     <x>12</x>
+     <y>12</y>
+     <width>72</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>Available skills:</string>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AddSkillWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>199</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AddSkillWindow</receiver>
+   <slot>skillChosen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>67</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>97</x>
+     <y>104</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>skillAdded(QListWidgetItem)</signal>
+  <slot>skillChosen()</slot>
+ </slots>
 </ui>

@@ -21,7 +21,8 @@ public:
 	/// @param skillName The name of the skill
 	/// @param skillAbility The ability score used by the skill
 	/// @param requiresTraining Indicates if skill can be used at rank 0
-	PathfinderSkill(std::string skillName = "Pathfinder Skill",
+	PathfinderSkill(CHARACTER_SKILLS skillID = ACROBATICS,
+		std::string skillName = "Pathfinder Skill",
 		CHARACTER_ABILITY skillAbility = INTELLIGENCE, 
 		bool requiresTraining = false);
 
@@ -65,6 +66,10 @@ public:
 	/// @return The skill as a string
 	std::string toString() const;
 
+	/// Gets the skill's identifying index
+	/// @return The skill ID
+	CHARACTER_SKILLS toSkillID() const;
+
 	/// Gets the skill's associated ability score type
 	/// @return The ability score type
 	CHARACTER_ABILITY getAbility() const { return linkedAbility; }
@@ -84,6 +89,9 @@ public:
 	}
 
 private:
+	/// Skill identifying index
+	CHARACTER_SKILLS id;
+
 	/// Skill name
 	std::string name;
 

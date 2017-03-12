@@ -25,7 +25,7 @@ class Ui_AddSkillWindow
 {
 public:
     QListWidget *skillsList;
-    QPushButton *pushButton;
+    QPushButton *okButton;
     QPushButton *cancelButton;
     QLabel *headingLabel;
 
@@ -33,31 +33,34 @@ public:
     {
         if (AddSkillWindow->objectName().isEmpty())
             AddSkillWindow->setObjectName(QStringLiteral("AddSkillWindow"));
-        AddSkillWindow->resize(400, 300);
+        AddSkillWindow->setWindowModality(Qt::ApplicationModal);
+        AddSkillWindow->resize(196, 210);
         skillsList = new QListWidget(AddSkillWindow);
         skillsList->setObjectName(QStringLiteral("skillsList"));
-        skillsList->setGeometry(QRect(50, 40, 256, 192));
-        pushButton = new QPushButton(AddSkillWindow);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(120, 260, 75, 23));
+        skillsList->setGeometry(QRect(12, 32, 172, 144));
+        okButton = new QPushButton(AddSkillWindow);
+        okButton->setObjectName(QStringLiteral("okButton"));
+        okButton->setGeometry(QRect(30, 180, 75, 23));
         cancelButton = new QPushButton(AddSkillWindow);
         cancelButton->setObjectName(QStringLiteral("cancelButton"));
-        cancelButton->setGeometry(QRect(230, 260, 75, 23));
+        cancelButton->setGeometry(QRect(109, 180, 75, 23));
         headingLabel = new QLabel(AddSkillWindow);
         headingLabel->setObjectName(QStringLiteral("headingLabel"));
-        headingLabel->setGeometry(QRect(70, 10, 47, 13));
+        headingLabel->setGeometry(QRect(12, 12, 72, 13));
 
         retranslateUi(AddSkillWindow);
+        QObject::connect(cancelButton, SIGNAL(clicked()), AddSkillWindow, SLOT(close()));
+        QObject::connect(okButton, SIGNAL(clicked()), AddSkillWindow, SLOT(skillChosen()));
 
         QMetaObject::connectSlotsByName(AddSkillWindow);
     } // setupUi
 
     void retranslateUi(QDialog *AddSkillWindow)
     {
-        AddSkillWindow->setWindowTitle(QApplication::translate("AddSkillWindow", "AddSkillWindow", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("AddSkillWindow", "PushButton", Q_NULLPTR));
+        AddSkillWindow->setWindowTitle(QApplication::translate("AddSkillWindow", "Add Skill", Q_NULLPTR));
+        okButton->setText(QApplication::translate("AddSkillWindow", "OK", Q_NULLPTR));
         cancelButton->setText(QApplication::translate("AddSkillWindow", "Cancel", Q_NULLPTR));
-        headingLabel->setText(QApplication::translate("AddSkillWindow", "TextLabel", Q_NULLPTR));
+        headingLabel->setText(QApplication::translate("AddSkillWindow", "Available skills:", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -10,4 +10,12 @@ class AddSkillWindow : public QDialog, public Ui::AddSkillWindow
 public:
 	AddSkillWindow(QWidget *parent = Q_NULLPTR);
 	~AddSkillWindow();
+
+	void addSkillOption(QString name, int id);
+
+public slots:
+	void skillChosen();
+
+signals:
+	void skillAdded(QListWidgetItem);
 };

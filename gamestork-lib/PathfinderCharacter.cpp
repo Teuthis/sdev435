@@ -60,6 +60,17 @@ bool PathfinderCharacter::buyItem(const InventoryItem item)
 	return false;
 }
 
+bool PathfinderCharacter::removeItem(const int index)
+{
+	if (index < 0 || index >= inventory.size()) {
+		return false;
+	}
+	auto item = inventory.at(index);
+	money += item.getValue();
+	inventory.erase(inventory.begin() + index);
+	return true;
+}
+
 std::string PathfinderCharacter::getName() const
 {
 	return name;

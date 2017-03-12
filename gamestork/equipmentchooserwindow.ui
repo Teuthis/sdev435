@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EquipmentChooserWindow</class>
+ <widget class="QDialog" name="EquipmentChooserWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>287</width>
+    <height>274</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EquipmentChooserWindow</string>
+  </property>
+  <widget class="QLabel" name="headingLabel">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>12</y>
+     <width>128</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Choose item to purchase:</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="itemList">
+   <property name="geometry">
+    <rect>
+     <x>12</x>
+     <y>32</y>
+     <width>256</width>
+     <height>192</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>240</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>240</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>EquipmentChooserWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>227</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>EquipmentChooserWindow</receiver>
+   <slot>itemSelected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>137</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>136</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>addItem(InventoryItem)</signal>
+  <slot>itemSelected()</slot>
+ </slots>
+</ui>

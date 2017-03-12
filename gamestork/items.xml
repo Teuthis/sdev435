@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<equipmentChoices>
+  <weapon value="0" range="1" damage="1d6">Club</weapon>
+  <weapon value="200" range="2" damage="1d4">Dagger</weapon>
+  <weapon value="1000" range="1" damage="1d8">Battleaxe</weapon>
+  <weapon value="2000" range="1" damage="1d12">Greataxe</weapon>
+  <armor value="10000" acBonus="4" weightClass="light">Chain Shirt</armor>
+  <armor value="15000" acBonus="6" weightClass="medium">Chainmail</armor>
+  <armor value="900" acBonus="1" weightClass="none">Light Steel Shield</armor>
+  <item value="700">Adventurer's Kit</item>
+  <item value="2000">Alchemist's Fire</item>
+  <item value="5000">Antitoxin</item>
+  <item value="200">Backpack</item>
+  <item value="10">Bedroll</item>
+</equipmentChoices>

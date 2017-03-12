@@ -439,6 +439,10 @@ public:
         QObject::connect(skillsList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(skillIndexChanged(int)));
         QObject::connect(skillsAdd, SIGNAL(clicked()), MainWindow, SLOT(openSkillChooser()));
         QObject::connect(skillsRemove, SIGNAL(clicked()), MainWindow, SLOT(removeSkill()));
+        QObject::connect(equipAdd, SIGNAL(clicked()), MainWindow, SLOT(openEquipmentChooser()));
+        QObject::connect(actionExit, SIGNAL(triggered()), MainWindow, SLOT(close()));
+        QObject::connect(equipRemove, SIGNAL(clicked()), MainWindow, SLOT(removeItem()));
+        QObject::connect(equipList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(itemIndexChanged(int)));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

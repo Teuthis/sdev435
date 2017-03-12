@@ -49,6 +49,12 @@ public:
 	///			false if insufficient funds
 	bool buyItem(const InventoryItem item);
 
+	/// Removes the item at the specified index from the character's inventory
+	/// and refunds the cost
+	/// @param index The index to remove from
+	/// @return true if the item existed and was removed, false otherwise
+	bool removeItem(const int index);
+
 	/// Gets the character's name
 	/// @return The character's name
 	std::string getName() const;

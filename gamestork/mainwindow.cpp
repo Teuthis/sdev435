@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	newCharWindow(new ClassSelectWindow(this)),
 	abilityEditor(new AbilityRerollWindow(this)),
 	addSkillWindow(new AddSkillWindow(this)),
+	equipmentChooser(new EquipmentChooserWindow(this)),
 	character(NULL),
 	unsavedChanges(false)
 {
@@ -24,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
 		addSkillWindow, SIGNAL(skillAdded(QListWidgetItem)),
 		this, SLOT(addSkill(QListWidgetItem)));
 
+	QObject::connect(
+		equipmentChooser, SIGNAL(addItem(InventoryItem)),
+		this, SLOT(addItem(InventoryItem)));
+
 	changeClassOptionsDisplay();
 }
 
@@ -33,6 +38,7 @@ MainWindow::~MainWindow()
 	delete newCharWindow;
 	delete abilityEditor;
 	delete addSkillWindow;
+	delete equipmentChooser;
     delete ui;
 }
 
@@ -148,6 +154,35 @@ void MainWindow::skillIndexChanged(int)
 	}
 }
 
+void MainWindow::openEquipmentChooser()
+{
+	equipmentChooser->open();
+}
+
+void MainWindow::addItem(InventoryItem item)
+{
+	if (character->buyItem(item)) {
+		ui->equipList->addItem(QString::fromStdString(item.getName()));
+		ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
+		ui->spValLabel->setText(QString::number(character->getSilverPieces()));
+		ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+	}
+}
+
+void MainWindow::removeItem()
+{
+	int index = ui->equipList->currentRow();
+	if (index == -1) return;
+	if (character->removeItem(index)) {
+		auto temp = ui->equipList->takeItem(index);
+		delete temp;
+		temp = 0;
+		ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
+		ui->spValLabel->setText(QString::number(character->getSilverPieces()));
+		ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+	}
+}
+
 void MainWindow::characterLoaded()
 {
 	if (character == NULL) {
@@ -229,6 +264,15 @@ void MainWindow::updateSkillsDisplay()
 		ui->skillsAdd->setEnabled(true);
 	} else {
 		ui->skillsAdd->setEnabled(false);
+	}
+}
+
+void MainWindow::itemIndexChanged(int)
+{
+	if (ui->equipList->currentRow() != -1) {
+		ui->equipRemove->setEnabled(true);
+	} else {
+		ui->equipRemove->setEnabled(false);
 	}
 }
 

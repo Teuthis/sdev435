@@ -1322,6 +1322,70 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>equipAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openEquipmentChooser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionExit</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>equipRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>equipList</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>itemIndexChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>261</x>
+     <y>334</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1334,5 +1398,8 @@
   <slot>removeSkill()</slot>
   <slot>skillIndexChanged(int)</slot>
   <slot>openSkillChooser()</slot>
+  <slot>openEquipmentChooser()</slot>
+  <slot>removeItem()</slot>
+  <slot>itemIndexChanged(int)</slot>
  </slots>
 </ui>

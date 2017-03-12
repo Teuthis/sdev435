@@ -7,6 +7,7 @@
 #include "classselectwindow.h"
 #include "abilityrerollwindow.h"
 #include "addskillwindow.h"
+#include "equipmentchooserwindow.h"
 #include <PathfinderEnumerations.h>
 #include <PathfinderCharacter.h>
 
@@ -30,6 +31,8 @@ private:
 	AbilityRerollWindow *abilityEditor;
 
 	AddSkillWindow *addSkillWindow;
+
+	EquipmentChooserWindow *equipmentChooser;
 
 	PathfinderCharacter *character;
 	
@@ -59,6 +62,14 @@ public slots:
 	void removeSkill();
 
 	void skillIndexChanged(int);
+
+	void openEquipmentChooser();
+
+	void addItem(InventoryItem);
+
+	void removeItem();
+
+	void itemIndexChanged(int);
 
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);

@@ -443,6 +443,9 @@ public:
         QObject::connect(actionExit, SIGNAL(triggered()), MainWindow, SLOT(close()));
         QObject::connect(equipRemove, SIGNAL(clicked()), MainWindow, SLOT(removeItem()));
         QObject::connect(equipList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(itemIndexChanged(int)));
+        QObject::connect(featsAdd, SIGNAL(clicked()), MainWindow, SLOT(openFeatChooser()));
+        QObject::connect(featsList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(featIndexChanged(int)));
+        QObject::connect(featsRemove, SIGNAL(clicked()), MainWindow, SLOT(removeFeat()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 	newCharWindow(new ClassSelectWindow(this)),
 	abilityEditor(new AbilityRerollWindow(this)),
 	addSkillWindow(new AddSkillWindow(this)),
+	featChooser(new FeatChooserWindow(this)),
 	equipmentChooser(new EquipmentChooserWindow(this)),
 	character(NULL),
 	unsavedChanges(false)
@@ -24,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent) :
 	QObject::connect(
 		addSkillWindow, SIGNAL(skillAdded(QListWidgetItem)),
 		this, SLOT(addSkill(QListWidgetItem)));
+
+	QObject::connect(
+		featChooser, SIGNAL(featAdded(QListWidgetItem)),
+		this, SLOT(addFeat(QListWidgetItem)));
 
 	QObject::connect(
 		equipmentChooser, SIGNAL(addItem(InventoryItem)),
@@ -145,7 +150,7 @@ void MainWindow::removeSkill()
 	updateSkillsDisplay();
 }
 
-void MainWindow::skillIndexChanged(int)
+void MainWindow::skillIndexChanged(int index)
 {
 	if (ui->skillsList->currentRow() >= 0) {
 		ui->skillsRemove->setEnabled(true);
@@ -267,12 +272,38 @@ void MainWindow::updateSkillsDisplay()
 	}
 }
 
-void MainWindow::itemIndexChanged(int)
+void MainWindow::itemIndexChanged(int index)
 {
 	if (ui->equipList->currentRow() != -1) {
 		ui->equipRemove->setEnabled(true);
 	} else {
 		ui->equipRemove->setEnabled(false);
+	}
+}
+
+void MainWindow::openFeatChooser()
+{
+	featChooser->open();
+}
+
+void MainWindow::addFeat(QListWidgetItem feat)
+{
+	//TODO Implement addFeat()
+	throw "Not yet implemented";
+}
+
+void MainWindow::removeFeat()
+{
+	//TODO Implement removeFeat()
+	throw "Not yet implemented";
+}
+
+void MainWindow::featIndexChanged(int index)
+{
+	if (index == -1) {
+		ui->featsRemove->setEnabled(false);
+	} else {
+		ui->featsRemove->setEnabled(true);
 	}
 }
 

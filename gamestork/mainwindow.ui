@@ -1386,6 +1386,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>featsAdd</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openFeatChooser()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>623</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>featsList</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>featIndexChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>519</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>featsRemove</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>removeFeat()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>623</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1401,5 +1449,9 @@
   <slot>openEquipmentChooser()</slot>
   <slot>removeItem()</slot>
   <slot>itemIndexChanged(int)</slot>
+  <slot>openFeatChooser()</slot>
+  <slot>featIndexChanged(int)</slot>
+  <slot>removeFeat()</slot>
+  <slot>addFeat(QListWidgetItem)</slot>
  </slots>
 </ui>

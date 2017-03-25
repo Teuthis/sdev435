@@ -40,14 +40,14 @@ SUITE(FeatAndSkillTests) {
 	}
 
 	TEST(SkillEquality) {
-		PathfinderSkill skillA("Pickpocketing", DEXTERITY, false);
-		PathfinderSkill skillB("Pickpocketing", DEXTERITY, true);
+		PathfinderSkill skillA(DISABLE_DEVICE, "Disable Device", DEXTERITY, false);
+		PathfinderSkill skillB(DISABLE_DEVICE, "Disable Device", DEXTERITY, true);
 		CHECK(skillA == skillB);
 	}
 
 	TEST(SkillInequality) {
-		PathfinderSkill skillA("Pickpocketing", DEXTERITY, false);
-		PathfinderSkill skillB("Pickpocket", DEXTERITY, false);
+		PathfinderSkill skillA(DISABLE_DEVICE, "Disable Device", DEXTERITY, false);
+		PathfinderSkill skillB(RIDE, "Ride", DEXTERITY, true);
 		CHECK(skillA != skillB);
 	}
 

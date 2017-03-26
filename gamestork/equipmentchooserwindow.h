@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <vector>
 #include <cstdlib>
+#include <memory>
 #include <InventoryItem.h>
 #include <PathfinderArmor.h>
 #include <PathfinderWeapon.h>
@@ -19,7 +20,7 @@ public:
 	~EquipmentChooserWindow();
 
 private:
-	std::vector<InventoryItem> availableItems;
+	std::vector<std::shared_ptr<InventoryItem>> availableItems;
 
 	void loadItems();
 
@@ -27,5 +28,5 @@ public slots:
 	void itemSelected();
 
 signals:
-	void addItem(InventoryItem);
+	void addItem(std::shared_ptr<InventoryItem>);
 };

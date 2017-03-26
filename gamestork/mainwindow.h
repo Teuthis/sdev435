@@ -118,7 +118,7 @@ public slots:
 	/// Triggered when the ok button in the equipment chooser is clicked
 	/// Adds the given item to the character object and deducts cost
 	/// @param item The item to acquire
-	void addItem(InventoryItem);
+	void addItem(std::shared_ptr<InventoryItem>);
 
 	/// Triggered when the remove item button is clicked
 	/// Removes the selected item from the character inventory and refunds

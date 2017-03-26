@@ -7,7 +7,7 @@ EquipmentChooserWindow::EquipmentChooserWindow(QWidget *parent)
 	loadItems();
 	for (auto item : availableItems) {
 		QString itemListing;
-		switch (item.getItemType()) {
+		switch (item->getItemType()) {
 		case 0:
 			itemListing = tr("(Item)   ");
 			break;
@@ -18,19 +18,19 @@ EquipmentChooserWindow::EquipmentChooserWindow(QWidget *parent)
 			itemListing = tr("(Weapon) ");
 			break;
 		}
-		itemListing += QString::fromStdString(item.getName());
-		int gp = item.getValue() / 100;
-		int sp = (item.getValue() % 100) / 10;
-		int cp = item.getValue() % 10;
+		int gp = item->getValue() / 100;
+		int sp = (item->getValue() % 100) / 10;
+		int cp = item->getValue() % 10;
 		if (gp > 0) {
-			itemListing += tr(" ") + QString::number(gp) + tr("gp");
+			itemListing += QString::number(gp) + tr("gp ");
 		}
 		if (sp > 0) {
-			itemListing += tr(" ") + QString::number(sp) + tr("sp");
+			itemListing += QString::number(sp) + tr("sp ");
 		}
 		if (cp > 0) {
-			itemListing += tr(" ") + QString::number(cp) + tr("cp");
+			itemListing += QString::number(cp) + tr("cp ");
 		}
+		itemListing += QString::fromStdString(item->getName());
 		itemList->addItem(itemListing);
 	}
 }
@@ -45,23 +45,26 @@ void EquipmentChooserWindow::loadItems()
 	if (!resourceReader.isXmlReady()) throw; //TODO add a proper exception here
 	XmlDocument doc = resourceReader.getDocument();
 	for (auto entry : doc.getNodesByElement("weapon")) {
-		availableItems.push_back(PathfinderWeapon(
+		availableItems.push_back(std::make_shared<PathfinderWeapon>(
+			PathfinderWeapon(
 			entry->getInnerValue(),
 			std::atoi(entry->getAttribute("value").c_str()),
 			0, std::atoi(entry->getAttribute("range").c_str()),
-			"", entry->getAttribute("damage")));
+			"", entry->getAttribute("damage"))));
 	}
 	for (auto entry : doc.getNodesByElement("armor")) {
-		availableItems.push_back(PathfinderArmor(
+		availableItems.push_back(std::make_shared<PathfinderArmor>(
+			PathfinderArmor(
 			entry->getInnerValue(),
 			std::atoi(entry->getAttribute("value").c_str()),
 			0, entry->getAttribute("weightClass"),
-			std::atoi(entry->getAttribute("acBonus").c_str())));
+			std::atoi(entry->getAttribute("acBonus").c_str()))));
 	}
 	for (auto entry : doc.getNodesByElement("item")) {
-		availableItems.push_back(InventoryItem(
+		availableItems.push_back(std::make_shared<InventoryItem>(
+			InventoryItem(
 			entry->getInnerValue(),
-			std::atoi(entry->getAttribute("value").c_str())));
+			std::atoi(entry->getAttribute("value").c_str()))));
 	}
 }
 

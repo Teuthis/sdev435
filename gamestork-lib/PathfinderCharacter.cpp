@@ -50,10 +50,10 @@ int PathfinderCharacter::getCopperPieces() const
 	return money % 10;
 }
 
-bool PathfinderCharacter::buyItem(const InventoryItem item)
+bool PathfinderCharacter::buyItem(const std::shared_ptr<InventoryItem> item)
 {
-	if ((money - item.getValue()) >= 0) {
-		money -= item.getValue();
+	if ((money - item->getValue()) >= 0) {
+		money -= item->getValue();
 		inventory.push_back(item);
 		return true;
 	}
@@ -66,7 +66,7 @@ bool PathfinderCharacter::removeItem(const int index)
 		return false;
 	}
 	auto item = inventory.at(index);
-	money += item.getValue();
+	money += item->getValue();
 	inventory.erase(inventory.begin() + index);
 	return true;
 }

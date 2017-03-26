@@ -47,7 +47,7 @@ public:
 	/// @param item The item to add to inventory
 	/// @return true if the item was successfully purchased, 
 	///			false if insufficient funds
-	bool buyItem(const InventoryItem item);
+	bool buyItem(const std::shared_ptr<InventoryItem> item);
 
 	/// Removes the item at the specified index from the character's inventory
 	/// and refunds the cost
@@ -144,7 +144,7 @@ private:
 
 	std::vector<PathfinderFeat> feats;
 
-	std::vector<InventoryItem> inventory;
+	std::vector<std::shared_ptr<InventoryItem>> inventory;
 
 	int money;
 };

@@ -31,8 +31,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		this, SLOT(addFeat(QListWidgetItem)));
 
 	QObject::connect(
-		equipmentChooser, SIGNAL(addItem(InventoryItem)),
-		this, SLOT(addItem(InventoryItem)));
+		equipmentChooser, SIGNAL(addItem(std::shared_ptr<InventoryItem>)),
+		this, SLOT(addItem(std::shared_ptr<InventoryItem>)));
 
 	changeClassOptionsDisplay();
 }
@@ -164,10 +164,10 @@ void MainWindow::openEquipmentChooser()
 	equipmentChooser->open();
 }
 
-void MainWindow::addItem(InventoryItem item)
+void MainWindow::addItem(std::shared_ptr<InventoryItem> item)
 {
 	if (character->buyItem(item)) {
-		ui->equipList->addItem(QString::fromStdString(item.getName()));
+		ui->equipList->addItem(QString::fromStdString(item->getName()));
 		ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 		ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 		ui->cpValLabel->setText(QString::number(character->getCopperPieces()));

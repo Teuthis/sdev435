@@ -46,6 +46,11 @@ int PathfinderClass::getAttackBonus() const
 	return attackBonus;
 }
 
+int PathfinderClass::getProficiencies() const
+{
+	return weaponArmorProficiencies;
+}
+
 bool PathfinderClass::addSkillRank(const CHARACTER_SKILLS skill)
 {
 	if (skills[skill].getRanks() == 0) {

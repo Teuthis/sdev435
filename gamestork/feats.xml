@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feats>
-  
+  <feat name="Combat Expertise">
+    <abilityPrereq ability="3">13</abilityPrereq>
+    <classPrereq>15</classPrereq>
+  </feat>
+  <feat name="Deadly Aim">
+    <abilityPrereq ability="1">13</abilityPrereq>
+    <attackPrereq>1</attackPrereq>
+    <classPrereq>15</classPrereq>
+  </feat>
+  <feat name="Dodge">
+    <abilityPrereq ability="1">13</abilityPrereq>
+  </feat>
+  <feat name="Extra Channel">
+    <classPrereq>4</classPrereq>
+  </feat>
+  <feat name="Fleet"></feat>
+  <feat name="Great Fortitude"></feat>
+  <feat name="Improved Spell Difficulty">
+    <classPrereq>12</classPrereq>
+  </feat>
+  <feat name="Shield Focus">
+    <proficiency>32</proficiency>
+  </feat>
 </feats>

@@ -11,6 +11,10 @@ public:
 	/// @return The object as string
 	std::string toString() const { return "Wizard"; }
 
+	/// Returns an integer representation of the object
+	/// @return The CHARACTER_CLASS associated with the object
+	CHARACTER_CLASS toClassType() const { return WIZARD; }
+
 	/// Returns a collection of strings representing class features
 	/// @return The list of features
 	std::vector<std::string> getClassFeatures() const;

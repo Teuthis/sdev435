@@ -27,8 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
 		this, SLOT(addSkill(QListWidgetItem)));
 
 	QObject::connect(
-		featChooser, SIGNAL(featAdded(QListWidgetItem)),
-		this, SLOT(addFeat(QListWidgetItem)));
+		featChooser, SIGNAL(featAdded(PathfinderFeat)),
+		this, SLOT(addFeat(PathfinderFeat)));
 
 	QObject::connect(
 		equipmentChooser, SIGNAL(addItem(std::shared_ptr<InventoryItem>)),
@@ -283,19 +283,26 @@ void MainWindow::itemIndexChanged(int index)
 
 void MainWindow::openFeatChooser()
 {
+	featChooser->setAvailableFeats(character);
 	featChooser->open();
 }
 
-void MainWindow::addFeat(QListWidgetItem feat)
+void MainWindow::addFeat(PathfinderFeat feat)
 {
-	//TODO Implement addFeat()
-	throw "Not yet implemented";
+	character->addFeat(feat);
+	ui->featsList->addItem(QString::fromStdString(feat.toString()));
+	updateFeatsDisplay();
 }
 
 void MainWindow::removeFeat()
 {
-	//TODO Implement removeFeat()
-	throw "Not yet implemented";
+	int index = ui->featsList->currentRow();
+	if (index != -1) {
+		character->removeFeat(index);
+		auto remove = ui->featsList->takeItem(index);
+		delete remove;
+		updateFeatsDisplay();
+	}
 }
 
 void MainWindow::featIndexChanged(int index)

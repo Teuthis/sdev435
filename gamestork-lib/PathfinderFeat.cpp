@@ -24,14 +24,12 @@ PathfinderFeat::PathfinderFeat(std::string featName,
 	int prerequisiteAbilityValue, 
 	int prerequisiteAttackBonus,
 	int prerequisiteProficiency, 
-	int prerequisiteClass, 
-	std::string prerequisiteFeat)
+	int prerequisiteClass)
 	: name(featName), abilityPrereqType(prerequisiteAbilityType),
 	abilityPrereqValue(prerequisiteAbilityValue), 
 	attackPrereq(prerequisiteAttackBonus),
 	proficiencyPrereq(prerequisiteProficiency), 
-	classPrereq(prerequisiteClass),
-	featPrereq(prerequisiteFeat)
+	classPrereq(prerequisiteClass)
 {
 }
 
@@ -81,7 +79,7 @@ bool PathfinderFeat::meetsProficiencyPrerequisite(int proficiencies) const
 	if (proficiencyPrereq == 0) {
 		return true;
 	} else {
-		return proficiencies == proficiencyPrereq;
+		return (proficiencies & proficiencyPrereq) > 0;
 	}
 }
 

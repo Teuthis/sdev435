@@ -71,6 +71,10 @@ public:
 	/// @param newAlign The new alignment value
 	void setAlignment(ALIGNMENT newAlign);
 
+	/// Gets the character's occupational class id
+	/// @return The class id
+	CHARACTER_CLASS getClassId() const;
+
 	/// Gets the character's race/species
 	/// @return The race as string
 	std::string getRace() const;
@@ -104,6 +108,15 @@ public:
 	/// @param value The new ability score value
 	void setAbility(CHARACTER_ABILITY ability, const int value);
 
+	/// Gets the requested statistic bonus (saves, attack)
+	/// @param statistic The requested statistic
+	/// @return The statistic bonus
+	int getCharacterStatistic(CHARACTER_STATISTIC statistic) const;
+
+	/// Gets the weapons and armor the character is proficient in
+	/// @return A bitmask of the character's proficiencies
+	int getProficiencies() const;
+
 	/// Returns the remaining number of feats the character may have
 	/// @return The maximum feats less the number taken
 	int getRemainingFeatCount() const;
@@ -123,6 +136,14 @@ public:
 	/// Removes a skill from the character's trained skills
 	/// @param skill The identifier of the skill to rank down
 	void untrainSkill(const CHARACTER_SKILLS skill);
+
+	/// Adds the given feat to the character's known feats
+	/// @param feat The feat to add
+	void addFeat(const PathfinderFeat feat);
+
+	/// Removes the feat with the given index
+	/// @param index The index of the feat to remove
+	void removeFeat(const int index);
 
 	/// Changes the human racial bonus ability
 	/// @param ability The new ability to get the bonus

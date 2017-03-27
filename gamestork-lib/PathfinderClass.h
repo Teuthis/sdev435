@@ -27,6 +27,10 @@ public:
 	/// @return The object as string
 	virtual std::string toString() const = 0;
 
+	/// Returns an integer representation of the object
+	/// @return The CHARACTER_CLASS associated with the object
+	virtual CHARACTER_CLASS toClassType() const = 0;
+
 	/// Returns the number of unspent skill ranks
 	/// @param intelligence The character's intelligence ability modifier
 	/// @return The number of skill ranks remaining to be used
@@ -51,6 +55,10 @@ public:
 	/// Returns the Attack Bonus for characters of this class
 	/// @return The Attack modifier
 	int getAttackBonus() const;
+
+	/// Returns the weapon proficiency bitmask for characters of this class
+	/// @return The proficiency bitmask
+	int getProficiencies() const;
 
 	/// Returns a collection of strings representing class features
 	/// @return The list of features

@@ -137,7 +137,7 @@ public slots:
 	/// Triggered when the ok button in the feat chooser is clicked
 	/// Trains the character object in the selected feat
 	/// @param feat A list item containing the feat object as data
-	void addFeat(QListWidgetItem);
+	void addFeat(PathfinderFeat);
 
 	/// Triggered when the remove feat button is clicked
 	/// Removes the selected feat from the character object

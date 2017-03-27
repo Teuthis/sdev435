@@ -100,7 +100,7 @@
   </connection>
  </connections>
  <slots>
-  <signal>featAdded(QListWidgetItem)</signal>
+  <signal>featAdded(PathfinderFeat)</signal>
   <slot>featChosen()</slot>
  </slots>
 </ui>

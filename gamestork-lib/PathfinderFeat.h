@@ -30,8 +30,7 @@ public:
 		int prerequisiteAbilityValue = 0,
 		int prerequisiteAttackBonus = -99,
 		int prerequisiteProficiency = 0, 
-		int prerequisiteClass = FIGHTER | ROGUE | CLERIC | WIZARD, 
-		std::string prerequisiteFeat = "");
+		int prerequisiteClass = FIGHTER | ROGUE | CLERIC | WIZARD);
 
 	/// Destroys the PathfinderFeat object
 	~PathfinderFeat();
@@ -65,10 +64,6 @@ public:
 	/// @param characterClass The class of the character
 	/// @return true if the prerequisite is met, false otherwise
 	bool meetsClassPrerequisite(CHARACTER_CLASS characterClass) const;
-
-	/// Gets the prerequisite feat, if any
-	/// @return The name of the prerequisite feat or an empty string
-	std::string getFeatPrerequisite() const { return featPrereq; }
 
 	/// Compares two PathfinderFeat objects for equality
 	/// @param other The PathfinderFeat being compared to this one

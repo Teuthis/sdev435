@@ -91,6 +91,11 @@ void PathfinderCharacter::setAlignment(ALIGNMENT newAlign)
 	alignment = newAlign;
 }
 
+CHARACTER_CLASS PathfinderCharacter::getClassId() const
+{
+	return charClass->toClassType();
+}
+
 std::string PathfinderCharacter::getRace() const
 {
 	return race->toString();
@@ -176,6 +181,27 @@ void PathfinderCharacter::setAbility(CHARACTER_ABILITY ability, const int value)
 	abilityScores[ability] = value;
 }
 
+int PathfinderCharacter::getCharacterStatistic(CHARACTER_STATISTIC statistic) const
+{
+	switch (statistic) {
+	case ATTACK_BONUS:
+		return charClass->getAttackBonus();
+	case FORTITUDE_SAVE:
+		return charClass->getFortitudeBonus();
+	case REFLEX_SAVE:
+		return charClass->getReflexBonus();
+	case WILL_SAVE:
+		return charClass->getWillBonus();
+	default:
+		return 0;
+	}
+}
+
+int PathfinderCharacter::getProficiencies() const
+{
+	return charClass->getProficiencies();
+}
+
 int PathfinderCharacter::getRemainingFeatCount() const
 {
 	int total = 1;
@@ -213,6 +239,18 @@ void PathfinderCharacter::trainSkill(const CHARACTER_SKILLS skill)
 void PathfinderCharacter::untrainSkill(const CHARACTER_SKILLS skill)
 {
 	charClass->removeSkillRank(skill);
+}
+
+void PathfinderCharacter::addFeat(const PathfinderFeat feat)
+{
+	feats.push_back(feat);
+}
+
+void PathfinderCharacter::removeFeat(const int index)
+{
+	if (index >= 0 && index < feats.size()) {
+		feats.erase(feats.begin() + index);
+	}
 }
 
 void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)

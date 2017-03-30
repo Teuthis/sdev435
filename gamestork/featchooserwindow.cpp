@@ -26,10 +26,10 @@ FeatChooserWindow::FeatChooserWindow(QWidget *parent)
 			} else if (prereq->getElement() == "proficiency") {
 				proficiencyPrereq = std::atoi(prereq->getInnerValue().c_str());
 			}
-			allFeats.push_back(PathfinderFeat(entry->getAttribute("name"),
-				abilityType, abilityPrereq, attackPrereq, proficiencyPrereq,
-				classPrereq));
 		}
+		allFeats.push_back(PathfinderFeat(entry->getAttribute("name"),
+			abilityType, abilityPrereq, attackPrereq, proficiencyPrereq,
+			classPrereq));
 	}
 }
 

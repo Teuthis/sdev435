@@ -38,3 +38,8 @@ int PathfinderFighter::getStartingMoney() const
 {
 	return 17500;
 }
+
+void PathfinderFighter::setWeaponFocus(const std::string weapon)
+{
+	weaponFocus = weapon;
+}

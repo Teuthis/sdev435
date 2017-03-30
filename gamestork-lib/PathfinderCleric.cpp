@@ -54,3 +54,8 @@ int PathfinderCleric::getStartingMoney() const
 {
 	return 14000;
 }
+
+void PathfinderCleric::setPatron(const std::string godName)
+{
+	chosenDeity = godName;
+}

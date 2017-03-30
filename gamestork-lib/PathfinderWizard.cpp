@@ -92,6 +92,11 @@ bool PathfinderWizard::isSpellKnown(const WIZARD_SPELLS spell) const
 	return spellbook[spell];
 }
 
+void PathfinderWizard::setArcaneSchool(const std::string arcaneSchool)
+{
+	school = arcaneSchool;
+}
+
 int PathfinderWizard::getStartingMoney() const
 {
 	return 7000;

@@ -446,6 +446,9 @@ public:
         QObject::connect(featsAdd, SIGNAL(clicked()), MainWindow, SLOT(openFeatChooser()));
         QObject::connect(featsList, SIGNAL(currentRowChanged(int)), MainWindow, SLOT(featIndexChanged(int)));
         QObject::connect(featsRemove, SIGNAL(clicked()), MainWindow, SLOT(removeFeat()));
+        QObject::connect(godSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
+        QObject::connect(schoolSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
+        QObject::connect(weaponFocusSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

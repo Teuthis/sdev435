@@ -40,6 +40,10 @@ public:
 	/// @return true if the spell is known, false otherwise
 	bool isSpellKnown(const WIZARD_SPELLS spell) const;
 
+	/// Sets the wizard's magical school of training
+	/// @param arcaneSchool The magical school to set
+	void setArcaneSchool(const std::string arcaneSchool);
+
 	/// Returns the default starting currency for the class
 	/// @return The amount of money a character of this class begins with
 	int getStartingMoney() const;

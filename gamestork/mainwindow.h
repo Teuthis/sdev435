@@ -148,6 +148,11 @@ public slots:
 	/// @param index The currently selected index
 	void featIndexChanged(int);
 
+	/// Triggered when one of the class-specific combo boxes is changed
+	/// Updates the character with the new value
+	/// @param value The new value to set
+	void classValueChanged(QString);
+
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
 

@@ -40,6 +40,10 @@ public:
 	/// @return The amount of money a character of this class begins with
 	int getStartingMoney() const;
 
+	/// Sets the fighter's weapon focus perk
+	/// @param weapon The string name of the weapon to focus in
+	void setWeaponFocus(const std::string weapon);
+
 private:
 	/// Chosen weapon focus weapon
 	std::string weaponFocus;

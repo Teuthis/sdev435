@@ -314,6 +314,13 @@ void MainWindow::featIndexChanged(int index)
 	}
 }
 
+void MainWindow::classValueChanged(QString value)
+{
+	if (character != NULL && character->getClassId() != ROGUE) {
+		character->setClassSpecificValue(value.toStdString());
+	}
+}
+
 void MainWindow::changeClassOptionsDisplay(int classToShow)
 {
 	ui->clericGroup->hide();

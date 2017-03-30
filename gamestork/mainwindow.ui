@@ -1434,6 +1434,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>godSelect</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>classValueChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>593</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>schoolSelect</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>classValueChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>593</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>weaponFocusSelect</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>classValueChanged(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>593</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1453,5 +1501,6 @@
   <slot>featIndexChanged(int)</slot>
   <slot>removeFeat()</slot>
   <slot>addFeat(QListWidgetItem)</slot>
+  <slot>classValueChanged(QString)</slot>
  </slots>
 </ui>

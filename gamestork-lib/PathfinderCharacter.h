@@ -150,6 +150,11 @@ public:
 	/// @throws std::logic_error if this function is called when race isn't human
 	void changeHumanBonus(CHARACTER_ABILITY ability);
 
+	/// Sets a class-specific string value
+	/// @param value The new value
+	/// @throws std::logic_error if this function is called on a rogue
+	void setClassSpecificValue(const std::string value);
+
 private:
 	std::string name;
 

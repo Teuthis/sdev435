@@ -4,7 +4,7 @@ class PathfinderCleric :
 	public PathfinderClass
 {
 public:
-	PathfinderCleric(const std::string deity = "Household God");
+	PathfinderCleric(const std::string deity = "Desna");
 	~PathfinderCleric();
 
 	/// Returns a string representation of the object
@@ -26,6 +26,10 @@ public:
 	/// Returns the default starting currency for the class
 	/// @return The amount of money a character of this class begins with
 	int getStartingMoney() const;
+
+	/// Sets the cleric's patron god
+	/// @param godName The name of the cleric's patron
+	void setPatron(const std::string godName);
 
 private:
 	/// The character's patron god

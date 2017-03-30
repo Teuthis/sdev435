@@ -260,3 +260,24 @@ void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)
 	}
 	race = std::make_unique<PathfinderHuman>(PathfinderHuman(ability));
 }
+
+void PathfinderCharacter::setClassSpecificValue(const std::string value)
+{
+	switch (charClass->toClassType()) {
+	case CLERIC:
+		dynamic_cast<PathfinderCleric*>(charClass.get())->setPatron(value);
+		break;
+	case FIGHTER:
+		dynamic_cast<PathfinderFighter*>(
+			charClass.get())->setWeaponFocus(value);
+		break;
+	case WIZARD:
+		dynamic_cast<PathfinderWizard*>(
+			charClass.get())->setArcaneSchool(value);
+		break;
+	default:
+		throw std::logic_error(
+			"setClassSpecificValue cannot be called on classes with no special string values");
+		break;
+	}
+}

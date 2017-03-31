@@ -3,7 +3,7 @@
 
 
 PathfinderCharacter::PathfinderCharacter(CHARACTER_CLASS chosenClass)
-	: name(""), alignment(), race(), charClass(),
+	: name(""), gender(MALE), alignment(), race(), charClass(),
 	abilityScores(), feats(), inventory(), money(0)
 {
 	switch (chosenClass) {
@@ -259,6 +259,16 @@ void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)
 		throw std::logic_error("Cannot call changeHumanBonus() on nonhumans");
 	}
 	race = std::make_unique<PathfinderHuman>(PathfinderHuman(ability));
+}
+
+void PathfinderCharacter::setGender(const GENDER newGender)
+{
+	gender = newGender;
+}
+
+GENDER PathfinderCharacter::getGender() const
+{
+	return gender;
 }
 
 void PathfinderCharacter::setClassSpecificValue(const std::string value)

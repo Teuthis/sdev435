@@ -134,3 +134,11 @@ enum WIZARD_SPELLS {
 	MAGIC_MISSILE,
 	SLEEP
 };
+
+/// Gender options
+enum GENDER {
+	MALE = 0,
+	FEMALE,
+	OTHER,
+	NOGENDER
+};

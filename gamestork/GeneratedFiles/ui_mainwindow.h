@@ -459,10 +459,11 @@ public:
         QObject::connect(schoolSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
         QObject::connect(weaponFocusSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
         QObject::connect(spellbookList, SIGNAL(itemChanged(QListWidgetItem*)), MainWindow, SLOT(spellChanged(QListWidgetItem*)));
+        QObject::connect(genderSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(genderChanged(int)));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);
-        genderSelect->setCurrentIndex(-1);
+        genderSelect->setCurrentIndex(0);
         weaponFocusSelect->setCurrentIndex(2);
         godSelect->setCurrentIndex(2);
 
@@ -528,6 +529,8 @@ public:
         genderSelect->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Male", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Female", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Other", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "None", Q_NULLPTR)
         );
         wizardGroup->setTitle(QApplication::translate("MainWindow", "Wizard Options", Q_NULLPTR));
         schoolSelect->clear();

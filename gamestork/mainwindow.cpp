@@ -208,6 +208,8 @@ void MainWindow::characterLoaded()
 	ui->raceSelect->setCurrentIndex(character->getRaceId());
 	ui->raceSelect->setEnabled(true);
 
+	ui->genderSelect->setEnabled(true);
+
 	updateAbilityDisplay();
 	ui->abilityEdit->setEnabled(true);
 
@@ -346,6 +348,13 @@ void MainWindow::spellChanged(QListWidgetItem * spell)
 				spell->data(Qt::UserRole).toInt()));
 		}
 		updateSpellbook();
+	}
+}
+
+void MainWindow::genderChanged(int gender)
+{
+	if (character != NULL && gender != character->getGender()) {
+		character->setGender(static_cast<GENDER>(gender));
 	}
 }
 

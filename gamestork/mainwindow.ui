@@ -597,7 +597,7 @@
          <bool>false</bool>
         </property>
         <property name="currentIndex">
-         <number>-1</number>
+         <number>0</number>
         </property>
         <item>
          <property name="text">
@@ -607,6 +607,16 @@
         <item>
          <property name="text">
           <string>Female</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Other</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>None</string>
          </property>
         </item>
        </widget>
@@ -1527,6 +1537,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>genderSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>genderChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1548,5 +1574,6 @@
   <slot>addFeat(QListWidgetItem)</slot>
   <slot>classValueChanged(QString)</slot>
   <slot>spellChanged(QListWidgetItem*)</slot>
+  <slot>genderChanged(int)</slot>
  </slots>
 </ui>

@@ -158,6 +158,11 @@ public slots:
 	/// @param spell The changed spell
 	void spellChanged(QListWidgetItem* spell);
 
+	/// Triggered when the gender dropdown list is changed
+	/// Updates the character's gender
+	/// @param gender The new gender value
+	void genderChanged(int);
+
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
 

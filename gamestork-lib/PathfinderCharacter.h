@@ -150,6 +150,14 @@ public:
 	/// @throws std::logic_error if this function is called when race isn't human
 	void changeHumanBonus(CHARACTER_ABILITY ability);
 
+	/// Changes the character's gender setting
+	/// @param newGender The new gender
+	void setGender(const GENDER newGender);
+
+	/// Gets the character's gender setting
+	/// @return The character's gender
+	GENDER getGender() const;
+
 	/// Sets a class-specific string value
 	/// @param value The new value
 	/// @throws std::logic_error if this function is called on a rogue
@@ -177,7 +185,7 @@ public:
 private:
 	std::string name;
 
-	//TODO gender
+	GENDER gender;
 
 	ALIGNMENT alignment;
 

@@ -82,6 +82,8 @@ public:
     QLabel *schoolLabel;
     QListWidget *spellbookList;
     QLabel *spellbookLabel;
+    QLabel *spellSlotLabel;
+    QLabel *spellSlotDescriptionLabel;
     QGroupBox *fighterGroup;
     QLabel *weaponFocusLabel;
     QComboBox *weaponFocusSelect;
@@ -294,7 +296,7 @@ public:
         wizardGroup = new QGroupBox(centralWidget);
         wizardGroup->setObjectName(QStringLiteral("wizardGroup"));
         wizardGroup->setEnabled(true);
-        wizardGroup->setGeometry(QRect(422, 158, 230, 152));
+        wizardGroup->setGeometry(QRect(422, 158, 230, 171));
         schoolSelect = new QComboBox(wizardGroup);
         schoolSelect->setObjectName(QStringLiteral("schoolSelect"));
         schoolSelect->setGeometry(QRect(124, 20, 96, 22));
@@ -337,6 +339,13 @@ public:
         spellbookLabel = new QLabel(wizardGroup);
         spellbookLabel->setObjectName(QStringLiteral("spellbookLabel"));
         spellbookLabel->setGeometry(QRect(16, 48, 47, 13));
+        spellSlotLabel = new QLabel(wizardGroup);
+        spellSlotLabel->setObjectName(QStringLiteral("spellSlotLabel"));
+        spellSlotLabel->setGeometry(QRect(176, 144, 16, 16));
+        spellSlotLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        spellSlotDescriptionLabel = new QLabel(wizardGroup);
+        spellSlotDescriptionLabel->setObjectName(QStringLiteral("spellSlotDescriptionLabel"));
+        spellSlotDescriptionLabel->setGeometry(QRect(72, 144, 104, 16));
         fighterGroup = new QGroupBox(centralWidget);
         fighterGroup->setObjectName(QStringLiteral("fighterGroup"));
         fighterGroup->setGeometry(QRect(422, 158, 230, 64));
@@ -449,6 +458,7 @@ public:
         QObject::connect(godSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
         QObject::connect(schoolSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
         QObject::connect(weaponFocusSelect, SIGNAL(currentTextChanged(QString)), MainWindow, SLOT(classValueChanged(QString)));
+        QObject::connect(spellbookList, SIGNAL(itemChanged(QListWidgetItem*)), MainWindow, SLOT(spellChanged(QListWidgetItem*)));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);
@@ -553,6 +563,8 @@ public:
         spellbookList->setSortingEnabled(__sortingEnabled);
 
         spellbookLabel->setText(QApplication::translate("MainWindow", "Spellbook", Q_NULLPTR));
+        spellSlotLabel->setText(QApplication::translate("MainWindow", "0", Q_NULLPTR));
+        spellSlotDescriptionLabel->setText(QApplication::translate("MainWindow", "Spell slots remaining:", Q_NULLPTR));
         fighterGroup->setTitle(QApplication::translate("MainWindow", "Fighter Options", Q_NULLPTR));
         weaponFocusLabel->setText(QApplication::translate("MainWindow", "Weapon Focus", Q_NULLPTR));
         weaponFocusSelect->clear();

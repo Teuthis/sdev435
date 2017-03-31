@@ -281,3 +281,42 @@ void PathfinderCharacter::setClassSpecificValue(const std::string value)
 		break;
 	}
 }
+
+void PathfinderCharacter::addWizardSpell(const WIZARD_SPELLS spell)
+{
+	if (charClass->toClassType() != WIZARD) {
+		throw std::logic_error(
+			"addWizardSpell should only be called on wizards.");
+	}
+	dynamic_cast<PathfinderWizard*>(
+		charClass.get())->learnSpell(spell);
+}
+
+void PathfinderCharacter::removeWizardSpell(const WIZARD_SPELLS spell)
+{
+	if (charClass->toClassType() != WIZARD) {
+		throw std::logic_error(
+			"addWizardSpell should only be called on wizards.");
+	}
+	dynamic_cast<PathfinderWizard*>(
+		charClass.get())->unlearnSpell(spell);
+}
+
+bool PathfinderCharacter::knowsSpell(const WIZARD_SPELLS spell) const
+{
+	if (charClass->toClassType() != WIZARD) {
+		return false;
+	}
+	return dynamic_cast<PathfinderWizard*>(
+		charClass.get())->isSpellKnown(spell);
+}
+
+int PathfinderCharacter::spellSlotsRemaining() const
+{
+	if (charClass->toClassType() == WIZARD) {
+		int maxSpells = 3 + getAbilityBonusMod(INTELLIGENCE);
+		return maxSpells - dynamic_cast<PathfinderWizard*>(
+			charClass.get())->knownSpellCount();
+	}
+	return 0;
+}

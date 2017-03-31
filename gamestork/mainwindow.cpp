@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	for (int i = 0; i < ui->spellbookList->count(); i++) {
+		ui->spellbookList->item(i)->setData(Qt::UserRole, i);
+	}
+
 	QObject::connect(
 		newCharWindow, SIGNAL(classChosen(CHARACTER_CLASS)),
 		this, SLOT(classSelected(CHARACTER_CLASS)));
@@ -105,6 +109,7 @@ void MainWindow::editAbilities(int str, int dex, int con,
 	character->setAbility(CHARISMA, cha);
 	updateAbilityDisplay();
 	updateSkillsDisplay();
+	updateSpellbook();
 }
 
 void MainWindow::openAbilityEditor()
@@ -208,6 +213,7 @@ void MainWindow::characterLoaded()
 
 	updateFeatsDisplay();
 	updateSkillsDisplay();
+	updateSpellbook();
 
 	ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 	ui->spValLabel->setText(QString::number(character->getSilverPieces()));
@@ -272,6 +278,14 @@ void MainWindow::updateSkillsDisplay()
 	}
 }
 
+void MainWindow::updateSpellbook()
+{
+	if (character != NULL && character->getClassId() == WIZARD) {
+		ui->spellSlotLabel->setText(
+			QString::number(character->spellSlotsRemaining()));
+	}
+}
+
 void MainWindow::itemIndexChanged(int index)
 {
 	if (ui->equipList->currentRow() != -1) {
@@ -318,6 +332,20 @@ void MainWindow::classValueChanged(QString value)
 {
 	if (character != NULL && character->getClassId() != ROGUE) {
 		character->setClassSpecificValue(value.toStdString());
+	}
+}
+
+void MainWindow::spellChanged(QListWidgetItem * spell)
+{
+	if (character != NULL && character->getClassId() == WIZARD) {
+		if (spell->checkState() == Qt::Checked) {
+			character->addWizardSpell(static_cast<WIZARD_SPELLS>(
+				spell->data(Qt::UserRole).toInt()));
+		} else if (spell->checkState() == Qt::Unchecked) {
+			character->removeWizardSpell(static_cast<WIZARD_SPELLS>(
+				spell->data(Qt::UserRole).toInt()));
+		}
+		updateSpellbook();
 	}
 }
 

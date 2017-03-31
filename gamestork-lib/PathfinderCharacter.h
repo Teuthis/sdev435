@@ -155,6 +155,25 @@ public:
 	/// @throws std::logic_error if this function is called on a rogue
 	void setClassSpecificValue(const std::string value);
 
+	/// Adds a wizard spell to the character's spellbook
+	/// @param spell The spell to add
+	/// @throws std::logic_error if the character is not a wizard
+	void addWizardSpell(const WIZARD_SPELLS spell);
+
+	/// Removes a wizard spell to the character's spellbook
+	/// @param spell The spell to remove
+	/// @throws std::logic_error if the character is not a wizard
+	void removeWizardSpell(const WIZARD_SPELLS spell);
+
+	/// Checks whether a spell is known
+	/// @param spell The spell to test for
+	/// @return true if the spell is known, false otherwise
+	bool knowsSpell(const WIZARD_SPELLS spell) const;
+
+	/// Gets the number of spell slots a character has available
+	/// @return The number of wizard spells the character can learn
+	int spellSlotsRemaining() const;
+
 private:
 	std::string name;
 

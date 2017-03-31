@@ -623,7 +623,7 @@
       <x>422</x>
       <y>158</y>
       <width>230</width>
-      <height>152</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="title">
@@ -798,6 +798,35 @@
      </property>
      <property name="text">
       <string>Spellbook</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="spellSlotLabel">
+     <property name="geometry">
+      <rect>
+       <x>176</x>
+       <y>144</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="spellSlotDescriptionLabel">
+     <property name="geometry">
+      <rect>
+       <x>72</x>
+       <y>144</y>
+       <width>104</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Spell slots remaining:</string>
      </property>
     </widget>
    </widget>
@@ -1482,6 +1511,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>spellbookList</sender>
+   <signal>itemChanged(QListWidgetItem*)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>spellChanged(QListWidgetItem*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>567</x>
+     <y>286</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1502,5 +1547,6 @@
   <slot>removeFeat()</slot>
   <slot>addFeat(QListWidgetItem)</slot>
   <slot>classValueChanged(QString)</slot>
+  <slot>spellChanged(QListWidgetItem*)</slot>
  </slots>
 </ui>

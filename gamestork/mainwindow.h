@@ -153,6 +153,11 @@ public slots:
 	/// @param value The new value to set
 	void classValueChanged(QString);
 
+	/// Triggered when a Wizard spellbook item is checked or unchecked
+	/// Updates the character's known spell list
+	/// @param spell The changed spell
+	void spellChanged(QListWidgetItem* spell);
+
 private:
 	void changeClassOptionsDisplay(int classToShow = 0);
 
@@ -169,6 +174,8 @@ private:
 	void updateFeatsDisplay();
 
 	void updateSkillsDisplay();
+
+	void updateSpellbook();
 };
 
 #endif // MAINWINDOW_H

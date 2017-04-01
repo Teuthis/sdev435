@@ -59,3 +59,8 @@ void PathfinderCleric::setPatron(const std::string godName)
 {
 	chosenDeity = godName;
 }
+
+std::string PathfinderCleric::getPatron() const
+{
+	return chosenDeity;
+}

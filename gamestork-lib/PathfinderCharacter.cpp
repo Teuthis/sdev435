@@ -35,6 +35,124 @@ PathfinderCharacter::~PathfinderCharacter()
 {
 }
 
+PathfinderCharacter::PathfinderCharacter(const PathfinderCharacter & other)
+	: name(other.name), gender(other.gender), race(), charClass(),
+	abilityScores(other.abilityScores), feats(other.feats), 
+	inventory(other.inventory), money(other.money)
+{
+	switch (other.getClassId()) {
+	case CLERIC:
+	{
+		PathfinderCleric* cleric = dynamic_cast<PathfinderCleric*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderCleric>(
+			PathfinderCleric(*cleric));
+		break;
+	}
+	case FIGHTER:
+	{
+		PathfinderFighter* fighter = dynamic_cast<PathfinderFighter*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderFighter>(
+			PathfinderFighter(*fighter));
+		break;
+	}
+	case ROGUE:
+	{
+		PathfinderRogue* rogue = dynamic_cast<PathfinderRogue*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderRogue>(
+			PathfinderRogue(*rogue));
+		break;
+	}
+	case WIZARD:
+	{
+		PathfinderWizard* wizard = dynamic_cast<PathfinderWizard*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderWizard>(
+			PathfinderWizard(*wizard));
+		break;
+	}
+	}
+
+	switch (other.getRaceId()) {
+	case HUMAN:
+		race = std::make_unique<PathfinderHuman>(PathfinderHuman(
+			*(dynamic_cast<PathfinderHuman*>(other.race.get()))));
+		break;
+	case ELF:
+		race = std::make_unique<PathfinderElf>(PathfinderElf());
+		break;
+	case DWARF:
+		race = std::make_unique<PathfinderDwarf>(PathfinderDwarf());
+		break;
+	}
+}
+
+PathfinderCharacter & PathfinderCharacter::operator=(const PathfinderCharacter & other)
+{
+	if (&other == this) {
+		return *this;
+	}
+	
+	name = other.name;
+	gender = other.gender;
+	abilityScores = other.abilityScores;
+	feats = other.feats;
+	inventory = other.inventory;
+	money = other.money;
+
+	switch (other.getClassId()) {
+	case CLERIC:
+	{
+		PathfinderCleric* cleric = dynamic_cast<PathfinderCleric*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderCleric>(
+			PathfinderCleric(*cleric));
+		break;
+	}
+	case FIGHTER:
+	{
+		PathfinderFighter* fighter = dynamic_cast<PathfinderFighter*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderFighter>(
+			PathfinderFighter(*fighter));
+		break;
+	}
+	case ROGUE:
+	{
+		PathfinderRogue* rogue = dynamic_cast<PathfinderRogue*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderRogue>(
+			PathfinderRogue(*rogue));
+		break;
+	}
+	case WIZARD:
+	{
+		PathfinderWizard* wizard = dynamic_cast<PathfinderWizard*>(
+			other.charClass.get());
+		charClass = std::make_unique<PathfinderWizard>(
+			PathfinderWizard(*wizard));
+		break;
+	}
+	}
+
+	switch (other.getRaceId()) {
+	case HUMAN:
+		race = std::make_unique<PathfinderHuman>(PathfinderHuman(
+			*(dynamic_cast<PathfinderHuman*>(other.race.get()))));
+		break;
+	case ELF:
+		race = std::make_unique<PathfinderElf>(PathfinderElf());
+		break;
+	case DWARF:
+		race = std::make_unique<PathfinderDwarf>(PathfinderDwarf());
+		break;
+	}
+
+	return *this;
+}
+
 int PathfinderCharacter::getGoldPieces() const
 {
 	return money / 100;
@@ -96,6 +214,11 @@ CHARACTER_CLASS PathfinderCharacter::getClassId() const
 	return charClass->toClassType();
 }
 
+std::string PathfinderCharacter::getClassName() const
+{
+	return charClass->toString();
+}
+
 std::string PathfinderCharacter::getRace() const
 {
 	return race->toString();
@@ -122,6 +245,11 @@ void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 		race = std::make_unique<PathfinderDwarf>(PathfinderDwarf());
 		break;
 	}
+}
+
+int PathfinderCharacter::getHitpoints() const
+{
+	return charClass->getBaseHitPoints();
 }
 
 int PathfinderCharacter::getAbilityScore(CHARACTER_ABILITY ability) const
@@ -329,4 +457,116 @@ int PathfinderCharacter::spellSlotsRemaining() const
 			charClass.get())->knownSpellCount();
 	}
 	return 0;
+}
+
+XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
+{
+	XmlNode charNode("pathfinderCharacter");
+
+	charNode.setAttribute("rulesVersion", "beginner");
+	charNode.setAttribute("name", character.getName());
+	charNode.setAttribute("alignment", std::to_string(
+		character.getAlignment()));
+	charNode.setAttribute("gender", std::to_string(character.getGender()));
+
+	XmlNode raceNode("race");
+	raceNode.setInnerValue(character.getRace());
+	if (character.getRaceId() == HUMAN) {
+		raceNode.setAttribute("abilityBonus", std::to_string(
+			dynamic_cast<PathfinderHuman*>(
+				character.race.get())->getHumanAbility()));
+	}
+	charNode.addChild(raceNode);
+
+	XmlNode classNode(character.getClassName());
+	classNode.setAttribute("level", "1");
+	classNode.setAttribute("hp", std::to_string(character.getHitpoints()));
+	switch (character.getClassId()) {
+	case CLERIC:
+	{
+		PathfinderCleric* cleric = dynamic_cast<PathfinderCleric*>(
+			character.charClass.get());
+		classNode.addChild("patronGod", cleric->getPatron());
+		break;
+	}
+	case FIGHTER:
+	{
+		PathfinderFighter* fighter = dynamic_cast<PathfinderFighter*>(
+			character.charClass.get());
+		classNode.addChild("weaponFocus", fighter->getWeaponFocus());
+		break;
+	}
+	case WIZARD:
+	{
+		PathfinderWizard* wizard = dynamic_cast<PathfinderWizard*>(
+			character.charClass.get());
+		classNode.addChild("arcaneSchool", wizard->getArcaneSchool());
+		for (int i = 0; i <= SLEEP; i++) {
+			if (character.knowsSpell(static_cast<WIZARD_SPELLS>(i))) {
+				classNode.addChild("spell", std::to_string(i));
+			}
+		}
+		break;
+	}
+	}
+	charNode.addChild(classNode);
+
+	XmlNode skillsNode("skills");
+	for (int i = 0; i <= SWIM; i++) {
+		if (character.charClass->getSkills()[i].getRanks() > 0) {
+			skillsNode.addChild("skill", std::to_string(i));
+		}
+	}
+	charNode.addChild(skillsNode);
+
+	XmlNode featNode("feats");
+	for (auto feat : character.feats) {
+		featNode.addChild("feat", feat.toString());
+	}
+	charNode.addChild(featNode);
+
+	XmlNode inventoryNode("inventory");
+	inventoryNode.setAttribute("money", std::to_string(character.money));
+	for (auto item : character.inventory) {
+		switch (item->getItemType()) {
+		case 0:
+		{
+			XmlNode itemNode("item");
+			itemNode.setAttribute("value", std::to_string(item->getValue()));
+			itemNode.setInnerValue(item->getName());
+			inventoryNode.addChild(itemNode);
+			break;
+		}
+		case 1:
+		{
+			XmlNode armorNode("armor");
+			armorNode.setInnerValue(item->getName());
+			armorNode.setAttribute("value", std::to_string(item->getValue()));
+			armorNode.setAttribute("ac", std::to_string(
+				dynamic_cast<PathfinderArmor*>(item.get())->getACModifier()));
+			inventoryNode.addChild(armorNode);
+			break;
+		}
+		case 2:
+		{
+			XmlNode weaponNode("weapon");
+			weaponNode.setInnerValue(item->getName());
+			weaponNode.setAttribute("value", std::to_string(item->getValue()));
+			weaponNode.setAttribute("damage", dynamic_cast<PathfinderWeapon*>(
+				item.get())->getDamage());
+			inventoryNode.addChild(weaponNode);
+			break;
+		}
+		}
+	}
+	charNode.addChild(inventoryNode);
+
+	XmlDocument doc;
+	doc.setRoot(charNode);
+	return doc;
+}
+
+PathfinderCharacter xmlToPathfinderCharacter(const XmlDocument& xml) {
+	xml;
+	return PathfinderCharacter(FIGHTER);
 }

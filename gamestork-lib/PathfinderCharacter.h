@@ -16,6 +16,7 @@
 #include "PathfinderArmor.h"
 #include "PathfinderWeapon.h"
 #include "InventoryItem.h"
+#include "XmlDocument.h"
 
 class PathfinderCharacter
 {
@@ -29,6 +30,14 @@ public:
 
 	/// Destroys the PathfinderCharacter object
 	~PathfinderCharacter();
+
+	/// Copy constructor
+	/// @param other The object to copy from
+	PathfinderCharacter(const PathfinderCharacter& other);
+
+	/// Assignment operator
+	/// @param other The object to copyassign from
+	PathfinderCharacter& operator=(const PathfinderCharacter& other);
 
 	/// Gets the number of gold pieces the character possesses
 	/// @return The number of gold pieces (1 gp == 10 sp == 100 cp)
@@ -75,6 +84,10 @@ public:
 	/// @return The class id
 	CHARACTER_CLASS getClassId() const;
 
+	/// Gets the character's occupation class name
+	/// @return The class as std::string
+	std::string getClassName() const;
+
 	/// Gets the character's race/species
 	/// @return The race as string
 	std::string getRace() const;
@@ -86,6 +99,10 @@ public:
 	/// Sets the character's race/species
 	/// @param newRace The new race value
 	void setRace(CHARACTER_RACE newRace);
+
+	/// Gets the character's hit points
+	/// @return The number of hit points
+	int getHitpoints() const;
 
 	/// Gets the requested ability score
 	/// @param ability The requested ability
@@ -200,5 +217,16 @@ private:
 	std::vector<std::shared_ptr<InventoryItem>> inventory;
 
 	int money;
+
+	/// Converts a PathfinderCharacter object to an XmlDocument for saving to disk
+	/// @param character A reference to the PathfinderCharacter object
+	/// @return An XML representation of the character
+	friend XmlDocument pathfinderCharacterToXml(
+		const PathfinderCharacter & character);
+
+	/// Creates a PathfinderCharacter object from the provided XML data
+	/// @param xml A reference to the XML data
+	/// @return A PathfinderCharacter object built from the XML data
+	friend PathfinderCharacter xmlToPathfinderCharacter(const XmlDocument& xml);
 };
 

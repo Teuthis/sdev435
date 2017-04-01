@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QInputDialog>
+#include <QFileDialog>
 #include "classselectwindow.h"
 #include "abilityrerollwindow.h"
 #include "addskillwindow.h"
@@ -11,6 +12,8 @@
 #include "equipmentchooserwindow.h"
 #include <PathfinderEnumerations.h>
 #include <PathfinderCharacter.h>
+#include <XmlReader.h>
+#include <XmlWriter.h>
 
 namespace Ui {
 class MainWindow;
@@ -163,7 +166,17 @@ public slots:
 	/// @param gender The new gender value
 	void genderChanged(int);
 
+	/// Triggered from clicking save
+	/// Saves the character
+	void save();
+
+	/// Triggered from clicking save as
+	void saveAs();
+
 private:
+
+	std::string filename;
+
 	void changeClassOptionsDisplay(int classToShow = 0);
 
 	bool promptToSaveChanges();

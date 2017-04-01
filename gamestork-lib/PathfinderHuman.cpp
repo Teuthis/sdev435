@@ -65,3 +65,8 @@ int PathfinderHuman::getBonusSkillRanks() const
 	return 1;
 }
 
+CHARACTER_ABILITY PathfinderHuman::getHumanAbility() const
+{
+	return bonus;
+}
+

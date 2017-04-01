@@ -31,6 +31,10 @@ public:
 	/// @param godName The name of the cleric's patron
 	void setPatron(const std::string godName);
 
+	/// Gets the cleric's patron god
+	/// @return The name of the patron god
+	std::string getPatron() const;
+
 private:
 	/// The character's patron god
 	std::string chosenDeity;

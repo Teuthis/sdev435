@@ -59,6 +59,10 @@ public:
 	/// @return The number of additional skill ranks at level 1
 	int getBonusSkillRanks() const;
 
+	/// Returns the bonus ability
+	/// @return The bonus ability
+	CHARACTER_ABILITY getHumanAbility() const;
+
 private:
 	/// Humans get a bonus to one chosen ability score
 	/// This is the chosen ability

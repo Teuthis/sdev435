@@ -97,6 +97,11 @@ void PathfinderWizard::setArcaneSchool(const std::string arcaneSchool)
 	school = arcaneSchool;
 }
 
+std::string PathfinderWizard::getArcaneSchool() const
+{
+	return school;
+}
+
 int PathfinderWizard::getStartingMoney() const
 {
 	return 7000;

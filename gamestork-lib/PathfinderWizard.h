@@ -44,6 +44,10 @@ public:
 	/// @param arcaneSchool The magical school to set
 	void setArcaneSchool(const std::string arcaneSchool);
 
+	/// Gets the wizard's magical school of training
+	/// @return The wizard's arcane school
+	std::string getArcaneSchool() const;
+
 	/// Returns the default starting currency for the class
 	/// @return The amount of money a character of this class begins with
 	int getStartingMoney() const;

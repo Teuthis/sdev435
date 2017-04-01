@@ -43,3 +43,8 @@ void PathfinderFighter::setWeaponFocus(const std::string weapon)
 {
 	weaponFocus = weapon;
 }
+
+std::string PathfinderFighter::getWeaponFocus() const
+{
+	return weaponFocus;
+}

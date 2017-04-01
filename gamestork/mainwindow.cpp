@@ -358,6 +358,30 @@ void MainWindow::genderChanged(int gender)
 	}
 }
 
+void MainWindow::save()
+{
+	if (filename == "") {
+		saveAs();
+	} else {
+		XmlDocument doc = pathfinderCharacterToXml(*character);
+		XmlWriter writer(doc);
+		if (writer.write(filename)) {
+			unsavedChanges = false;
+		} else {
+			//TODO add save error warning
+		}
+	}	
+}
+
+void MainWindow::saveAs()
+{
+	filename = QFileDialog::getSaveFileName(this, tr("Save as..."),
+		"./", tr("XML Files (*.xml)")).toStdString();
+	if (filename != "") {
+		save();
+	}
+}
+
 void MainWindow::changeClassOptionsDisplay(int classToShow)
 {
 	ui->clericGroup->hide();

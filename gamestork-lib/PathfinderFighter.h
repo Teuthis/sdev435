@@ -44,6 +44,10 @@ public:
 	/// @param weapon The string name of the weapon to focus in
 	void setWeaponFocus(const std::string weapon);
 
+	/// Gets the weapon for the fighter's weapon focus perk
+	/// @return The weapon the fighter specializes in
+	std::string getWeaponFocus() const;
+
 private:
 	/// Chosen weapon focus weapon
 	std::string weaponFocus;

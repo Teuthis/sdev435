@@ -36,7 +36,7 @@ SUITE(FeatAndSkillTests) {
 		PathfinderFeat feat("Test Feat", INTELLIGENCE, 15, 0,
 			MEDIUM_ARMOR | HEAVY_ARMOR, FIGHTER | ROGUE);
 		int prof = HEAVY_ARMOR;
-		CHECK(!feat.meetsProficiencyPrerequisite(prof));
+		CHECK(feat.meetsProficiencyPrerequisite(prof));
 	}
 
 	TEST(SkillEquality) {

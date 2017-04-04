@@ -462,6 +462,7 @@ public:
         QObject::connect(genderSelect, SIGNAL(currentIndexChanged(int)), MainWindow, SLOT(genderChanged(int)));
         QObject::connect(actionSave, SIGNAL(triggered()), MainWindow, SLOT(save()));
         QObject::connect(actionSave_As, SIGNAL(triggered()), MainWindow, SLOT(saveAs()));
+        QObject::connect(actionOpen_Character, SIGNAL(triggered()), MainWindow, SLOT(open()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

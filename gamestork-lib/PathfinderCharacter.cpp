@@ -478,7 +478,8 @@ XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 	}
 	charNode.addChild(raceNode);
 
-	XmlNode classNode(character.getClassName());
+	XmlNode classNode("class");
+	classNode.setAttribute("type", character.getClassName());
 	classNode.setAttribute("level", "1");
 	classNode.setAttribute("hp", std::to_string(character.getHitpoints()));
 	switch (character.getClassId()) {
@@ -510,6 +511,16 @@ XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 	}
 	}
 	charNode.addChild(classNode);
+
+	XmlNode abilitiesNode("abilities");
+	for (int i = 0; i <= CHARISMA; i++) {
+		XmlNode ability("ability");
+		ability.setAttribute("type", std::to_string(i));
+		ability.setInnerValue(std::to_string(character.getRawAbilityScore(
+			static_cast<CHARACTER_ABILITY>(i))));
+		abilitiesNode.addChild(ability);
+	}
+	charNode.addChild(abilitiesNode);
 
 	XmlNode skillsNode("skills");
 	for (int i = 0; i <= SWIM; i++) {
@@ -566,7 +577,113 @@ XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 	return doc;
 }
 
-PathfinderCharacter xmlToPathfinderCharacter(const XmlDocument& xml) {
-	xml;
-	return PathfinderCharacter(FIGHTER);
+PathfinderCharacter* xmlToPathfinderCharacter(const XmlDocument& xml) {
+	PathfinderCharacter* character = 0;
+	auto classNode = xml.getNodesByElement("class");
+	if (classNode.size() != 1) {
+		throw std::runtime_error("Could not determine character class");
+	}
+	auto className = classNode[0]->getAttribute("type");
+	if (className == "Cleric") {
+		character = new PathfinderCharacter(CLERIC);
+		auto patron = xml.getNodesByElement("patronGod");
+		if (patron.size() > 0) {
+			character->setClassSpecificValue(patron[0]->getInnerValue());
+		}
+	} else if (className == "Fighter") {
+		character = new PathfinderCharacter(FIGHTER);
+		auto focus = xml.getNodesByElement("weaponFocus");
+		if (focus.size() > 0) {
+			character->setClassSpecificValue(focus[0]->getInnerValue());
+		}
+	} else if (className == "Rogue") {
+		character = new PathfinderCharacter(ROGUE);
+	} else if (className == "Wizard") {
+		character = new PathfinderCharacter(WIZARD);
+		auto school = xml.getNodesByElement("arcaneSchool");
+		if (school.size() > 0) {
+			character->setClassSpecificValue(school[0]->getInnerValue());
+		}
+		auto spells = xml.getNodesByElement("spell");
+		for (auto spell : spells) {
+			int spellId = std::atoi(spell->getInnerValue().c_str());
+			character->addWizardSpell(static_cast<WIZARD_SPELLS>(spellId));
+		}
+	} else {
+		throw std::runtime_error("Could not determine character class");
+	}
+	
+	auto rootNode = xml.getNodesByElement("pathfinderCharacter");
+	if (rootNode.size() != 1) {
+		throw std::runtime_error("Character file is missing required data");
+	}
+	character->setName(rootNode[0]->getAttribute("name"));
+	int alignment = std::atoi(rootNode[0]->getAttribute("alignment").c_str());
+	character->setAlignment(static_cast<ALIGNMENT>(alignment));
+	int gender = std::atoi(rootNode[0]->getAttribute("gender").c_str());
+	character->setGender(static_cast<GENDER>(gender));
+
+	auto raceNode = xml.getNodesByElement("race");
+	if (raceNode.size() > 0) {
+		std::string race = raceNode[0]->getInnerValue();
+		if (race == "Human") {
+			character->setRace(HUMAN);
+			std::string humanBonus = raceNode[0]->getAttribute("abilityBonus");
+		} else if (race == "Elf") {
+			character->setRace(ELF);
+		} else if (race == "Dwarf") {
+			character->setRace(DWARF);
+		}
+	}
+
+	auto abilityNodes = xml.getNodesByElement("ability");
+	for (auto ability : abilityNodes) {
+		character->setAbility(static_cast<CHARACTER_ABILITY>(
+			std::atoi(ability->getAttribute("type").c_str())),
+			std::atoi(ability->getInnerValue().c_str()));
+	}
+
+	auto featNodes = xml.getNodesByElement("feat");
+	for (auto feat : featNodes) {
+		character->addFeat(PathfinderFeat(feat->getInnerValue()));
+	}
+
+	auto skillNodes = xml.getNodesByElement("skill");
+	for (auto skill : skillNodes) {
+		int skillId = std::atoi(skill->getInnerValue().c_str());
+		character->trainSkill(static_cast<CHARACTER_SKILLS>(skillId));
+	}
+
+	auto inventoryNode = xml.getNodesByElement("inventory");
+	if (inventoryNode.size() > 0) {
+		character->money = 
+			std::atoi(inventoryNode[0]->getAttribute("money").c_str());
+		for (int i = 0; i < inventoryNode[0]->getChildCount(); i++) {
+			auto itemNode = inventoryNode[0]->operator[](i);
+			if (itemNode->getElement() == "item") {
+				InventoryItem item(itemNode->getInnerValue(),
+					static_cast<unsigned int>(std::atoi(
+						itemNode->getAttribute("value").c_str())));
+				character->inventory.push_back(
+					std::make_shared<InventoryItem>(item));
+			} else if (inventoryNode[0]->operator[](i)->getElement() == "armor") {
+				PathfinderArmor armor(itemNode->getInnerValue(),
+					static_cast<unsigned int>(std::atoi(
+						itemNode->getAttribute("value").c_str())), 0,
+					itemNode->getAttribute("weightClass"),
+					std::atoi(itemNode->getAttribute("ac").c_str()));
+				character->inventory.push_back(
+					std::make_shared<PathfinderArmor>(armor));
+			} else if (inventoryNode[0]->operator[](i)->getElement() == "armor") {
+				PathfinderWeapon weapon(itemNode->getInnerValue(),
+					static_cast<unsigned int>(std::atoi(
+						itemNode->getAttribute("value").c_str())), 0, 1, "",
+					itemNode->getAttribute("damage"));
+				character->inventory.push_back(
+					std::make_shared<PathfinderWeapon>(weapon));
+			}
+		}
+	}
+
+	return character;
 }

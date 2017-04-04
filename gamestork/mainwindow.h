@@ -170,8 +170,13 @@ public slots:
 	/// Saves the character
 	void save();
 
-	/// Triggered from clicking save as
+	/// Triggered from clicking save as or clicking save with no filename set
+	/// Prompts for a filename, then calls save()
 	void saveAs();
+
+	/// Triggered from clicking open
+	/// Opens a character
+	void open();
 
 private:
 

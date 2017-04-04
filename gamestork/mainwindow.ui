@@ -1585,6 +1585,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionOpen_Character</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>331</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>newCharacter()</slot>
@@ -1609,5 +1625,6 @@
   <slot>genderChanged(int)</slot>
   <slot>save()</slot>
   <slot>saveAs()</slot>
+  <slot>open()</slot>
  </slots>
 </ui>

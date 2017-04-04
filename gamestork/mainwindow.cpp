@@ -382,6 +382,31 @@ void MainWindow::saveAs()
 	}
 }
 
+void MainWindow::open()
+{
+	auto openFile = QFileDialog::getOpenFileName(this, tr("Select file to open"),
+		"./", tr("XML Files (*.xml)"));
+	if (!openFile.isNull() && !openFile.isEmpty()) {
+		if (character != NULL) {
+			delete character;
+			character = 0;
+		}
+		try {
+			XmlReader reader(openFile.toStdString());
+			XmlDocument doc = reader.getDocument();
+			character = xmlToPathfinderCharacter(doc);
+		} catch (const std::runtime_error& err) {
+			QMessageBox msgBox;
+			std::string message = err.what();
+			if (character != 0) {
+				delete character;
+				character = 0;
+			}
+		}
+		characterLoaded();
+	}
+}
+
 void MainWindow::changeClassOptionsDisplay(int classToShow)
 {
 	ui->clericGroup->hide();

@@ -227,6 +227,6 @@ private:
 	/// Creates a PathfinderCharacter object from the provided XML data
 	/// @param xml A reference to the XML data
 	/// @return A PathfinderCharacter object built from the XML data
-	friend PathfinderCharacter xmlToPathfinderCharacter(const XmlDocument& xml);
+	friend PathfinderCharacter* xmlToPathfinderCharacter(const XmlDocument& xml);
 };
 

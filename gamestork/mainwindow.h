@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QFileDialog>
+#include <QCloseEvent>
 #include "classselectwindow.h"
 #include "abilityrerollwindow.h"
 #include "addskillwindow.h"
@@ -27,6 +28,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+	void closeEvent(QCloseEvent *event);
 
 private:
 	/// Pointer to the window controls object

@@ -51,12 +51,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent(QCloseEvent * event)
+{
+	if (unsavedChanges && !promptToSaveChanges()) {
+		return;
+	}
+}
+
 void MainWindow::classSelected(CHARACTER_CLASS chosenClass)
 {
 	/*delete newCharWindow;
 	newCharWindow = NULL;*/
 	character = new PathfinderCharacter(chosenClass);
-	changeClassOptionsDisplay(chosenClass);
 	//unsavedChanges = true;
 	characterLoaded();
 }
@@ -233,6 +239,7 @@ void MainWindow::characterLoaded()
 
 	loading = false;
 
+	changeClassOptionsDisplay(character->getClassId());
 	updateFeatsControls();
 	updateSkillsControls();
 	updateSpellbook();
@@ -437,6 +444,9 @@ void MainWindow::saveAs()
 
 void MainWindow::open()
 {
+	if (unsavedChanges && !promptToSaveChanges()) {
+		return;
+	}
 	auto openFile = QFileDialog::getOpenFileName(this, tr("Select file to open"),
 		"./", tr("XML Files (*.xml)"));
 	if (!openFile.isNull() && !openFile.isEmpty()) {
@@ -494,7 +504,7 @@ bool MainWindow::promptToSaveChanges()
 	int result = prompt.exec();
 	switch (result) {
 	case QMessageBox::Save:
-		//TODO Add saving
+		save();
 		return true;
 	case QMessageBox::Discard:
 		return true;

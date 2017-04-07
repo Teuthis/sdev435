@@ -92,8 +92,8 @@ void MainWindow::editRace(int raceIndex)
 		}
 		unsavedChanges = true;
 		updateAbilityDisplay();
-		updateFeatsDisplay();
-		updateSkillsDisplay();
+		updateFeatsControls();
+		updateSkillsControls();
 	}
 }
 
@@ -107,8 +107,9 @@ void MainWindow::editAbilities(int str, int dex, int con,
 	character->setAbility(INTELLIGENCE, intel);
 	character->setAbility(WISDOM, wis);
 	character->setAbility(CHARISMA, cha);
+	unsavedChanges = true;
 	updateAbilityDisplay();
-	updateSkillsDisplay();
+	updateSkillsControls();
 	updateSpellbook();
 }
 
@@ -140,7 +141,8 @@ void MainWindow::addSkill(QListWidgetItem skill)
 		skill.data(Qt::UserRole).toInt());
 	character->trainSkill(id);
 	ui->skillsList->addItem(new QListWidgetItem(skill));
-	updateSkillsDisplay();
+	unsavedChanges = true;
+	updateSkillsControls();
 }
 
 void MainWindow::removeSkill()
@@ -152,7 +154,8 @@ void MainWindow::removeSkill()
 	CHARACTER_SKILLS id = static_cast<CHARACTER_SKILLS>(
 		skill->data(Qt::UserRole).toInt());
 	character->untrainSkill(id);
-	updateSkillsDisplay();
+	unsavedChanges = true;
+	updateSkillsControls();
 }
 
 void MainWindow::skillIndexChanged(int index)
@@ -176,6 +179,7 @@ void MainWindow::addItem(std::shared_ptr<InventoryItem> item)
 		ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 		ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 		ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+		unsavedChanges = true;
 	}
 }
 
@@ -190,6 +194,7 @@ void MainWindow::removeItem()
 		ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 		ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 		ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
+		unsavedChanges = true;
 	}
 }
 
@@ -198,6 +203,9 @@ void MainWindow::characterLoaded()
 	if (character == NULL) {
 		throw; //TODO add a proper exception
 	}
+	
+	loading = true;
+
 	ui->nameEdit->setText(
 		QString::fromStdString(character->getName()));
 	ui->nameEdit->setEnabled(true);
@@ -208,19 +216,26 @@ void MainWindow::characterLoaded()
 	ui->raceSelect->setCurrentIndex(character->getRaceId());
 	ui->raceSelect->setEnabled(true);
 
+	ui->genderSelect->setCurrentIndex(character->getGender());
 	ui->genderSelect->setEnabled(true);
 
 	updateAbilityDisplay();
 	ui->abilityEdit->setEnabled(true);
 
-	updateFeatsDisplay();
-	updateSkillsDisplay();
-	updateSpellbook();
-
 	ui->gpValLabel->setText(QString::number(character->getGoldPieces()));
 	ui->spValLabel->setText(QString::number(character->getSilverPieces()));
 	ui->cpValLabel->setText(QString::number(character->getCopperPieces()));
 	ui->equipAdd->setEnabled(true);
+
+	updateFeatList();
+	updateSkillsList();
+	updateInventoryList();
+
+	loading = false;
+
+	updateFeatsControls();
+	updateSkillsControls();
+	updateSpellbook();
 }
 
 void MainWindow::updateAbilityDisplay()
@@ -258,7 +273,7 @@ int MainWindow::setHumanBonusAbility()
 	return INTELLIGENCE;
 }
 
-void MainWindow::updateFeatsDisplay()
+void MainWindow::updateFeatsControls()
 {
 	ui->unspentFeatsCountLabel->setText(QString::number(
 		character->getRemainingFeatCount()));
@@ -269,7 +284,7 @@ void MainWindow::updateFeatsDisplay()
 	}
 }
 
-void MainWindow::updateSkillsDisplay()
+void MainWindow::updateSkillsControls()
 {
 	ui->unspentSkillsCountLabel->setText(QString::number(
 		character->getRemainingSkillRanks()));
@@ -285,6 +300,36 @@ void MainWindow::updateSpellbook()
 	if (character != NULL && character->getClassId() == WIZARD) {
 		ui->spellSlotLabel->setText(
 			QString::number(character->spellSlotsRemaining()));
+	}
+}
+
+void MainWindow::updateFeatList()
+{
+	ui->featsList->clear();
+	for (auto feat : character->getFeats()) {
+		ui->featsList->addItem(QString::fromStdString(feat.toString()));
+	}
+}
+
+void MainWindow::updateSkillsList()
+{
+	ui->skillsList->clear();
+	for (int i = 0; i <= SWIM; i++) {
+		auto skill = character->getSkill(static_cast<CHARACTER_SKILLS>(i));
+		if (skill.getRanks() > 0) {
+			QListWidgetItem item;
+			item.setText(QString::fromStdString(skill.toString()));
+			item.setData(Qt::UserRole, skill.toSkillID());
+			ui->skillsList->addItem(new QListWidgetItem(item));
+		}
+	}
+}
+
+void MainWindow::updateInventoryList()
+{
+	ui->equipList->clear();
+	for (auto item : character->getInventory()) {
+		ui->equipList->addItem(QString::fromStdString(item->getName()));
 	}
 }
 
@@ -307,7 +352,8 @@ void MainWindow::addFeat(PathfinderFeat feat)
 {
 	character->addFeat(feat);
 	ui->featsList->addItem(QString::fromStdString(feat.toString()));
-	updateFeatsDisplay();
+	unsavedChanges = true;
+	updateFeatsControls();
 }
 
 void MainWindow::removeFeat()
@@ -317,7 +363,8 @@ void MainWindow::removeFeat()
 		character->removeFeat(index);
 		auto remove = ui->featsList->takeItem(index);
 		delete remove;
-		updateFeatsDisplay();
+		unsavedChanges = true;
+		updateFeatsControls();
 	}
 }
 
@@ -332,14 +379,15 @@ void MainWindow::featIndexChanged(int index)
 
 void MainWindow::classValueChanged(QString value)
 {
-	if (character != NULL && character->getClassId() != ROGUE) {
+	if (!loading && character != NULL && character->getClassId() != ROGUE) {
 		character->setClassSpecificValue(value.toStdString());
+		unsavedChanges = true;
 	}
 }
 
 void MainWindow::spellChanged(QListWidgetItem * spell)
 {
-	if (character != NULL && character->getClassId() == WIZARD) {
+	if (!loading && character != NULL && character->getClassId() == WIZARD) {
 		if (spell->checkState() == Qt::Checked) {
 			character->addWizardSpell(static_cast<WIZARD_SPELLS>(
 				spell->data(Qt::UserRole).toInt()));
@@ -347,14 +395,16 @@ void MainWindow::spellChanged(QListWidgetItem * spell)
 			character->removeWizardSpell(static_cast<WIZARD_SPELLS>(
 				spell->data(Qt::UserRole).toInt()));
 		}
+		unsavedChanges = true;
 		updateSpellbook();
 	}
 }
 
 void MainWindow::genderChanged(int gender)
 {
-	if (character != NULL && gender != character->getGender()) {
+	if (!loading && character != NULL && gender != character->getGender()) {
 		character->setGender(static_cast<GENDER>(gender));
+		unsavedChanges = true;
 	}
 }
 
@@ -368,7 +418,10 @@ void MainWindow::save()
 		if (writer.write(filename)) {
 			unsavedChanges = false;
 		} else {
-			//TODO add save error warning
+			QMessageBox mbox;
+			mbox.setText("Error saving data.");
+			mbox.setDetailedText("The character was not saved.");
+			mbox.exec();
 		}
 	}	
 }
@@ -403,6 +456,7 @@ void MainWindow::open()
 				character = 0;
 			}
 		}
+		filename = openFile.toStdString();
 		characterLoaded();
 	}
 }

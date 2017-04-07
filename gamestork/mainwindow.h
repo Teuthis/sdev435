@@ -54,6 +54,11 @@ private:
 	bool unsavedChanges;
 
 
+	std::string filename;
+
+	bool loading;
+
+
 // QT slots
 public slots:
 
@@ -180,8 +185,6 @@ public slots:
 
 private:
 
-	std::string filename;
-
 	void changeClassOptionsDisplay(int classToShow = 0);
 
 	bool promptToSaveChanges();
@@ -194,11 +197,17 @@ private:
 
 	int setHumanBonusAbility();
 
-	void updateFeatsDisplay();
+	void updateFeatsControls();
 
-	void updateSkillsDisplay();
+	void updateSkillsControls();
 
 	void updateSpellbook();
+
+	void updateFeatList();
+
+	void updateSkillsList();
+
+	void updateInventoryList();
 };
 
 #endif // MAINWINDOW_H

@@ -189,6 +189,11 @@ bool PathfinderCharacter::removeItem(const int index)
 	return true;
 }
 
+std::vector<std::shared_ptr<InventoryItem>> PathfinderCharacter::getInventory() const
+{
+	return inventory;
+}
+
 std::string PathfinderCharacter::getName() const
 {
 	return name;
@@ -369,6 +374,14 @@ void PathfinderCharacter::untrainSkill(const CHARACTER_SKILLS skill)
 	charClass->removeSkillRank(skill);
 }
 
+
+
+PathfinderSkill PathfinderCharacter::getSkill(const CHARACTER_SKILLS skill) const
+{
+	auto skills = charClass->getSkills();
+	return skills.at(skill);
+}
+
 void PathfinderCharacter::addFeat(const PathfinderFeat feat)
 {
 	feats.push_back(feat);
@@ -379,6 +392,11 @@ void PathfinderCharacter::removeFeat(const int index)
 	if (index >= 0 && index < feats.size()) {
 		feats.erase(feats.begin() + index);
 	}
+}
+
+std::vector<PathfinderFeat> PathfinderCharacter::getFeats() const
+{
+	return feats;
 }
 
 void PathfinderCharacter::changeHumanBonus(CHARACTER_ABILITY ability)

@@ -64,6 +64,10 @@ public:
 	/// @return true if the item existed and was removed, false otherwise
 	bool removeItem(const int index);
 
+	/// Gets a list of inventory items
+	/// @return A vector of pointers to items
+	std::vector<std::shared_ptr<InventoryItem>> getInventory() const;
+
 	/// Gets the character's name
 	/// @return The character's name
 	std::string getName() const;
@@ -154,6 +158,11 @@ public:
 	/// @param skill The identifier of the skill to rank down
 	void untrainSkill(const CHARACTER_SKILLS skill);
 
+	/// Gets the requested skill
+	/// @param skill The identifier of the skill to get
+	/// @return The requested skill
+	PathfinderSkill getSkill(const CHARACTER_SKILLS skill) const;
+
 	/// Adds the given feat to the character's known feats
 	/// @param feat The feat to add
 	void addFeat(const PathfinderFeat feat);
@@ -161,6 +170,10 @@ public:
 	/// Removes the feat with the given index
 	/// @param index The index of the feat to remove
 	void removeFeat(const int index);
+
+	/// Gets the list of known feats
+	/// @return A vector containing the character's known feats
+	std::vector<PathfinderFeat> getFeats() const;
 
 	/// Changes the human racial bonus ability
 	/// @param ability The new ability to get the bonus

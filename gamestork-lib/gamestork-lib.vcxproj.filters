@@ -81,6 +81,9 @@
     <ClInclude Include="PathfinderCharacter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HtmlSheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiceRoller.cpp">
@@ -141,6 +144,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PathfinderCharacter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlSheet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

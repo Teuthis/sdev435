@@ -112,6 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DiceRoller.h" />
+    <ClInclude Include="HtmlSheet.h" />
     <ClInclude Include="InventoryItem.h" />
     <ClInclude Include="NSidedDie.h" />
     <ClInclude Include="PathfinderArmor.h" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DiceRoller.cpp" />
+    <ClCompile Include="HtmlSheet.cpp" />
     <ClCompile Include="InventoryItem.cpp" />
     <ClCompile Include="NSidedDie.cpp" />
     <ClCompile Include="PathfinderArmor.cpp" />

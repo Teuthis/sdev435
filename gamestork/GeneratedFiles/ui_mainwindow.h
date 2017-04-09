@@ -463,6 +463,7 @@ public:
         QObject::connect(actionSave, SIGNAL(triggered()), MainWindow, SLOT(save()));
         QObject::connect(actionSave_As, SIGNAL(triggered()), MainWindow, SLOT(saveAs()));
         QObject::connect(actionOpen_Character, SIGNAL(triggered()), MainWindow, SLOT(open()));
+        QObject::connect(actionExport_Character_Sheet, SIGNAL(triggered()), MainWindow, SLOT(exportSheet()));
 
         alignSelect->setCurrentIndex(-1);
         raceSelect->setCurrentIndex(-1);

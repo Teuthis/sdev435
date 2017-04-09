@@ -471,6 +471,23 @@ void MainWindow::open()
 	}
 }
 
+void MainWindow::exportSheet()
+{
+	std::string sheetFile = QFileDialog::getSaveFileName(this, tr("Save as..."),
+		"./", tr("HTML Files (*.html)")).toStdString();
+	HtmlSheet sheetContents;
+	std::ofstream fs(sheetFile);
+	if (!fs) {
+		QMessageBox mbox;
+		mbox.setText("Error exporting data.");
+		mbox.setDetailedText("The character sheet was not created.");
+		mbox.exec();
+		return;
+	}
+	fs << sheetContents.generateCharacterSheet(character);
+	fs.close();
+}
+
 void MainWindow::changeClassOptionsDisplay(int classToShow)
 {
 	ui->clericGroup->hide();

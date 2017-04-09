@@ -15,6 +15,7 @@
 #include <PathfinderCharacter.h>
 #include <XmlReader.h>
 #include <XmlWriter.h>
+#include <HtmlSheet.h>
 
 namespace Ui {
 class MainWindow;
@@ -185,6 +186,10 @@ public slots:
 	/// Triggered from clicking open
 	/// Opens a character
 	void open();
+
+	/// Triggered by clicking Export
+	/// Exports the character to a printable HTML document
+	void exportSheet();
 
 private:
 

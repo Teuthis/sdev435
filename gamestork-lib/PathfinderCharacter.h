@@ -92,6 +92,10 @@ public:
 	/// @return The class as std::string
 	std::string getClassName() const;
 
+	/// Gets the character's class features
+	/// @return A vector of class features
+	std::vector<std::string> getClassFeatures() const;
+
 	/// Gets the character's race/species
 	/// @return The race as string
 	std::string getRace() const;
@@ -103,6 +107,15 @@ public:
 	/// Sets the character's race/species
 	/// @param newRace The new race value
 	void setRace(CHARACTER_RACE newRace);
+
+	/// Gets the character's speed
+	/// @param squares Returns speed in squares if true, in feet otherwise
+	/// @return The character's speed
+	int getSpeed(const bool squares) const;
+
+	/// Gets the character's racial traits
+	/// @return A vector of string traits
+	std::vector<std::string> getTraits() const;
 
 	/// Gets the character's hit points
 	/// @return The number of hit points
@@ -211,6 +224,22 @@ public:
 	/// Gets the number of spell slots a character has available
 	/// @return The number of wizard spells the character can learn
 	int spellSlotsRemaining() const;
+
+	/// Gets a list of weapons in the character's inventory
+	/// @return Weapons the character possesses
+	std::vector<PathfinderWeapon> getWeapons();
+
+	/// Gets a list of armor in the character's inventory
+	/// @return Armor the character possesses
+	std::vector<PathfinderArmor> getArmor();
+
+	/// Gets a list of other items in the character's inventory
+	/// @return Items the character possesses
+	std::vector<InventoryItem> getItems();
+
+	/// Gets a list of known spells
+	/// @return Vector of spells
+	std::vector<std::string> getSpells() const;
 
 private:
 	std::string name;

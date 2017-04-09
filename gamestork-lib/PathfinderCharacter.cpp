@@ -224,6 +224,11 @@ std::string PathfinderCharacter::getClassName() const
 	return charClass->toString();
 }
 
+std::vector<std::string> PathfinderCharacter::getClassFeatures() const
+{
+	return charClass->getClassFeatures();
+}
+
 std::string PathfinderCharacter::getRace() const
 {
 	return race->toString();
@@ -250,6 +255,20 @@ void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 		race = std::make_unique<PathfinderDwarf>(PathfinderDwarf());
 		break;
 	}
+}
+
+int PathfinderCharacter::getSpeed(const bool squares) const
+{
+	if (squares) {
+		return race->moveSpeedInSquares(NONE);
+	} else {
+		return race->moveSpeedInFeet(NONE);
+	}
+}
+
+std::vector<std::string> PathfinderCharacter::getTraits() const
+{
+	return race->getTraits();
 }
 
 int PathfinderCharacter::getHitpoints() const
@@ -475,6 +494,46 @@ int PathfinderCharacter::spellSlotsRemaining() const
 			charClass.get())->knownSpellCount();
 	}
 	return 0;
+}
+
+std::vector<PathfinderWeapon> PathfinderCharacter::getWeapons()
+{
+	std::vector<PathfinderWeapon> weapons;
+	for (auto item : inventory) {
+		if (item->getItemType() == 2) {
+			auto ptr = dynamic_cast<PathfinderWeapon*>(item.get());
+			weapons.push_back(*ptr);
+		}
+	}
+	return weapons;
+}
+
+std::vector<PathfinderArmor> PathfinderCharacter::getArmor()
+{
+	std::vector<PathfinderArmor> armor;
+	for (auto item : inventory) {
+		if (item->getItemType() == 1) {
+			auto ptr = dynamic_cast<PathfinderArmor*>(item.get());
+			armor.push_back(*ptr);
+		}
+	}
+	return armor;
+}
+
+std::vector<InventoryItem> PathfinderCharacter::getItems()
+{
+	std::vector<InventoryItem> items;
+	for (auto item : inventory) {
+		if (item->getItemType() == 0) {
+			items.push_back(*item);
+		}
+	}
+	return items;
+}
+
+std::vector<std::string> PathfinderCharacter::getSpells() const
+{
+	return charClass->getMagic();
 }
 
 XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)

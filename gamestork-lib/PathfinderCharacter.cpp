@@ -580,6 +580,23 @@ int PathfinderCharacter::getShieldAC() const
 	return ac;
 }
 
+std::string PathfinderCharacter::getSpecialClassOption() const
+{
+	switch (charClass->toClassType()) {
+	case FIGHTER:
+		return dynamic_cast<PathfinderFighter*>(
+			charClass.get())->getWeaponFocus();
+	case CLERIC:
+		return dynamic_cast<PathfinderCleric*>(
+			charClass.get())->getPatron();
+	case WIZARD:
+		return dynamic_cast<PathfinderWizard*>(
+			charClass.get())->getArcaneSchool();
+	default:
+		return std::string();
+	}
+}
+
 XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 {
 	XmlNode charNode("pathfinderCharacter");

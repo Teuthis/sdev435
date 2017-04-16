@@ -262,6 +262,39 @@ void MainWindow::characterLoaded()
 	updateSkillsList();
 	updateInventoryList();
 
+	switch (character->getClassId())
+	{
+	case FIGHTER:
+	{
+		int focusIndex = ui->weaponFocusSelect->findText(
+			QString::fromStdString(character->getSpecialClassOption()));
+		if (focusIndex >= 0) {
+			ui->weaponFocusSelect->setCurrentIndex(focusIndex);
+		}
+		break;
+	}
+	case CLERIC:
+	{
+		int godIndex = ui->godSelect->findText(
+			QString::fromStdString(character->getSpecialClassOption()));
+		if (godIndex >= 0) {
+			ui->godSelect->setCurrentIndex(godIndex);
+		}
+		break;
+	}
+	case WIZARD:
+	{
+		int schoolIndex = ui->schoolSelect->findText(
+			QString::fromStdString(character->getSpecialClassOption()));
+		if (schoolIndex >= 0) {
+			ui->schoolSelect->setCurrentIndex(schoolIndex);
+		}
+		break;
+	}
+	default:
+		break;
+	}
+
 	loading = false;
 
 	changeClassOptionsDisplay(character->getClassId());

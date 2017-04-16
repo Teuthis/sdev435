@@ -260,6 +260,10 @@ public:
 	/// @return The AC contribution from the strongest shield item
 	int getShieldAC() const;
 
+	/// Gets the selectable class feature for clerics, fighters, and wizards
+	/// @return Weapon focus for fighters, deity for clerics, school for wizards
+	std::string getSpecialClassOption() const;
+
 private:
 	/// Character's name
 	std::string name;

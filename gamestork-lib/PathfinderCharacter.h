@@ -242,22 +242,31 @@ public:
 	std::vector<std::string> getSpells() const;
 
 private:
+	/// Character's name
 	std::string name;
 
+	/// Character's gender
 	GENDER gender;
 
+	/// Character's philosophical alignment
 	ALIGNMENT alignment;
-
+	
+	/// Character's race/species
 	std::unique_ptr<PathfinderRace> race;
 
+	/// Character's occupational class
 	std::unique_ptr<PathfinderClass> charClass;
 
+	/// Collection of ability scores
 	std::map<CHARACTER_ABILITY, int> abilityScores;
 
+	/// Known feats
 	std::vector<PathfinderFeat> feats;
 
+	/// Owned items
 	std::vector<std::shared_ptr<InventoryItem>> inventory;
 
+	/// Cash on hand
 	int money;
 
 	/// Converts a PathfinderCharacter object to an XmlDocument for saving to disk

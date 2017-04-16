@@ -57,9 +57,11 @@ private:
 	/// True if the character has been edited since last save
 	bool unsavedChanges;
 
-
+	/// The filename of the currently open file
 	std::string filename;
 
+	/// Set to true while a character si being loaded from a file
+	/// Prevents unnecessary change signals
 	bool loading;
 
 
@@ -192,29 +194,50 @@ public slots:
 	void exportSheet();
 
 private:
-
+	/// Sets visibility of the class-specfic options menus
+	/// @param The class to set visible
 	void changeClassOptionsDisplay(int classToShow = 0);
 
+	/// Provides the user an opportunity to write unsaved changes to disk
+	/// @return false if the user selects cancel, true otherwise
 	bool promptToSaveChanges();
 
+	/// Sets the enabled state of most user controls
+	/// @param enabled The enabled state to set
 	void makeEditable(bool enabled = true);
 
+	/// Updates gui display elements based on loaded character's values
 	void characterLoaded();
 
+	/// Updates the ability section of the gui
 	void updateAbilityDisplay();
 
+	/// Prompts the user to select the human's +2 ability bonus
+	/// @return The id of the selected ability
 	int setHumanBonusAbility();
 
+	/// Changes the enabled status of the feat editing controls based on the 
+	/// available feat selections remaining
 	void updateFeatsControls();
 
+	/// Changes the enabled status of the skill editing controls based on the 
+	/// available skill selections remaining
 	void updateSkillsControls();
 
+	/// Sets the checked/unchecked status of wizard spells based on the loaded
+	/// character's values
 	void updateSpellbook();
 
+	/// Sets the contents of the feat list based on the loaded 
+	/// character's values
 	void updateFeatList();
 
+	/// Sets the contents of the skills list based on the loaded 
+	/// character's values
 	void updateSkillsList();
 
+	/// Sets the contents of the inventory list based on the loaded 
+	/// character's values
 	void updateInventoryList();
 };
 

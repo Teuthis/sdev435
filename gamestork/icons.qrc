@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="classIcon">
+    <file>rogue.png</file>
+    <file>fighter.png</file>
+    <file>wizard.png</file>
+    <file>cleric.png</file>
+  </qresource>
+</RCC>

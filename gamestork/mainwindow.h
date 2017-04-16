@@ -17,6 +17,7 @@ Description: Header file for main application window
 #include <QInputDialog>
 #include <QFileDialog>
 #include <QCloseEvent>
+#include <QStandardPaths>
 #include "classselectwindow.h"
 #include "abilityrerollwindow.h"
 #include "addskillwindow.h"

@@ -494,7 +494,8 @@ void MainWindow::save()
 void MainWindow::saveAs()
 {
 	filename = QFileDialog::getSaveFileName(this, tr("Save as..."),
-		"./", tr("XML Files (*.xml)")).toStdString();
+		QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), 
+		tr("XML Files (*.xml)")).toStdString();
 	if (filename != "") {
 		save();
 	}
@@ -506,7 +507,8 @@ void MainWindow::open()
 		return;
 	}
 	auto openFile = QFileDialog::getOpenFileName(this, tr("Select file to open"),
-		"./", tr("XML Files (*.xml)"));
+		QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), 
+		tr("XML Files (*.xml)"));
 	if (!openFile.isNull() && !openFile.isEmpty()) {
 		if (character != NULL) {
 			delete character;
@@ -532,7 +534,8 @@ void MainWindow::open()
 void MainWindow::exportSheet()
 {
 	std::string sheetFile = QFileDialog::getSaveFileName(this, tr("Save as..."),
-		"./", tr("HTML Files (*.html)")).toStdString();
+		QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), 
+		tr("HTML Files (*.html)")).toStdString();
 	HtmlSheet sheetContents;
 	std::ofstream fs(sheetFile);
 	if (!fs) {

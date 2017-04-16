@@ -56,19 +56,28 @@ void EquipmentChooserWindow::loadItems()
 	if (!resourceReader.isXmlReady()) throw; //TODO add a proper exception here
 	XmlDocument doc = resourceReader.getDocument();
 	for (auto entry : doc.getNodesByElement("weapon")) {
+		std::string weaponName = entry->getInnerValue();
+		unsigned int weaponValue = 
+			std::atoi(entry->getAttribute("value").c_str());
+		int weaponRange = std::atoi(entry->getAttribute("range").c_str());
+		WEAPON_CATEGORY weaponCategory = static_cast<WEAPON_CATEGORY>(
+			std::atoi(entry->getAttribute("category").c_str()));
+		std::string weaponDamage = entry->getAttribute("damage");
+		char weaponDamageType = entry->getAttribute("damageType").size() > 0 ?
+			entry->getAttribute("damageType")[0] : 'S';
+		std::string weaponCritical = entry->getAttribute("critical");
 		availableItems.push_back(std::make_shared<PathfinderWeapon>(
-			PathfinderWeapon(
-			entry->getInnerValue(),
-			std::atoi(entry->getAttribute("value").c_str()),
-			0, std::atoi(entry->getAttribute("range").c_str()),
-			"", entry->getAttribute("damage"))));
+			PathfinderWeapon(weaponName, weaponValue, weaponRange, 
+				weaponCategory, weaponDamage, weaponDamageType, 
+				weaponCritical)));
 	}
 	for (auto entry : doc.getNodesByElement("armor")) {
 		availableItems.push_back(std::make_shared<PathfinderArmor>(
 			PathfinderArmor(
 			entry->getInnerValue(),
 			std::atoi(entry->getAttribute("value").c_str()),
-			0, entry->getAttribute("weightClass"),
+			static_cast<ARMOR_WEIGHTCLASS>(
+				std::atoi(entry->getAttribute("weightClass").c_str())),
 			std::atoi(entry->getAttribute("acBonus").c_str()))));
 	}
 	for (auto entry : doc.getNodesByElement("item")) {

@@ -56,7 +56,9 @@ enum CHARACTER_STATISTIC
 	ATTACK_BONUS,
 	FORTITUDE_SAVE,
 	REFLEX_SAVE,
-	WILL_SAVE
+	WILL_SAVE,
+	RANGED_BONUS,
+	MELEE_BONUS
 };
 
 /// Weapon and armor proficiencies
@@ -75,9 +77,17 @@ enum PROFICIENCY
 enum ARMOR_WEIGHTCLASS
 {
 	NONE,
+	SHIELD_WEIGHT,
 	LIGHT_WEIGHT,
 	MEDIUM_WEIGHT,
 	HEAVY_WEIGHT
+};
+
+/// Weapon types
+enum WEAPON_CATEGORY
+{
+	MELEE,
+	RANGED
 };
 
 /// Character classes

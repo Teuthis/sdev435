@@ -16,19 +16,22 @@ rules system. Subclass of InventoryItem.
 /// Constructs a new PathfinderWeapon object
 /// @param weaponName The name/label of the weapon item
 /// @param weaponValue Monetary value of the weapon item
-/// @param weaponWeight Weight of the weapon item
 /// @param weaponRange Effective range in squares
-/// @param weaponCategory General type of weapon (dagger, mace, etc)
+/// @param weaponCategory General type of weapon (melee/ranged)
 /// @param weaponDamage Damage determination formula
+/// @param weaponDamageType The type of damage (slashing, etc) inflicted
+/// @param criticalThreat The critical hit rules for this weapon
 PathfinderWeapon::PathfinderWeapon(
 	std::string weaponName, 
-	unsigned int weaponValue, 
-	unsigned int weaponWeight, 
+	unsigned int weaponValue,  
 	int weaponRange, 
-	std::string weaponCategory, 
-	std::string weaponDamage)
-	: InventoryItem(weaponName, weaponValue, weaponWeight),
-	range(weaponRange), category(weaponCategory), damage(weaponDamage)
+	WEAPON_CATEGORY weaponCategory, 
+	std::string weaponDamage,
+	char weaponDamageType,
+	std::string criticalThreat)
+	: InventoryItem(weaponName, weaponValue),
+	range(weaponRange), category(weaponCategory), damage(weaponDamage),
+	damageType(weaponDamageType), critical(criticalThreat)
 {
 }
 
@@ -46,7 +49,7 @@ void PathfinderWeapon::setRange(const int newRange)
 
 /// Sets the weapon's category
 /// @param newCategory The new category string
-void PathfinderWeapon::setCategory(const std::string newCategory)
+void PathfinderWeapon::setCategory(const WEAPON_CATEGORY newCategory)
 {
 	category = newCategory;
 }
@@ -56,4 +59,17 @@ void PathfinderWeapon::setCategory(const std::string newCategory)
 void PathfinderWeapon::setDamage(const std::string newDamage)
 {
 	damage = newDamage;
+}
+
+void PathfinderWeapon::setDamageType(const char typeCode)
+{
+	if (typeCode == 'S' || typeCode == 'P' || typeCode == 'B'
+		|| typeCode == 'M') {
+		damageType = typeCode;
+	}
+}
+
+void PathfinderWeapon::setCriticalThreat(const std::string criticalThreat)
+{
+	critical = criticalThreat;
 }

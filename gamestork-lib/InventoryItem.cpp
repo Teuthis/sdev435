@@ -19,9 +19,8 @@ determined by the needs of the particular system
 /// @param itemValue The monetary value of the item
 /// @param itemWeight The weight of the item
 InventoryItem::InventoryItem(std::string itemName, 
-	unsigned int itemValue, 
-	unsigned int itemWeight) 
-	: name(itemName), value(itemValue), weight(itemWeight)
+	unsigned int itemValue) 
+	: name(itemName), value(itemValue)
 {
 }
 
@@ -42,11 +41,4 @@ void InventoryItem::setName(const std::string newName)
 void InventoryItem::setValue(const unsigned int newValue)
 {
 	value = newValue;
-}
-
-/// Sets the weight of the InventoryItem
-/// @param newWeight The new weight of the item
-void InventoryItem::setWeight(const unsigned int newWeight)
-{
-	weight = newWeight;
 }

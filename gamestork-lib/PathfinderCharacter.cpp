@@ -269,10 +269,16 @@ void PathfinderCharacter::setRace(CHARACTER_RACE newRace)
 
 int PathfinderCharacter::getSpeed(const bool squares) const
 {
+	ARMOR_WEIGHTCLASS heaviest = NONE;
+	for (auto armor : getArmor()) {
+		if (armor.getWeightClass() > heaviest) {
+			heaviest = armor.getWeightClass();
+		}
+	}
 	if (squares) {
-		return race->moveSpeedInSquares(NONE);
+		return race->moveSpeedInSquares(heaviest);
 	} else {
-		return race->moveSpeedInFeet(NONE);
+		return race->moveSpeedInFeet(heaviest);
 	}
 }
 
@@ -354,6 +360,10 @@ int PathfinderCharacter::getCharacterStatistic(CHARACTER_STATISTIC statistic) co
 		return charClass->getReflexBonus();
 	case WILL_SAVE:
 		return charClass->getWillBonus();
+	case RANGED_BONUS:
+		return charClass->getAttackBonus() + getAbilityBonusMod(DEXTERITY);
+	case MELEE_BONUS:
+		return charClass->getAttackBonus() + getAbilityBonusMod(STRENGTH);
 	default:
 		return 0;
 	}
@@ -518,7 +528,7 @@ std::vector<PathfinderWeapon> PathfinderCharacter::getWeapons()
 	return weapons;
 }
 
-std::vector<PathfinderArmor> PathfinderCharacter::getArmor()
+std::vector<PathfinderArmor> PathfinderCharacter::getArmor() const
 {
 	std::vector<PathfinderArmor> armor;
 	for (auto item : inventory) {
@@ -544,6 +554,30 @@ std::vector<InventoryItem> PathfinderCharacter::getItems()
 std::vector<std::string> PathfinderCharacter::getSpells() const
 {
 	return charClass->getMagic();
+}
+
+int PathfinderCharacter::getArmorAC() const
+{
+	int ac = 0;
+	for (auto armor : getArmor()) {
+		if (armor.getWeightClass() != SHIELD_WEIGHT && 
+			armor.getACModifier() > ac) {
+			ac = armor.getACModifier();
+		}
+	}
+	return ac;
+}
+
+int PathfinderCharacter::getShieldAC() const
+{
+	int ac = 0;
+	for (auto armor : getArmor()) {
+		if (armor.getWeightClass() == SHIELD_WEIGHT &&
+			armor.getACModifier() > ac) {
+			ac = armor.getACModifier();
+		}
+	}
+	return ac;
 }
 
 XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
@@ -642,6 +676,8 @@ XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 			armorNode.setAttribute("value", std::to_string(item->getValue()));
 			armorNode.setAttribute("ac", std::to_string(
 				dynamic_cast<PathfinderArmor*>(item.get())->getACModifier()));
+			armorNode.setAttribute("weightClass", std::to_string(
+				dynamic_cast<PathfinderArmor*>(item.get())->getWeightClass()));
 			inventoryNode.addChild(armorNode);
 			break;
 		}
@@ -650,8 +686,16 @@ XmlDocument pathfinderCharacterToXml(const PathfinderCharacter & character)
 			XmlNode weaponNode("weapon");
 			weaponNode.setInnerValue(item->getName());
 			weaponNode.setAttribute("value", std::to_string(item->getValue()));
-			weaponNode.setAttribute("damage", dynamic_cast<PathfinderWeapon*>(
-				item.get())->getDamage());
+			auto weapon = dynamic_cast<PathfinderWeapon*>(item.get());
+			weaponNode.setAttribute("damage", weapon->getDamage());
+			weaponNode.setAttribute("category", std::to_string(
+				weapon->getCategory()));
+			std::string damageType = "";
+			damageType.push_back(weapon->getDamageType());
+			weaponNode.setAttribute("damageType", damageType);
+			weaponNode.setAttribute("critical", weapon->getCriticalThreat());
+			weaponNode.setAttribute("range", std::to_string(
+				weapon->getRange()));
 			inventoryNode.addChild(weaponNode);
 			break;
 		}
@@ -756,16 +800,27 @@ PathfinderCharacter* xmlToPathfinderCharacter(const XmlDocument& xml) {
 			} else if (inventoryNode[0]->operator[](i)->getElement() == "armor") {
 				PathfinderArmor armor(itemNode->getInnerValue(),
 					static_cast<unsigned int>(std::atoi(
-						itemNode->getAttribute("value").c_str())), 0,
-					itemNode->getAttribute("weightClass"),
+						itemNode->getAttribute("value").c_str())),
+					static_cast<ARMOR_WEIGHTCLASS>(
+						std::atoi(itemNode->getAttribute("weightClass").c_str())),
 					std::atoi(itemNode->getAttribute("ac").c_str()));
 				character->inventory.push_back(
 					std::make_shared<PathfinderArmor>(armor));
-			} else if (inventoryNode[0]->operator[](i)->getElement() == "armor") {
-				PathfinderWeapon weapon(itemNode->getInnerValue(),
-					static_cast<unsigned int>(std::atoi(
-						itemNode->getAttribute("value").c_str())), 0, 1, "",
-					itemNode->getAttribute("damage"));
+			} else if 
+				(inventoryNode[0]->operator[](i)->getElement() == "weapon") {
+				std::string weaponName = itemNode->getInnerValue();
+				unsigned int weaponValue =
+					std::atoi(itemNode->getAttribute("value").c_str());
+				int weaponRange = std::atoi(itemNode->getAttribute("range").c_str());
+				WEAPON_CATEGORY weaponCategory = static_cast<WEAPON_CATEGORY>(
+					std::atoi(itemNode->getAttribute("category").c_str()));
+				std::string weaponDamage = itemNode->getAttribute("damage");
+				char weaponDamageType = itemNode->getAttribute("damageType").size() > 0 ?
+					itemNode->getAttribute("damageType")[0] : 'S';
+				std::string weaponCritical = itemNode->getAttribute("critical");
+				PathfinderWeapon weapon(weaponName, weaponValue, weaponRange,
+					weaponCategory, weaponDamage, weaponDamageType,
+					weaponCritical);
 				character->inventory.push_back(
 					std::make_shared<PathfinderWeapon>(weapon));
 			}

@@ -324,11 +324,22 @@ std::string HtmlSheet::generateAttackTable() const
 		output += "\t\t\t\t\t<td class=\"attackhead\">Range Increment</td>\n";
 		output += "\t\t\t\t\t<td class=\"attackhead\">Ammunition</td>\n";
 		output += "\t\t\t\t</tr>\n\t\t\t\t<tr>\n";
-		output += "\t\t\t\t\t<td class=\"datafield\"></td>\n";
+		output += "\t\t\t\t\t<td class=\"datafield\">";
+		if (weapon.getCategory() == MELEE) {
+			output += 
+				std::to_string(character->getCharacterStatistic(MELEE_BONUS));
+		} else if (weapon.getCategory() == RANGED) {
+			output += 
+				std::to_string(character->getCharacterStatistic(RANGED_BONUS));
+		}
+		output += "</td>\n";
 		output += "\t\t\t\t\t<td class=\"datafield\">";
 		output += weapon.getDamage() + "</td>\n";
-		output += "\t\t\t\t\t<td class=\"datafield\"></td>\n";
-		output += "\t\t\t\t\t<td class=\"datafield\"></td>\n";
+		output += "\t\t\t\t\t<td class=\"datafield\">";
+		output += weapon.getCriticalThreat() + "</td>\n";
+		output += "\t\t\t\t\t<td class=\"datafield\">";
+		output.push_back(weapon.getDamageType());
+		output += "</td>\n";
 		output += "\t\t\t\t\t<td class=\"datafield\">";
 		output += std::to_string(weapon.getRange()) + "</td>\n";
 		output += "\t\t\t\t\t<td class=\"datafield\"></td>\n\t\t\t\t</tr>\n";
@@ -340,7 +351,30 @@ std::string HtmlSheet::generateAttackTable() const
 
 std::string HtmlSheet::generateArmorTable() const
 {
-	return std::string();
+	std::string output = "\t\t\t<table>\n\t\t\t\t<tr>\n";
+	output += "\t\t\t\t\t<td colspan=\"5\" class=\"inverse\">";
+	output += "Armor and Armor Class</td>\n";
+	output += "\t\t\t\t</tr>\n\t\t\t\t<tr>";
+	output += "\t\t\t\t\t<td class=\"attackhead\">Armor</td>\n";
+	output += "\t\t\t\t\t<td class=\"attackhead\">Shield</td>\n";
+	output += "\t\t\t\t\t<td class=\"attackhead\">Dex Mod</td>\n";
+	output += "\t\t\t\t\t<td class=\"attackhead\">Base</td>\n";
+	output += "\t\t\t\t\t<td class=\"attackhead\">Total</td>\n";
+	output += "\t\t\t\t</tr>\n\t\t\t\t<tr>";
+	output += "\t\t\t\t\t<td class=\"datafield\">";
+	output += std::to_string(character->getArmorAC()) + "</td>\n";
+	output += "\t\t\t\t\t<td class=\"datafield\">";
+	output += std::to_string(character->getShieldAC()) + "</td>\n";
+	output += "\t\t\t\t\t<td class=\"datafield\">";
+	output += std::to_string(character->getAbilityBonusMod(DEXTERITY)) 
+		+ "</td>\n";
+	output += "\t\t\t\t\t<td class=\"datafield\">10</td>\n";
+	output += "\t\t\t\t\t<td class=\"datafield\">";
+	int total = character->getArmorAC() + character->getShieldAC() +
+		character->getAbilityBonusMod(DEXTERITY) + 10;
+	output += std::to_string(total) + "</td>\n\t\t\t\t</tr>\n";
+	output += "\t\t\t</table>\n";
+	return output;
 }
 
 std::string HtmlSheet::generateFeatsTable() const

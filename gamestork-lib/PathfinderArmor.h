@@ -13,6 +13,7 @@ system. Subclass of InventoryItem.
 #pragma once
 
 #include "InventoryItem.h"
+#include "PathfinderEnumerations.h"
 #include <string>
 
 class PathfinderArmor :
@@ -22,25 +23,23 @@ public:
 	/// Constructs a new PathfinderArmor object
 	/// @param armorName The name of the armor item
 	/// @param armorValue The monetary value of the armor
-	/// @param armorWeight The weight of the armor
-	/// @param armorWeightClass The weight class (light, medium heavy)
+	/// @param armorWeightClass The weight class (light, medium, heavy, shield)
 	/// @param armorBonus The change to character AC provided
 	PathfinderArmor(std::string armorName = "Armor", 
 		unsigned int armorValue = 100,
-		unsigned int armorWeight = 50, 
-		std::string armorWeightClass = "medium",
+		ARMOR_WEIGHTCLASS armorWeightClass = MEDIUM_WEIGHT,
 		int armorBonus = 2);
 
 	/// Destroys the PathfinderArmor object
 	virtual ~PathfinderArmor();
 
 	/// Gets the armor's weight class
-	/// @return The weight class as string
-	std::string getWeightClass() const { return weightClass; }
+	/// @return The weight class from ARMOR_WEIGHTCLASS enumeration
+	ARMOR_WEIGHTCLASS getWeightClass() const { return weightClass; }
 
 	/// Sets the armor's weight class
 	/// @param newWeightClass The new weight class
-	void setWeightClass(const std::string newWeightClass);
+	void setWeightClass(const ARMOR_WEIGHTCLASS newWeightClass);
 
 	/// Gets the armor's bonus to character AC
 	/// @return The AC modifier
@@ -49,22 +48,6 @@ public:
 	/// Sets the armor's AC bonus
 	/// @param newACBonus The new modifier value
 	void setACModifier(const int newACBonus);
-
-	/// Gets the skill check penalty incurred by the armor
-	/// @return The skill check modifier
-	int getSkillCheckPenalty() const { return checkPenalty; }
-
-	/// Sets the skill check penalty
-	/// @param newPenalty The new check penalty value
-	void setSkillCheckPenalty(const int newPenalty);
-
-	/// Gets the spell failure modifier incurred by wearing the armor
-	/// @return The spell failure modifier
-	int getSpellFailure() const { return spellFailure; }
-
-	/// Sets the spell failure modifier
-	/// @param newSpellFailure The new modifier
-	void setSpellFailure(const int newSpellFailure);
 
 	/// Gets the description of special armor properties
 	/// @return A string describing the armor's special properties
@@ -81,15 +64,13 @@ public:
 	virtual int getItemType() const { return 1; }
 
 private:
-	
-	std::string weightClass;
+	/// The weight class of this armor item
+	ARMOR_WEIGHTCLASS weightClass;
 
+	/// The amount of armor contributed
 	int acBonus;
 
-	int checkPenalty;
-
-	int spellFailure;
-
+	/// Any special magical properties
 	std::string specialProperties;
 };
 

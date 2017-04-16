@@ -242,7 +242,7 @@ public:
 
 	/// Gets a list of armor in the character's inventory
 	/// @return Armor the character possesses
-	std::vector<PathfinderArmor> getArmor();
+	std::vector<PathfinderArmor> getArmor() const;
 
 	/// Gets a list of other items in the character's inventory
 	/// @return Items the character possesses
@@ -251,6 +251,14 @@ public:
 	/// Gets a list of known spells
 	/// @return Vector of spells
 	std::vector<std::string> getSpells() const;
+
+	/// Gets the character's armor class from armor only
+	/// @return The AC contribution from the strongest armor item
+	int getArmorAC() const;
+
+	/// Gets the character's armor class from shield only
+	/// @return The AC contribution from the strongest shield item
+	int getShieldAC() const;
 
 private:
 	/// Character's name

@@ -23,7 +23,7 @@ public:
 	/// @param itemValue The monetary value of the item
 	/// @param itemWeight The weight of the item
 	InventoryItem(std::string itemName = "Simple Item", 
-		unsigned int itemValue = 1, unsigned int itemWeight = 1);
+		unsigned int itemValue = 1);
 
 	/// Destroys the InventoryItem object
 	virtual ~InventoryItem();
@@ -44,14 +44,6 @@ public:
 	/// @param newValue The new monetary value of the item
 	void setValue(const unsigned int newValue);
 
-	/// Gets the weight of the InventoryItem
-	/// @return The weight as an unsigned int
-	unsigned int getWeight() const { return weight; }
-
-	/// Sets the weight of the InventoryItem
-	/// @param newWeight The new weight of the item
-	void setWeight(const unsigned int newWeight);
-
 	/// Gets an integer indicating the class type 
 	/// (saves typeof checks when iterating through a collection 
 	/// of derived types). Should be overriden by subclasses
@@ -64,8 +56,5 @@ protected:
 
 	/// Monetary value (in whole amounts of an unspecified unit)
 	unsigned int value;
-
-	/// Weight (in whole amounts of an unspecified unit)
-	unsigned int weight;	
 };
 

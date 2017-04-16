@@ -15,18 +15,15 @@ rules system. Subclass of InventoryItem.
 /// Constructs a new PathfinderArmor object
 /// @param armorName The name of the armor item
 /// @param armorValue The monetary value of the armor
-/// @param armorWeight The weight of the armor
-/// @param armorWeightClass The weight class (light, medium heavy)
+/// @param armorWeightClass The weight class (light, medium, heavy, shield)
 /// @param armorBonus The change to character AC provided
 PathfinderArmor::PathfinderArmor(
 	std::string armorName,
 	unsigned int armorValue,
-	unsigned int armorWeight,
-	std::string armorWeightClass,
+	ARMOR_WEIGHTCLASS armorWeightClass,
 	int armorBonus)
-	: InventoryItem(armorName, armorValue, armorWeight),
-	weightClass(armorWeightClass), acBonus(armorBonus), checkPenalty(0),
-	spellFailure(0), specialProperties("")
+	: InventoryItem(armorName, armorValue),
+	weightClass(armorWeightClass), acBonus(armorBonus), specialProperties("")
 {
 }
 
@@ -37,7 +34,7 @@ PathfinderArmor::~PathfinderArmor()
 
 /// Sets the armor's weight class
 /// @param newWeightClass The new weight class
-void PathfinderArmor::setWeightClass(const std::string newWeightClass)
+void PathfinderArmor::setWeightClass(const ARMOR_WEIGHTCLASS newWeightClass)
 {
 	weightClass = newWeightClass;
 }
@@ -49,19 +46,6 @@ void PathfinderArmor::setACModifier(const int newACBonus)
 	acBonus = newACBonus;
 }
 
-/// Sets the skill check penalty
-/// @param newPenalty The new check penalty value
-void PathfinderArmor::setSkillCheckPenalty(const int newPenalty)
-{
-	checkPenalty = newPenalty;
-}
-
-/// Sets the spell failure modifier
-/// @param newSpellFailure The new modifier
-void PathfinderArmor::setSpellFailure(const int newSpellFailure)
-{
-	spellFailure = newSpellFailure;
-}
 
 /// Sets the special properties description for the armor
 /// @param newProperties The new special properties description

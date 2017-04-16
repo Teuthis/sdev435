@@ -1,10 +1,26 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderRogue.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file pathfinder rogue class
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
+
 #include "PathfinderClass.h"
+
 class PathfinderRogue :
 	public PathfinderClass
 {
 public:
+	/// Constructs a new PathfinderRogue object
 	PathfinderRogue();
+
+	/// Destroys the PathfinderRogue object
 	~PathfinderRogue();
 
 	/// Returns a string representation of the object

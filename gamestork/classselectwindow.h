@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: classselectwindow.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for new character/class selection window
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <QDialog>

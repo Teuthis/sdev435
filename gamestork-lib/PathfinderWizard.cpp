@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderWizard.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file pathfinder wizard class
+*/
+//-----------------------------------------------------------------------------
+
 #include "PathfinderWizard.h"
 
 

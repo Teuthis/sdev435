@@ -1,5 +1,15 @@
-#include "PathfinderRogue.h"
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderRogue.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
 
+Description: Implementation file pathfinder rogue class
+*/
+//-----------------------------------------------------------------------------
+
+#include "PathfinderRogue.h"
 
 
 PathfinderRogue::PathfinderRogue()
@@ -24,6 +34,7 @@ PathfinderRogue::~PathfinderRogue()
 {
 }
 
+
 std::vector<std::string> PathfinderRogue::getClassFeatures() const
 {
 	std::vector<std::string> result;
@@ -32,12 +43,14 @@ std::vector<std::string> PathfinderRogue::getClassFeatures() const
 	return result;
 }
 
+
 std::vector<std::string> PathfinderRogue::getMagic() const
 {
 	std::vector<std::string> result;
 	result.push_back("Rogues cannot cast spells.");
 	return result;
 }
+
 
 int PathfinderRogue::getStartingMoney() const
 {

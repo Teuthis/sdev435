@@ -1,5 +1,15 @@
-#include "HtmlSheet.h"
+//-----------------------------------------------------------------------------
+/**
+File: HtmlSheet.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
 
+Description: Implementation file pathfinder character sheet exporter
+*/
+//-----------------------------------------------------------------------------
+
+#include "HtmlSheet.h"
 
 
 HtmlSheet::HtmlSheet()

@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: mainwindow.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for main application window
+*/
+//-----------------------------------------------------------------------------
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -27,9 +38,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+	/// Constructs a new MainWindow object
+	/// @param parent Pointer to the window's parent object
     explicit MainWindow(QWidget *parent = 0);
+
+	/// Destroys the MainWindow object
     ~MainWindow();
 
+	/// Fired when the window is closing
+	/// @param event Pointer to information about the close event
 	void closeEvent(QCloseEvent *event);
 
 private:

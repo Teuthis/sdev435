@@ -18,6 +18,7 @@ Description: Header file for an XML parsing reader
 #include <algorithm>
 #include "XmlDocument.h"
 
+/// Represents the reader state machine's state
 enum XML_READER_STATE {
 	XMLSTATE_FINISHED,
 	XMLSTATE_INVALID,

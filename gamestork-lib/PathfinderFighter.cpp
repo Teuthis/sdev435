@@ -1,5 +1,15 @@
-#include "PathfinderFighter.h"
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderFighter.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
 
+Description: Implementation file for Pathfinder fighter class class
+*/
+//-----------------------------------------------------------------------------
+
+#include "PathfinderFighter.h"
 
 
 PathfinderFighter::PathfinderFighter(const std::string weaponFocusChoice)
@@ -20,12 +30,14 @@ PathfinderFighter::~PathfinderFighter()
 {
 }
 
+
 std::vector<std::string> PathfinderFighter::getClassFeatures() const
 {
 	std::vector<std::string> result;
 	result.push_back("Weapon Focus (" + weaponFocus + ")");
 	return result;
 }
+
 
 std::vector<std::string> PathfinderFighter::getMagic() const
 {
@@ -34,15 +46,18 @@ std::vector<std::string> PathfinderFighter::getMagic() const
 	return result;
 }
 
+
 int PathfinderFighter::getStartingMoney() const
 {
 	return 17500;
 }
 
+
 void PathfinderFighter::setWeaponFocus(const std::string weapon)
 {
 	weaponFocus = weapon;
 }
+
 
 std::string PathfinderFighter::getWeaponFocus() const
 {

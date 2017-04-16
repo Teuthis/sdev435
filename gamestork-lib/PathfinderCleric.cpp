@@ -1,5 +1,15 @@
-#include "PathfinderCleric.h"
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderCleric.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
 
+Description: Implementation file for Pathfinder cleric class
+*/
+//-----------------------------------------------------------------------------
+
+#include "PathfinderCleric.h"
 
 
 PathfinderCleric::PathfinderCleric(const std::string deity)
@@ -20,6 +30,7 @@ PathfinderCleric::PathfinderCleric(const std::string deity)
 PathfinderCleric::~PathfinderCleric()
 {
 }
+
 
 std::vector<std::string> PathfinderCleric::getClassFeatures() const
 {
@@ -42,6 +53,7 @@ std::vector<std::string> PathfinderCleric::getClassFeatures() const
 	return result;
 }
 
+
 std::vector<std::string> PathfinderCleric::getMagic() const
 {
 	std::vector<std::string> result;
@@ -50,15 +62,18 @@ std::vector<std::string> PathfinderCleric::getMagic() const
 	return result;
 }
 
+
 int PathfinderCleric::getStartingMoney() const
 {
 	return 14000;
 }
 
+
 void PathfinderCleric::setPatron(const std::string godName)
 {
 	chosenDeity = godName;
 }
+
 
 std::string PathfinderCleric::getPatron() const
 {

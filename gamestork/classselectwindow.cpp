@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: classselectwindow.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for new character/class selection window
+*/
+//-----------------------------------------------------------------------------
+
 #include "classselectwindow.h"
 
 ClassSelectWindow::ClassSelectWindow(QWidget *parent)

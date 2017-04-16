@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: HtmlSheet.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file pathfinder character sheet exporter
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <string>

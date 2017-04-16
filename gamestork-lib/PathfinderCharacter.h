@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderCharacter.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for character data model for Pathfinder Beginner Box
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <string>

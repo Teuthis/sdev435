@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: Xml.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Unit tests related to XML system
+*/
+//-----------------------------------------------------------------------------
+
 #include <UnitTest++.h>
 #include "XmlNode.h"
 #include "XmlDocument.h"

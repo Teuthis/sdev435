@@ -17,7 +17,11 @@ class PathfinderFighter :
 	public PathfinderClass
 {
 public:
+	/// Constructs a new PathfinderFighter object
+	/// @param weaponFocusChoice The type of weapon the fighter specializes in
 	PathfinderFighter(const std::string weaponFocusChoice = "Longsword");
+
+	/// Destroys the PathfinderFighter object
 	~PathfinderFighter();
 
 	/// Returns a string representation of the object

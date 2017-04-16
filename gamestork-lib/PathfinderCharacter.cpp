@@ -1,6 +1,16 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderCharacter.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for character data model for 
+			 Pathfinder Beginner Box rules
+*/
+//-----------------------------------------------------------------------------
+
 #include "PathfinderCharacter.h"
-
-
 
 PathfinderCharacter::PathfinderCharacter(CHARACTER_CLASS chosenClass)
 	: name(""), gender(MALE), alignment(), race(), charClass(),

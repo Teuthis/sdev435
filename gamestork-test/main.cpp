@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: main.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Unit test runner
+*/
+//-----------------------------------------------------------------------------
+
 #include <UnitTest++.h>
 #include <iostream>
 

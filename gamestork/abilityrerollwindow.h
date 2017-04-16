@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: abilityrerollwindow.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for ability score editor window
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <QDialog>

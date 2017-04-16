@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: equipmentchooserwindow.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for equipment chooser window
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <QDialog>

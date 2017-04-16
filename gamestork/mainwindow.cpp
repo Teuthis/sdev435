@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: mainwindow.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for main application window
+*/
+//-----------------------------------------------------------------------------
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -14,30 +25,37 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+	// Initialize the wizard spell list
 	for (int i = 0; i < ui->spellbookList->count(); i++) {
 		ui->spellbookList->item(i)->setData(Qt::UserRole, i);
 	}
 
+	// Connect class selection system
 	QObject::connect(
 		newCharWindow, SIGNAL(classChosen(CHARACTER_CLASS)),
 		this, SLOT(classSelected(CHARACTER_CLASS)));
 
+	// Connect ability editing system
 	QObject::connect(
 		abilityEditor , SIGNAL(abilitiesChanged(int, int, int, int, int, int)),
 		this, SLOT(editAbilities(int, int, int, int, int, int)));
 
+	// Connect skill editing system
 	QObject::connect(
 		addSkillWindow, SIGNAL(skillAdded(QListWidgetItem)),
 		this, SLOT(addSkill(QListWidgetItem)));
 
+	// Connect feat editing system
 	QObject::connect(
 		featChooser, SIGNAL(featAdded(PathfinderFeat)),
 		this, SLOT(addFeat(PathfinderFeat)));
 
+	// Connect equipment editing system
 	QObject::connect(
 		equipmentChooser, SIGNAL(addItem(std::shared_ptr<InventoryItem>)),
 		this, SLOT(addItem(std::shared_ptr<InventoryItem>)));
 
+	// Set the class-specific settings visibility to default
 	changeClassOptionsDisplay();
 }
 
@@ -45,10 +63,17 @@ MainWindow::~MainWindow()
 {
 	if (character != NULL) delete character;
 	delete newCharWindow;
+	newCharWindow = 0;
 	delete abilityEditor;
+	abilityEditor = 0;
 	delete addSkillWindow;
+	addSkillWindow = 0;
+	delete featChooser;
+	featChooser = 0;
 	delete equipmentChooser;
+	equipmentChooser = 0;
     delete ui;
+	ui = 0;
 }
 
 void MainWindow::closeEvent(QCloseEvent * event)

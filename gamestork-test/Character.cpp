@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: Character.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Unit tests related to PathfinderCharacter and component classes
+*/
+//-----------------------------------------------------------------------------
+
 #include <UnitTest++.h>
 #include <PathfinderFeat.h>
 #include <PathfinderSkill.h>

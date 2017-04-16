@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: featchooserwindow.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for feat chooser window
+*/
+//-----------------------------------------------------------------------------
+
 #include "featchooserwindow.h"
 
 FeatChooserWindow::FeatChooserWindow(QWidget *parent)

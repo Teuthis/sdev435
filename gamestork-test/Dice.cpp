@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: Dice.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Unit tests for dice rolling simulator
+*/
+//-----------------------------------------------------------------------------
+
 #include <UnitTest++.h>
 #include "DiceRoller.h"
 

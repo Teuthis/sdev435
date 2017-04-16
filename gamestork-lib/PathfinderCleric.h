@@ -1,5 +1,18 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderCleric.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for Pathfinder cleric class
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
+
 #include "PathfinderClass.h"
+
 class PathfinderCleric :
 	public PathfinderClass
 {

@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: Inventory.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Unit tests for inventory objects
+*/
+//-----------------------------------------------------------------------------
+
 #include <UnitTest++.h>
 #include "InventoryItem.h"
 #include "PathfinderArmor.h"

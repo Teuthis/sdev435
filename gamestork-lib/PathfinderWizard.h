@@ -1,10 +1,27 @@
+//-----------------------------------------------------------------------------
+/**
+File: PathfinderWizard.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file pathfinder wizard class
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
+
 #include "PathfinderClass.h"
+
 class PathfinderWizard :
 	public PathfinderClass
 {
 public:
+	/// Constructs a new PathfinderWizard object
+	/// @param arcaneSchool The wizard's magical specialty
 	PathfinderWizard(const std::string arcaneSchool = "Universalist");
+
+	/// Destroys the PathfinderWizard object
 	~PathfinderWizard();
 
 	/// Returns a string representation of the object

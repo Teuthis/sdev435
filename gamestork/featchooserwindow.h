@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: featchooserwindow.h
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Header file for feat chooser window
+*/
+//-----------------------------------------------------------------------------
+
 #pragma once
 
 #include <QDialog>

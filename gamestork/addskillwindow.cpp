@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: addskillwindow.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for skill chooser window
+*/
+//-----------------------------------------------------------------------------
+
 #include "addskillwindow.h"
 
 AddSkillWindow::AddSkillWindow(QWidget *parent)
@@ -6,17 +17,19 @@ AddSkillWindow::AddSkillWindow(QWidget *parent)
 	setupUi(this);
 }
 
+
 AddSkillWindow::~AddSkillWindow()
 {
 }
+
 
 void AddSkillWindow::addSkillOption(QString name, int id)
 {
 	QListWidgetItem *item = new QListWidgetItem(name);
 	item->setData(Qt::UserRole, id);
 	skillsList->addItem(item);
-	//skillsList->addItem(name);
 }
+
 
 void AddSkillWindow::skillChosen()
 {

@@ -1,3 +1,14 @@
+//-----------------------------------------------------------------------------
+/**
+File: equipmentchooserwindow.cpp
+System: Gamestork RPG Character Generator
+License: LGPL
+(c) Chris Aiken 2017
+
+Description: Implementation file for equipment chooser window
+*/
+//-----------------------------------------------------------------------------
+
 #include "equipmentchooserwindow.h"
 
 EquipmentChooserWindow::EquipmentChooserWindow(QWidget *parent)

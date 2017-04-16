@@ -23,6 +23,7 @@ Description: Header file for main application window
 #include "addskillwindow.h"
 #include "featchooserwindow.h"
 #include "equipmentchooserwindow.h"
+#include "welcomewindow.h"
 #include <PathfinderEnumerations.h>
 #include <PathfinderCharacter.h>
 #include <XmlReader.h>
@@ -53,6 +54,9 @@ public:
 private:
 	/// Pointer to the window controls object
     Ui::MainWindow *ui;
+
+	/// Pointer to the welcome window
+	WelcomeWindow *welcomeWindow;
 
 	/// Pointer to the create new character dialog
 	ClassSelectWindow *newCharWindow;

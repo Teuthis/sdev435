@@ -15,6 +15,7 @@ Description: Implementation file for main application window
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+	welcomeWindow(new WelcomeWindow(this)),
 	newCharWindow(new ClassSelectWindow(this)),
 	abilityEditor(new AbilityRerollWindow(this)),
 	addSkillWindow(new AddSkillWindow(this)),
@@ -55,13 +56,25 @@ MainWindow::MainWindow(QWidget *parent) :
 		equipmentChooser, SIGNAL(addItem(std::shared_ptr<InventoryItem>)),
 		this, SLOT(addItem(std::shared_ptr<InventoryItem>)));
 
+	// Connect welcome window signals
+	QObject::connect(
+		welcomeWindow, SIGNAL(newChar()), this, SLOT(newCharacter()));
+	QObject::connect(
+		welcomeWindow, SIGNAL(openChar()), this, SLOT(open()));
+	QObject::connect(
+		welcomeWindow, SIGNAL(quitGamestork()), this, SLOT(close()));
+
 	// Set the class-specific settings visibility to default
 	changeClassOptionsDisplay();
+
+	welcomeWindow->show();
 }
 
 MainWindow::~MainWindow()
 {
 	if (character != NULL) delete character;
+	delete welcomeWindow;
+	welcomeWindow = 0;
 	delete newCharWindow;
 	newCharWindow = 0;
 	delete abilityEditor;

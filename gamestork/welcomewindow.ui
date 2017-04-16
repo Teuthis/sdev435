@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WelcomeWindow</class>
+ <widget class="QDialog" name="WelcomeWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>288</width>
+    <height>160</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Welcome to Gamestork</string>
+  </property>
+  <widget class="QPushButton" name="newCharButton">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>16</y>
+     <width>256</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Create a new character</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="openCharButton">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>64</y>
+     <width>256</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Open an existing character</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="quitButton">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>112</y>
+     <width>256</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quit Gamestork</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>newCharButton</sender>
+   <signal>clicked()</signal>
+   <receiver>WelcomeWindow</receiver>
+   <slot>chooseNew()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>31</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>openCharButton</sender>
+   <signal>clicked()</signal>
+   <receiver>WelcomeWindow</receiver>
+   <slot>chooseOpen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>quitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>WelcomeWindow</receiver>
+   <slot>chooseQuit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>143</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>79</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <signal>newChar()</signal>
+  <signal>openChar()</signal>
+  <signal>quitGamestork()</signal>
+  <slot>chooseNew()</slot>
+  <slot>chooseOpen()</slot>
+  <slot>chooseQuit()</slot>
+ </slots>
+</ui>

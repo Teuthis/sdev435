@@ -759,7 +759,10 @@ PathfinderCharacter* xmlToPathfinderCharacter(const XmlDocument& xml) {
 		std::string race = raceNode[0]->getInnerValue();
 		if (race == "Human") {
 			character->setRace(HUMAN);
-			std::string humanBonus = raceNode[0]->getAttribute("abilityBonus");
+			int humanBonus = std::atoi(
+				raceNode[0]->getAttribute("abilityBonus").c_str());
+			character->changeHumanBonus(static_cast<CHARACTER_ABILITY>(
+				humanBonus));
 		} else if (race == "Elf") {
 			character->setRace(ELF);
 		} else if (race == "Dwarf") {

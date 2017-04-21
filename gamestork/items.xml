@@ -2,15 +2,65 @@
 <equipmentChoices>
   <weapon value="0" range="1" damage="1d6" category="0" critical="20/x2" damageType="B">Club</weapon>
   <weapon value="200" range="2" damage="1d4" category="0" critical="19-20/x2" damageType="S">Dagger</weapon>
+  <weapon value="50" range="4" damage="1d4" category="1" critical="20/x2" damageType="P">Dart</weapon>
+  <weapon value="5000" range="24" damage="1d10" category="1" critical="19-20/x2" damageType="P">Heavy Crossbow</weapon>
+  <weapon value="1200" range="1" damage="1d8" category="0" critical="20/x2" damageType="B">Heavy Mace</weapon>
+  <weapon value="100" range="6" damage="1d6" category="1" critical="20/x2" damageType="P">Javelin</weapon>
+  <weapon value="3500" range="16" damage="1d8" category="1" critical="19-20/x2" damageType="P">Light Crossbow</weapon>
+  <weapon value="500" range="1" damage="1d6" category="0" critical="20/x2" damageType="B">Light Mace</weapon>
+  <weapon value="0" range="1" damage="1d6" category="0" critical="20/x2" damageType="B">Quarterstaff</weapon>
+  <weapon value="100" range="4" damage="1d6" category="0" critical="20/x2" damageType="P">Shortspear</weapon>
+  <weapon value="0" range="10" damage="1d4" category="0" critical="20/x2" damageType="B">Sling</weapon>
+  <weapon value="200" range="4" damage="1d8" category="0" critical="20/x3" damageType="P">Spear</weapon>
   <weapon value="1000" range="1" damage="1d8" category="0" critical="20/x3" damageType="S">Battleaxe</weapon>
   <weapon value="2000" range="1" damage="1d12" category="0" critical="20/x3" damageType="S">Greataxe</weapon>
+  <weapon value="5000" range="1" damage="2d6" category="0" critical="19-20/x2" damageType="S">Greatsword</weapon>
+  <weapon value="100" range="4" damage="1d4" category="0" critical="20/x2" damageType="B">Light Hammer</weapon>
   <weapon value="7500" range="20" damage="1d8" category="1" critical="20/x3" damageType="P">Longbow</weapon>
+  <weapon value="1500" range="1" damage="1d8" category="0" critical="19-20/x2" damageType="S">Longsword</weapon>
+  <weapon value="2000" range="1" damage="1d6" category="0" critical="18-20/x2" damageType="P">Rapier</weapon>
+  <weapon value="1500" range="1" damage="1d6" category="0" critical="18-20/x2" damageType="S">Scimitar</weapon>
+  <weapon value="1000" range="1" damage="1d6" category="0" critical="19-20/x2" damageType="S">Short Sword</weapon>
+  <weapon value="3000" range="12" damage="1d6" category="1" critical="20/x3" damageType="P">Shortbow</weapon>
+  <weapon value="2400" range="4" damage="1d4" category="0" critical="20/x3" damageType="P">Starknife</weapon>
+  <weapon value="800" range="2" damage="1d6" category="1" critical="20/x2" damageType="S">Throwing Axe</weapon>
+  <weapon value="1200" range="1" damage="1d8" category="0" critical="20/x3" damageType="B">Warhammer</weapon>
   <armor value="10000" acBonus="4" weightClass="2">Chain Shirt</armor>
   <armor value="15000" acBonus="6" weightClass="3">Chainmail</armor>
+  <armor value="150000" acBonus="9" weightClass="4">Full Plate</armor>
+  <armor value="60000" acBonus="8" weightClass="4">Half Plate</armor>
+  <armor value="1500" acBonus="4" weightClass="3">Hide Armor</armor>
+  <armor value="1000" acBonus="2" weightClass="2">Leather Armor</armor>
+  <armor value="5000" acBonus="5" weightClass="3">Scale Mail</armor>
+  <armor value="20000" acBonus="7" weightClass="4">Splint Mail</armor>
+  <armor value="2500" acBonus="3" weightClass="2">Studded Leather</armor>
   <armor value="900" acBonus="1" weightClass="1">Light Steel Shield</armor>
+  <armor value="2000" acBonus="2" weightClass="1">Heavy Steel Shield</armor>
   <item value="700">Adventurer's Kit</item>
   <item value="2000">Alchemist's Fire</item>
   <item value="5000">Antitoxin</item>
   <item value="200">Backpack</item>
   <item value="10">Bedroll</item>
+  <item value="100">Belt Pouch</item>
+  <item value="1">Candle</item>
+  <item value="100">Chalk</item>
+  <item value="200">Crowbar</item>
+  <item value="100">Flint and Steel</item>
+  <item value="100">Grappling Hook</item>
+  <item value="100">Holy Symbol (Wood)</item>
+  <item value="2500">Holy Symbol (Silver)</item>
+  <item value="2500">Holy Water</item>
+  <item value="7500">Horse</item>
+  <item value="700">Lantern</item>
+  <item value="1000">Mirror</item>
+  <item value="10">Oil</item>
+  <item value="10">Piton</item>
+  <item value="5">Pole</item>
+  <item value="100">Rope (50 ft)</item>
+  <item value="10">Sack</item>
+  <item value="1500">Spellbook</item>
+  <item value="3000">Thieves' Tools</item>
+  <item value="1">Torch</item>
+  <item value="50">Trail Rations</item>
+  <item value="100">Waterskin</item>
 </equipmentChoices>

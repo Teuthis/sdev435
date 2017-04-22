@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feats>
+  <feat name="Acrobatic Steps">
+    <abilityPrereq ability="1">15</abilityPrereq>
+  </feat>
+  <feat name="Cleave">
+    <abilityPrereq ability="0">13</abilityPrereq>
+    <attackPrereq>1</attackPrereq>
+  </feat>
   <feat name="Combat Expertise">
     <abilityPrereq ability="3">13</abilityPrereq>
     <classPrereq>15</classPrereq>
@@ -7,7 +14,6 @@
   <feat name="Deadly Aim">
     <abilityPrereq ability="1">13</abilityPrereq>
     <attackPrereq>1</attackPrereq>
-    <classPrereq>15</classPrereq>
   </feat>
   <feat name="Dodge">
     <abilityPrereq ability="1">13</abilityPrereq>
@@ -17,10 +23,37 @@
   </feat>
   <feat name="Fleet"></feat>
   <feat name="Great Fortitude"></feat>
+  <feat name="Improved Channel">
+    <classPrereq>4</classPrereq>
+  </feat>
+  <feat name="Improved Initiative"></feat>
   <feat name="Improved Spell Difficulty">
     <classPrereq>12</classPrereq>
+  </feat>
+  <feat name="Iron Will"></feat>
+  <feat name="Lightning Reflexes"></feat>
+  <feat name="Martial Weapon Proficiency"></feat>
+  <feat name="Nimble Moves">
+    <abilityPrereq ability="1">13</abilityPrereq>
+  </feat>
+  <feat name="Point-Blank Shot"></feat>
+  <feat name="Power Attack">
+    <abilityPrereq ability="1">13</abilityPrereq>
+    <attackPrereq>1</attackPrereq>
+  </feat>
+  <feat name="Precise Shot"></feat>
+  <feat name="Quick Draw">
+    <attackPrereq>1</attackPrereq>
+  </feat>
+  <feat name="Rapid Reload"></feat>
+  <feat name="Selective Channeling">
+    <abilityPrereq ability="5">13</abilityPrereq>
+    <classPrereq>4</classPrereq>
   </feat>
   <feat name="Shield Focus">
     <proficiency>32</proficiency>
   </feat>
+  <feat name="Simple Weapon Proficiency"></feat>
+  <feat name="Toughness"></feat>
+  <feat name="Weapon Finesse"></feat>
 </feats>

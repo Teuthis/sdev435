@@ -98,10 +98,7 @@ void MainWindow::closeEvent(QCloseEvent * event)
 
 void MainWindow::classSelected(CHARACTER_CLASS chosenClass)
 {
-	/*delete newCharWindow;
-	newCharWindow = NULL;*/
 	character = new PathfinderCharacter(chosenClass);
-	//unsavedChanges = true;
 	characterLoaded();
 }
 

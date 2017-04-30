@@ -488,14 +488,19 @@ void MainWindow::save()
 	if (filename == "") {
 		saveAs();
 	} else {
-		XmlDocument doc = pathfinderCharacterToXml(*character);
-		XmlWriter writer(doc);
-		if (writer.write(filename)) {
-			unsavedChanges = false;
+		if (character->getRaceId() > -1) {
+			XmlDocument doc = pathfinderCharacterToXml(*character);
+			XmlWriter writer(doc);
+			if (writer.write(filename)) {
+				unsavedChanges = false;
+			} else {
+				QMessageBox mbox;
+				mbox.setText("Unknown error saving data.\nThe character was not saved.");
+				mbox.exec();
+			}
 		} else {
 			QMessageBox mbox;
-			mbox.setText("Error saving data.");
-			mbox.setDetailedText("The character was not saved.");
+			mbox.setText("Character race not set.\nThe character was not saved. Please choose Human, Elf, or Dwarf on the race menu and try again.");
 			mbox.exec();
 		}
 	}	
@@ -543,6 +548,12 @@ void MainWindow::open()
 
 void MainWindow::exportSheet()
 {
+	if (character->getRaceId() == -1) {
+		QMessageBox mbox;
+		mbox.setText("Character race not set.\nCharacter sheets were not created. Please choose Human, Elf, or Dwarf on the race menu and try again.");
+		mbox.exec();
+		return;
+	}
 	std::string sheetFile = QFileDialog::getSaveFileName(this, tr("Save as..."),
 		QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), 
 		tr("HTML Files (*.html)")).toStdString();

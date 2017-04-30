@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ui_EquipmentChooserWindow">
+    <Position X="15.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAABCAAAAAAAAAAAQAMAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_equipmentchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_FeatChooserWindow">
+    <Position X="6.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEQAABAAAAAAAAAAAAQAMAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_featchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_WelcomeWindow">
+    <Position X="16" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAQAAAAAAAQAIAAAAAAAAAAIAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_welcomewindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_AbilityRerollWindow">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAjAEBBAABbAAgIhBQwhwBARECYQMAVAGCAABABijKI=</HashCode>
+      <FileName>GeneratedFiles\ui_abilityrerollwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_AddSkillWindow">
+    <Position X="6.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAABAAAAAAAAAAAAQAMAAAAAAAAgAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_addskillwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_ClassSelectWindow">
+    <Position X="3.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgBAAAQAAABAAgACAAAAAAQQEIAAAAAAAAgAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_classselectwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui_MainWindow">
+    <Position X="12.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>OwEFBggABEFEQkAAAaIrEIKQaQxBYBwmkIgAk5AIBgI=</HashCode>
+      <FileName>GeneratedFiles\ui_mainwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainWindow">
+    <Position X="9" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>UCCIACBAAICAFYM+AGCIkAAUAJCACQABgACQJaEQCAA=</HashCode>
+      <FileName>mainwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WelcomeWindow">
+    <Position X="16" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAIAAAAAAAAAAAiAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>welcomewindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EquipmentChooserWindow">
+    <Position X="15.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>equipmentchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FeatChooserWindow">
+    <Position X="6.25" Y="10.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>featchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddSkillWindow">
+    <Position X="6.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>addskillwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassSelectWindow">
+    <Position X="3.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAgAAAAAAEAA=</HashCode>
+      <FileName>classselectwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbilityRerollWindow">
+    <Position X="3.5" Y="10" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QRQIAAAAAAAAAAAAKgCAIgASAAAAAAAAAAKAAACAAAA=</HashCode>
+      <FileName>abilityrerollwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::EquipmentChooserWindow" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_equipmentchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::FeatChooserWindow" Collapsed="true">
+    <Position X="6.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_featchooserwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::WelcomeWindow" Collapsed="true">
+    <Position X="16" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_welcomewindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::AbilityRerollWindow" Collapsed="true">
+    <Position X="3.5" Y="8.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_abilityrerollwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::AddSkillWindow" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_addskillwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::ClassSelectWindow" Collapsed="true">
+    <Position X="3.5" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_classselectwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ui::MainWindow" Collapsed="true">
+    <Position X="12.5" Y="16.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneratedFiles\ui_mainwindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

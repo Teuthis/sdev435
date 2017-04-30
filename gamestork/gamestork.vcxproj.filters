@@ -229,4 +229,7 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="UIClassDiagram.cd" />
+  </ItemGroup>
 </Project>

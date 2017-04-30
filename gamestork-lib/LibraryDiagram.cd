@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="DiceRoller">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABICAAAAAAAACAAAAAAAAAAAAAAAABAAAAACAAA=</HashCode>
+      <FileName>DiceRoller.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HtmlSheet">
+    <Position X="19.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAIBAAIAAIEEAgAYAAIAgEAgACAQgAAQAAAAAAAAAg=</HashCode>
+      <FileName>HtmlSheet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventoryItem">
+    <Position X="5.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAIAAACAAAAEgCBAAAAEAACAAAA=</HashCode>
+      <FileName>InventoryItem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NSidedDie">
+    <Position X="25.75" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAEAAAgQAAAAAAAACAgAAAAAAA=</HashCode>
+      <FileName>NSidedDie.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderArmor">
+    <Position X="4" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAAAAABAAAAEAAAEABEAAAAAQAAEAAACAAYA=</HashCode>
+      <FileName>PathfinderArmor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderCharacter">
+    <Position X="9.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>SQwgAmqBIABRBKIEAGEQhICyAAENABJDCAIkAAATUmA=</HashCode>
+      <FileName>PathfinderCharacter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderClass">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAARIwAQAFAIAAECAABAIAAAABAACgBgFAAQAABAE=</HashCode>
+      <FileName>PathfinderClass.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderCleric">
+    <Position X="5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAQABAAAAQCIABAAAAAAAAIAAAAAAAEAAAAA=</HashCode>
+      <FileName>PathfinderCleric.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderDwarf">
+    <Position X="14.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQAAkIAAAAAAAAARBAAAABAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PathfinderDwarf.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderElf">
+    <Position X="17" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAEkIAAAAAAAAAQBAAAABAACAAAAAAAAABAAAA=</HashCode>
+      <FileName>PathfinderElf.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderFeat">
+    <Position X="12.25" Y="13.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CSAAEAAAAABAAAAEAAAAFQABALAMAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>PathfinderFeat.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderFighter">
+    <Position X="0.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAAAQABIAAAACAABAAAAAAAAAAIAAAAEAAAAQA=</HashCode>
+      <FileName>PathfinderFighter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderHuman">
+    <Position X="12.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAkIAAAgAAAAASBAAAABAACABAAAAAAAAAAAA=</HashCode>
+      <FileName>PathfinderHuman.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderRace">
+    <Position X="14.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQAAkIAQAAAAAAAQBIAAABAICIAAAAAAAAAAAAA=</HashCode>
+      <FileName>PathfinderRace.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderRogue">
+    <Position X="7.25" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAQABAAAAACgABAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PathfinderRogue.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderSkill">
+    <Position X="15" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEACEAQyBQAAAAAEYAAAAQAAAQSEAgg=</HashCode>
+      <FileName>PathfinderSkill.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderWeapon">
+    <Position X="6.25" Y="15.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAoCCAAgAYACAAAAAAgAAAAAABAAICIAACIAAA=</HashCode>
+      <FileName>PathfinderWeapon.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathfinderWizard">
+    <Position X="3" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QIAQAQAAAQIJAAIAACAABAAEAAAAAAAAACAAQEAABAA=</HashCode>
+      <FileName>PathfinderWizard.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XmlDocument">
+    <Position X="24.25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCAAAgAAAAIAAAgAAABAAAgAIAAAAAAAACAAAA=</HashCode>
+      <FileName>XmlDocument.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XmlNode">
+    <Position X="21" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAIAAAgAIKAAQEAFAAAAAIQgEgEAAAAAgAAAAAAAA=</HashCode>
+      <FileName>XmlNode.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XmlReader">
+    <Position X="27.75" Y="11.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAQECAACQAAAAICCAAAGAABAACAgAA=</HashCode>
+      <FileName>XmlReader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="XmlWriter">
+    <Position X="27.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAIAAAAAgQAAAAAAAAA=</HashCode>
+      <FileName>XmlWriter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

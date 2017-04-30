@@ -99,6 +99,7 @@ void MainWindow::closeEvent(QCloseEvent * event)
 void MainWindow::classSelected(CHARACTER_CLASS chosenClass)
 {
 	character = new PathfinderCharacter(chosenClass);
+	filename = "";
 	characterLoaded();
 }
 

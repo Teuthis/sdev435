@@ -180,7 +180,7 @@ int PathfinderCharacter::getCopperPieces() const
 
 bool PathfinderCharacter::buyItem(const std::shared_ptr<InventoryItem> item)
 {
-	if ((money - item->getValue()) >= 0) {
+	if (money >= item->getValue()) {
 		money -= item->getValue();
 		inventory.push_back(item);
 		return true;

@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gamestork-test", "gamestork
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gamestork-lib", "gamestork-lib\gamestork-lib.vcxproj", "{E713EA4A-009F-4401-81B4-210737F86B08}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GamestorkSetup", "GamestorkSetup\GamestorkSetup.vdproj", "{C75E705B-6A09-49E6-903D-602EDD0A8227}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -28,7 +30,6 @@ Global
 		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Debug|x86.ActiveCfg = Debug|Win32
 		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Debug|x86.Build.0 = Debug|Win32
 		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Release|x64.ActiveCfg = Release|x64
-		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Release|x64.Build.0 = Release|x64
 		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Release|x86.ActiveCfg = Release|Win32
 		{13DB9439-7CDA-4BAC-A386-319E80E8DAE6}.Release|x86.Build.0 = Release|Win32
 		{E713EA4A-009F-4401-81B4-210737F86B08}.Debug|x64.ActiveCfg = Debug|x64
@@ -39,6 +40,11 @@ Global
 		{E713EA4A-009F-4401-81B4-210737F86B08}.Release|x64.Build.0 = Release|x64
 		{E713EA4A-009F-4401-81B4-210737F86B08}.Release|x86.ActiveCfg = Release|Win32
 		{E713EA4A-009F-4401-81B4-210737F86B08}.Release|x86.Build.0 = Release|Win32
+		{C75E705B-6A09-49E6-903D-602EDD0A8227}.Debug|x64.ActiveCfg = Debug
+		{C75E705B-6A09-49E6-903D-602EDD0A8227}.Debug|x86.ActiveCfg = Debug
+		{C75E705B-6A09-49E6-903D-602EDD0A8227}.Release|x64.ActiveCfg = Release
+		{C75E705B-6A09-49E6-903D-602EDD0A8227}.Release|x64.Build.0 = Release
+		{C75E705B-6A09-49E6-903D-602EDD0A8227}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
